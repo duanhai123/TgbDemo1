@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/content"
+
+        android:background="@color/black"
+
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:clickable="true"
+            android:layout_gravity="center"
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+        <TextView
+            android:textColor="@color/ivory"
+            android:padding="10dp"
+            android:text="找回密码"
+            style="@style/content_right" />
+    </LinearLayout>
+<LinearLayout
+    android:background="#f2f3f8"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/text_shape"
+        android:layout_marginTop="33dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:textColor="#656565"
+            android:text="短信验证码"
+               android:gravity="center_vertical"
+            android:layout_width="0dp"
+            android:layout_weight="9"
+            android:layout_height="match_parent"
+
+            />
+        <ImageView
+
+            android:clickable="true"
+            android:id="@+id/iv_message_safety"
+            android:gravity="center|right"
+            android:src="@drawable/next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/text_shape"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textColorHint="#dadada"
+            android:padding="10dp"
+            android:hint="回答安全问题"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+
+            android:textSize="15sp"
+            android:gravity="center|right"
+            android:textColor="@color/orange"
+            android:text="未填写:"
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+
+            android:clickable="true"
+            android:id="@+id/iv_ask_safety"
+            android:src="@drawable/next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/text_shape"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:textColorHint="#dadada"
+            android:padding="10dp"
+            android:hint="通过邮箱找回"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+        <TextView
+
+
+            android:textColor="@color/orange"
+            android:text="未验证:"
+            android:gravity="center|right"
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_gravity="right"
+            android:clickable="true"
+            android:id="@+id/iv_email_safety"
+            android:src="@drawable/next"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</LinearLayout>

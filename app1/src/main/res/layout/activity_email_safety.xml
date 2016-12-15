@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/content"
+
+        android:background="@color/black"
+
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+        <TextView
+            android:textColor="@color/ivory"
+
+            android:text="找回密码"
+            style="@style/content_right" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="33dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:text="通过邮箱找回"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/text_shape"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <EditText
+        android:textColorHint="#656565"
+            android:background="@null"
+        android:id="@+id/et_email"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:hint="duanting@163.com"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+    <Button
+        android:textSize="15sp"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/btn_next"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/btn_shape"
+        android:text="下一步"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</LinearLayout>
+    </LinearLayout>

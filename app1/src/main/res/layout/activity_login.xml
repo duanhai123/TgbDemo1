@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textColor="@color/ivory"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:text="登录"
+        android:textSize="30sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <LinearLayout
+
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_1"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textColor="@color/ivory"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="A bitcon website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="45dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/counnt"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+           <TextView
+               android:textSize="15sp"
+               android:textColor="@color/ivory"
+               android:gravity="center"
+               android:text="手机号码:"
+               android:layout_width="wrap_content"
+               android:layout_height="match_parent" />
+
+        <EditText
+            android:background="@null"
+            android:textColorHint="@color/dimgray"
+            android:textColor="@color/ivory"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/ec_edit_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        </LinearLayout>
+        <ImageView
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/ivory"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/password"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:gravity="center"
+                android:text="登录密码:"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:background="@null"
+                android:textColorHint="@color/dimgray"
+                android:textColor="@color/ivory"
+                android:layout_marginLeft="10dp"
+                android:inputType="textPassword"
+                android:id="@+id/ec_edit_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+        <ImageView
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:background="@color/ivory"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <Button
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:textColor="@color/ivory"
+            android:background="@drawable/btn_shape"
+            android:layout_marginTop="52dp"
+            android:id="@+id/ec_btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="登录"/>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_marginTop="26dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+
+            android:button="@null"
+            android:background="@drawable/login_selector"
+            android:id="@+id/cb_agree"
+
+            android:padding="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+        <TextView
+            android:textSize="15dp"
+            android:textColor="@color/ivory"
+            android:gravity="center"
+            android:text="我已阅读并且同意服务条款"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_weight="2"
+            android:layout_height="0dp">
+            <TextView
+                android:textSize="15dp"
+                android:textColor="@color/ivory"
+                android:text="忘记密码?"
+                android:id="@+id/ec_edit_forget_password"
+                android:padding="10dp"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="15dp"
+                android:textColor="@color/ivory"
+                android:id="@+id/ec_btn_sign_up"
+                android:gravity="center"
+                android:text="新用户注册"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

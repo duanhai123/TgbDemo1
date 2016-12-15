@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/content"
+
+        android:background="@color/black"
+
+        >
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_gravity="center"
+            android:src="@drawable/back"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+        <TextView
+            android:textColor="@color/ivory"
+
+            android:text="找回密码"
+            style="@style/content_right" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+
+        android:layout_marginTop="33dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/text_shape"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="50dp">
+
+
+        <EditText
+
+            android:textColorHint="#dadada"
+            android:layout_marginLeft="13dp"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:id="@+id/et_pin"
+            android:textColor="@color/black"
+            android:hint="请输入短信验证码"
+                android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            />
+        </LinearLayout>
+        <Button
+            android:textSize="15sp"
+            android:id="@+id/btn_pin"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:background="@drawable/btn_shape"
+            android:text="获取短信验证码"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent" />
+
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_pin"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:textColor="#656565"
+        android:gravity="center"
+        android:text="请输入手机号185xxxx1234收到的验证码"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <Button
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/btn_next"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/btn_shape"
+        android:text="下一步"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    </LinearLayout>
+</LinearLayout>
