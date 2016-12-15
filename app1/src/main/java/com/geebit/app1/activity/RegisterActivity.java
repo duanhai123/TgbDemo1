@@ -48,17 +48,17 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private String pwdPin;
     private String mCode;
     private ImageView back;
+    private CheckBox cbAgree;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        //透明状态栏
+       ///透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
         initView();
         initData();
     }
@@ -79,6 +79,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         code = (EditText) findViewById(R.id.ec_edit_code);
         cbSystem = (CheckBox) findViewById(R.id.cb_system);
         mRegister = (Button) findViewById(R.id.ec_btn_register);
+        cbAgree = (CheckBox) findViewById(R.id.cb_agree);
     }
 
     /**
@@ -113,6 +114,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         } else if (password.length()<6||pattern.matcher(password.substring(0,1)).matches()){
             Toast.makeText(RegisterActivity.this, "密码以字母开头，长度在6~18之间，只能包含字符、数字和下划线", Toast.LENGTH_SHORT).show();
             return;
+        }else if (!cbAgree.isChecked()){
+            Toast.makeText(RegisterActivity.this, "请勾选我已阅读并且同意服务条款", Toast.LENGTH_SHORT).show();
         }
         else {
             mDialog = new ProgressDialog(this);

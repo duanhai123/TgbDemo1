@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -14,8 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.regex.Pattern;
+
+import okhttp3.Call;
 
 
 /**
@@ -99,7 +104,7 @@ public class LoginActivity extends Activity {
         Post JSON OkHttpUtils.postString().url(url).content(new Gson().toJson(new User("zhy", "123")))
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build().execute(new MyStringCallback());*/
-        /*String httpUrl="http://www.csdn.net/";
+        String httpUrl="http://www.csdn.net/";
        OkHttpUtils.post().url(httpUrl).addParams("username", "hyman").addParams("password", "123")
                 .build().execute(new StringCallback() {
             @Override
@@ -124,7 +129,7 @@ public class LoginActivity extends Activity {
                 mDialog.dismiss();
             }
         });
-*/
+
 
     }
 

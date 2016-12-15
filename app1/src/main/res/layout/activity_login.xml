@@ -6,10 +6,10 @@
     android:layout_height="match_parent">
     <TextView
         android:textColor="@color/ivory"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="登录"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -39,7 +39,7 @@
         <LinearLayout
             android:layout_marginRight="13dp"
             android:layout_marginLeft="13dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="35dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp">
@@ -136,6 +136,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp" />
         <TextView
+            android:layout_marginLeft="3dp"
             android:textSize="15dp"
             android:textColor="@color/ivory"
             android:gravity="center"
@@ -146,7 +147,10 @@
 
     </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+
+            android:layout_marginTop="50dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_weight="2"
@@ -156,7 +160,7 @@
                 android:textColor="@color/ivory"
                 android:text="忘记密码?"
                 android:id="@+id/ec_edit_forget_password"
-                android:padding="10dp"
+
                 android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
@@ -164,9 +168,9 @@
                 android:textSize="15dp"
                 android:textColor="@color/ivory"
                 android:id="@+id/ec_btn_sign_up"
-                android:gravity="center"
+                android:gravity="right"
                 android:text="新用户注册"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
 
