@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.CountDownTimerUtils;
 
 import java.util.regex.Pattern;
 
@@ -35,7 +36,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText mPasswordEdit;
     //确认密码
     private EditText mEnterPwd;
-
+    private int recLen = 10;
 
     private TextView mSignUpBtn;
     // 注册按钮
@@ -49,6 +50,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private String mCode;
     private ImageView back;
     private CheckBox cbAgree;
+    private TextView messsage;
+    private Runnable runnable;
 
 
     @Override
@@ -66,6 +69,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private void initData() {
         mRegister.setOnClickListener(this) ;
         back.setOnClickListener(this);
+        messsage.setOnClickListener(this);
 
 
     }
@@ -80,6 +84,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         cbSystem = (CheckBox) findViewById(R.id.cb_system);
         mRegister = (Button) findViewById(R.id.ec_btn_register);
         cbAgree = (CheckBox) findViewById(R.id.cb_agree);
+        messsage = (TextView) findViewById(R.id.tv_message);
     }
 
     /**
@@ -166,6 +171,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.iv_back:
                 finish();
+                break;
+            case R.id.tv_message:
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(messsage,30000,1000);
+                countDownTimerUtils.onFinish();
+                countDownTimerUtils.start();
+
+                break;
         }
     }
 }

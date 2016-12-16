@@ -2,4 +2,20 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <!--注册页面-->
+   <!-- <dimen name="activity_register_content_ivheight">30dp</dimen>
+    <dimen name="activity_register_content_tvsize">20sp</dimen>
+    <dimen name="activity_register_content_phoneMarginRight">13dp</dimen>
+    <dimen name="activity_register_content_phoneMarginLeft">13dp</dimen>
+    <dimen name="activity_register_content_phoneMarginTop">27dp</dimen>
+    <dimen name="activity_register_content_phoneHeight">50dp</dimen>
+    <dimen name="activity_register_tvPhoneSize">15sp</dimen>
+    <dimen name="activity_register_tvPhonePadding">5dp</dimen>
+    <dimen name="activity_register_etPhoneMarginLeft">32dp</dimen>
+    <dimen name="activity_register_lineHight">0.5dp</dimen>
+    <dimen name="activity_register_content_codeHight">50dp</dimen>
+    <dimen name="activity_register_content_etCodeLeft">18dp</dimen>
+    <dimen name="activity_register_content_etCodeSize">14sp</dimen>
+    <dimen name="activity_register_content_tvCodeHeight">45dp</dimen>-->
+
 </resources>
