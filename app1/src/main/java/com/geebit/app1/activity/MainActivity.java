@@ -6,14 +6,14 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TabHost.TabSpec;
-import android.widget.TextView;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TabHost;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.geebit.app1.R;
 import com.geebit.app1.fragment.FragmentCategory;
-import com.geebit.app1.fragment.FragmentDown;
 import com.geebit.app1.fragment.FragmentHome;
 import com.geebit.app1.fragment.FragmentSetting;
 import com.geebit.app1.fragment.FragmentUser;
@@ -35,20 +35,24 @@ public class MainActivity extends FragmentActivity {
 	private LayoutInflater layoutInflater;
 
 	// 定义数组来存放Fragment界面
-	private Class fragmentArray[] = { FragmentHome.class,
-			FragmentCategory.class, FragmentDown.class, FragmentUser.class,
-			FragmentSetting.class };
+	private Class fragmentArray[] = { FragmentUser.class,
+			FragmentCategory.class,
+			FragmentSetting.class ,FragmentHome.class};
 
 
 
-	// Tab选项卡的文字
-	private String mTextviewArray[] = { "登录", "TGB-消息", "TGB-I", "TGB-II", "我" };
 
+	//Tab选项卡的图片
+	private int imageResources[] ={R.drawable.wtgb_1,R.drawable.wxgb_1b,
+			R.drawable.wxgb_2,R.drawable.me_1};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+//透明状态栏
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+		//透明导航栏
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
 		initView();
 	}
 
@@ -69,14 +73,14 @@ public class MainActivity extends FragmentActivity {
 
 		for (int i = 0; i < count; i++) {
 			// 为每一个Tab按钮设置图标、文字和内容
-			TabSpec tabSpec = mTabHost.newTabSpec(mTextviewArray[i])
+			TabHost.TabSpec tabSpec = mTabHost.newTabSpec(imageResources[i]+"")
 					.setIndicator(getTabItemView(i));
 			// 将Tab按钮添加进Tab选项卡中
 			mTabHost.addTab(tabSpec, fragmentArray[i], null);
 			// 设置Tab按钮的背景
 			mTabHost.getTabWidget().getChildAt(i)
-					.setBackgroundResource(R.drawable.main_tab_item_bg);
-			mTabHost.setCurrentTab(fragmentArray.length-1);
+					.setBackgroundResource(R.color.black);
+			mTabHost.setCurrentTab(1);
              if (i==0) {
 				 mTabHost.getTabWidget().getChildAt(i).setOnClickListener(new View.OnClickListener() {
 					 @Override
@@ -102,8 +106,8 @@ public class MainActivity extends FragmentActivity {
 		//ImageView imageView = (ImageView) view.findViewById(R.id.imageview);
 		//imageView.setImageResource(mImageViewArray[index]);
 
-		TextView textView = (TextView) view.findViewById(R.id.textview);
-		textView.setText(mTextviewArray[index]);
+		ImageView imageView = (ImageView) view.findViewById(R.id.iv_main);
+		imageView.setImageResource(imageResources[index]);
 
 		return view;
 	}

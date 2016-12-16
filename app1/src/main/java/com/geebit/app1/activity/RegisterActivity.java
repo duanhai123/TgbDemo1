@@ -52,6 +52,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private CheckBox cbAgree;
     private TextView messsage;
     private Runnable runnable;
+    private String serverPin;
 
 
     @Override
@@ -121,6 +122,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             return;
         }else if (!cbAgree.isChecked()){
             Toast.makeText(RegisterActivity.this, "请勾选我已阅读并且同意服务条款", Toast.LENGTH_SHORT).show();
+        }else if(!mCode.equals(serverPin)){
+            Toast.makeText(RegisterActivity.this, "验证码输入错误", Toast.LENGTH_SHORT).show();
         }
         else {
             mDialog = new ProgressDialog(this);
@@ -176,8 +179,19 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(messsage,30000,1000);
                 countDownTimerUtils.onFinish();
                 countDownTimerUtils.start();
-
+                //同时调用接口获取验证码
+                serverPin = "1234";
                 break;
         }
     }
+    /**
+     * post请求后台
+     * @param name
+     * @param pwd
+     */
+    private void postRequest(String name,String pwd)  {
+        //建立请求表单，添加上传服务器的参数
+        //OkHttpUtils.post().addParams().addParams();
+    }
+
 }
