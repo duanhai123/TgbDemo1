@@ -51,7 +51,7 @@
             <EditText
 
                 android:background="@null"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="34dp"
                 android:textSize="15sp"
                 android:textColorHint="#656565"
                 android:textColor="@color/ivory"
@@ -96,7 +96,7 @@
                 android:layout_height="match_parent"
                 android:hint="请输入短信验证码"/>
             <Button
-
+                android:layout_marginLeft="3dp"
                 android:textSize="14sp"
                 android:background="@drawable/btn_shape"
                 android:textColor="@color/ivory"
