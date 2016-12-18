@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1c252c"
+        android:background="@color/black"
      >
     <LinearLayout
+        android:background="@color/black"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="44dp">
         <TextView
-            android:layout_marginLeft="13dp"
+            android:layout_marginLeft="50dp"
             android:textColor="@color/ivory"
             android:text="弦基币-1"
             android:textSize="18sp"
@@ -28,6 +29,7 @@
     </LinearLayout>
 
 <LinearLayout
+    android:background="#1c252c"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -75,11 +77,11 @@
         </LinearLayout>
 
             <RelativeLayout
-                android:layout_marginTop="22dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ring_xgb1"
-                android:layout_width="160dp"
+                android:layout_width="150dp"
 
-                android:layout_height="160dp">
+                android:layout_height="150dp">
             <TextView
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
@@ -91,13 +93,14 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+
                 android:id="@+id/tv_btb"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="45dp"
                 android:textSize="15sp"
                 android:textColor="#F39700"
-                android:text="2.0799/10010"
+                android:text="฿2.0799/10010"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
                 <!--<TextView
@@ -117,8 +120,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="28dp">
                     <TextView
+
                         android:textColor="@color/ivory"
-                        android:text="4812"
+                        android:text="$4812.70"
                         android:textSize="12sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -170,7 +174,7 @@
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
-                android:text="昨日预期粉红"
+                android:text="昨日预期分红"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
@@ -187,7 +191,7 @@
         android:background="@android:color/transparent"
         android:src="@drawable/icon_4"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="160dp" />
     <LinearLayout
 
         android:background="#26343e"
@@ -219,9 +223,9 @@
             android:layout_height="match_parent" />
         <TextView
 
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="13dp"
 
-            android:gravity="center"
+            android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
             android:textColor="@color/ivory"
@@ -257,7 +261,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
@@ -303,7 +307,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginRight="31dp"
+            android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="领取分红?"
             android:textSize="15sp"
@@ -340,7 +344,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginRight="33dp"
+            android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
@@ -348,13 +352,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
-    <LinearLayout
+<LinearLayout
+    android:background="#1c252c"
+    android:layout_width="match_parent"
+    android:layout_height="20dp">
 
-        android:background="#26343e"
-        android:layout_width="match_parent"
-        android:layout_height="20dp">
-
-    </LinearLayout>
+</LinearLayout>
 </LinearLayout>
 
 </LinearLayout>

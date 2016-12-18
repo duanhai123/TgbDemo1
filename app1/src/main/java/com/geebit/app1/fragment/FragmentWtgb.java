@@ -7,13 +7,13 @@ import com.geebit.app1.R;
 
 
 
-public class FragmentHome extends BaseFragment{
+public class FragmentWtgb extends BaseFragment{
 
 
 
 	@Override
 	public View initView() {
-		return View.inflate(mActivity, R.layout.fragment_home,null);	}
+		return View.inflate(mActivity, R.layout.fragment_wtgb,null);}
 
 	@Override
 	public void initData() {

@@ -8,10 +8,9 @@
     android:layout_height="match_parent">
     <LinearLayout
 
-
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        style="@style/content"
         >
         <ImageView
                 android:id="@+id/iv_back"
@@ -49,7 +48,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
-
+                android:inputType="number"
                 android:background="@null"
                 android:layout_marginLeft="34dp"
                 android:textSize="15sp"
@@ -83,7 +82,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
-
+                android:inputType="number"
                 android:background="@null"
 
                 android:layout_marginLeft="18dp"
@@ -200,6 +199,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
+                android:inputType="number"
                 android:background="@null"
                 android:textSize="15sp"
                 android:textColorHint="#656565"

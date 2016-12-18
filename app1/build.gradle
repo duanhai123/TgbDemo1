@@ -33,4 +33,5 @@ dependencies {
     compile files('libs/hyphenatechat_3.2.2.jar')
     compile files('libs/pushservice-5.2.0.12.jar')
     compile project(':okhttputils')
+    compile 'com.android.support:recyclerview-v7:25.0.1'
 }

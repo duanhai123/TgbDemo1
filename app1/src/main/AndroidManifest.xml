@@ -54,7 +54,7 @@
         <activity android:name=".activity.LoginActivity">
         </activity>
         <activity android:name=".activity.RegisterActivity"/>
-<activity android:name=".activity.MessageSafetyActivity"/>
+        <activity android:name=".activity.MessageSafetyActivity"/>
         <activity android:name=".activity.SafetyActivity"/>
         <activity android:name=".activity.ReSetingPwdActivity"/>
         <activity android:name=".activity.ForgetPasswordActivity"/>

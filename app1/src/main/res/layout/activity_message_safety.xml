@@ -42,7 +42,7 @@
 
 
         <EditText
-
+            android:inputType="number"
             android:textColorHint="#dadada"
             android:layout_marginLeft="13dp"
             android:layout_gravity="center"
