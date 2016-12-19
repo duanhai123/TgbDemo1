@@ -135,14 +135,7 @@
 
         </LinearLayout>
 
-        <include layout="@layout/content_input_pwd"
-            android:id="@+id/ll_input_pwd"
-            android:visibility="invisible"
-            />
 
-        <!--<include layout="@layout/ll_forget_pwd"
-            android:id="@+id/ll_forget_pwd"
-            android:visibility="invisible"/>-->
     </FrameLayout>
     
         

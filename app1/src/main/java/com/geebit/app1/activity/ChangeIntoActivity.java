@@ -1,11 +1,14 @@
 package com.geebit.app1.activity;
 
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.FinishProjectPopupWindows;
 
 /**
  * Created by DEll on 2016-12-19.
@@ -16,13 +19,14 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private View view;
     private LinearLayout inputPwd;
     private Button enterInto;
-
+    private PopupWindow popupWindow;
+    private FinishProjectPopupWindows finishProjectPopupWindows;
 
 
     @Override
     protected void initoView() {
          mBack = (ImageView)view. findViewById(R.id.iv_back);
-        inputPwd = (LinearLayout) view.findViewById(R.id.ll_input_pwd);
+
         enterInto = (Button)view. findViewById(R.id.btn_enter_change_into);
 
     }
@@ -49,12 +53,22 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 finish();
                 break;
             case R.id.btn_enter_change_into:
-
-                inputPwd.setVisibility(View.VISIBLE);
-
+                finishProjectPopupWindows = new FinishProjectPopupWindows(this,itemsOnClick);
+                finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
+                        Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
                 break;
         }
-    }
 
+    }
+    private View.OnClickListener itemsOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.closed:
+                    finishProjectPopupWindows.dismiss();
+                    break;
+            }
+        }
+    };
 
 }
