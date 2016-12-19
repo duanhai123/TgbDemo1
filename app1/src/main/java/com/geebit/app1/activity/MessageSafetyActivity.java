@@ -1,10 +1,7 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +15,7 @@ import com.geebit.app1.R;
  * Created by DEll on 2016-12-05.
  * 通过短信找回密码
  */
-public class MessageSafetyActivity extends Activity implements View.OnClickListener {
+public class MessageSafetyActivity extends BaseActivity implements View.OnClickListener {
 
 
     private static final String TAG ="" ;
@@ -27,21 +24,19 @@ public class MessageSafetyActivity extends Activity implements View.OnClickListe
     private Button btn_pin;
     private TextView tv_pin;
     private Button btn_next;
+    private View view;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_safety);
-
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
+    protected void initoView() {
+        iv_back = (ImageView)view. findViewById(R.id.iv_back);
+        et_pin = (EditText) view.findViewById(R.id.et_pin);
+        btn_pin = (Button)view. findViewById(R.id.btn_pin);
+        tv_pin = (TextView)view. findViewById(R.id.tv_pin);
+        btn_next = (Button)view. findViewById(R.id.btn_next);
     }
 
-    private void initData() {
+    protected void initData() {
         iv_back.setOnClickListener(this);
 
         btn_pin.setOnClickListener(this);
@@ -54,12 +49,10 @@ public class MessageSafetyActivity extends Activity implements View.OnClickListe
     /*
     初始化控件
      */
-    private void initView() {
-        iv_back = (ImageView) findViewById(R.id.iv_back);
-        et_pin = (EditText) findViewById(R.id.et_pin);
-        btn_pin = (Button) findViewById(R.id.btn_pin);
-        tv_pin = (TextView) findViewById(R.id.tv_pin);
-        btn_next = (Button) findViewById(R.id.btn_next);
+    public View initView() {
+
+        view = View.inflate(this, R.layout.activity_message_safety,null);
+        return view;
     }
 
 

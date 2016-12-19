@@ -1,14 +1,11 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,7 +20,7 @@ import java.util.regex.Pattern;
  * Created by DEll on 2016-12-05
  * 重置登录密码.
  */
-public class ReSetingPwdActivity extends Activity implements View.OnClickListener, TextWatcher {
+public class ReSetingPwdActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
 
 
     private static final String TAG ="tag" ;
@@ -37,34 +34,28 @@ public class ReSetingPwdActivity extends Activity implements View.OnClickListene
     private EditText etNewpwd;
 
     private String newPwd;
+    private View view;
+
+
+    public View initView() {
+
+        view = View.inflate(this, R.layout.activity_reseting_pwd,null);
+
+        return view;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reseting_pwd);
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
-
+    protected void initoView() {
+        back = (ImageView) view.findViewById(R.id.iv_back);
+        btnHigh = (Button) view.findViewById(R.id.btn_high);
+        btnLower = (Button)view. findViewById(R.id.btn_lower);
+        btnMiddle = (Button)view. findViewById(R.id.btn_middle);
+        btnSubmit = (Button) view.findViewById(R.id.btn_submit);
+        etEnterNewpwd = (EditText)view. findViewById(R.id.et_enter_newpwd);
+        etNewpwd = (EditText) view.findViewById(R.id.et_newpwd);
     }
 
-    private void initView() {
-        back = (ImageView) findViewById(R.id.iv_back);
-        btnHigh = (Button) findViewById(R.id.btn_high);
-        btnLower = (Button) findViewById(R.id.btn_lower);
-        btnMiddle = (Button) findViewById(R.id.btn_middle);
-        btnSubmit = (Button) findViewById(R.id.btn_submit);
-        etEnterNewpwd = (EditText) findViewById(R.id.et_enter_newpwd);
-        etNewpwd = (EditText) findViewById(R.id.et_newpwd);
-
-
-
-    }
-
-    private void initData() {
+    protected void initData() {
         back.setOnClickListener(this);
         btnSubmit.setOnClickListener(this);
 

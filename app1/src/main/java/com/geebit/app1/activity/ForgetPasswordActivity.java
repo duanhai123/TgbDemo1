@@ -1,12 +1,9 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +15,7 @@ import com.geebit.app1.R;
 /**
  * Created by DEll on 2016-12-05.
  */
-public class ForgetPasswordActivity extends Activity {
+public class ForgetPasswordActivity extends BaseActivity {
 
 
     private static final String TAG ="tag" ;
@@ -26,24 +23,18 @@ public class ForgetPasswordActivity extends Activity {
     private ImageView iv_back;
     private EditText etPhone;
     private String mPhone;
+    private View view;
+
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forgetpassword);
-
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
-
-
-
+    protected void initoView() {
+        btn_next = (Button) view.findViewById(R.id.btn_next);
+        iv_back = (ImageView) view.findViewById(R.id.iv_back);
+        etPhone = (EditText) view.findViewById(R.id.ec_edit_phone);
     }
 
-    private void initData() {
+    protected void initData() {
 
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,10 +67,10 @@ public class ForgetPasswordActivity extends Activity {
 
     }
 
-    private void initView() {
-        btn_next = (Button) findViewById(R.id.btn_next);
-        iv_back = (ImageView) findViewById(R.id.iv_back);
-        etPhone = (EditText) findViewById(R.id.ec_edit_phone);
+    public View initView() {
+
+        view = View.inflate(this, R.layout.activity_forgetpassword,null);
+        return view;
     }
 
 

@@ -1,11 +1,8 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -22,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Created by DEll on 2016-12-05.
  */
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
 
     TextView tvMessage;
@@ -53,21 +50,26 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private TextView messsage;
     private Runnable runnable;
     private String serverPin;
+    private View view;
+
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-       ///透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
+    protected void initoView() {
+        back = (ImageView) view.findViewById(R.id.iv_back);
+        mUsernameEdit = (EditText) view.findViewById(R.id.ec_edit_username);
+        ec_edit_pin = (EditText)view. findViewById(R.id.ec_edit_pin);
+        mPasswordEdit = (EditText)view. findViewById(R.id.ec_edit_password);
+        mEnterPwd = (EditText)view. findViewById(R.id.et_enter_pwd);
+        code = (EditText) view.findViewById(R.id.ec_edit_code);
+        cbSystem = (CheckBox) view.findViewById(R.id.cb_system);
+        mRegister = (Button) view.findViewById(R.id.ec_btn_register);
+        cbAgree = (CheckBox) view.findViewById(R.id.cb_agree);
+        messsage = (TextView) view.findViewById(R.id.tv_message);
     }
 
-    private void initData() {
+    protected void initData() {
         mRegister.setOnClickListener(this) ;
         back.setOnClickListener(this);
         messsage.setOnClickListener(this);
@@ -75,17 +77,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     }
 
-    private void initView() {
-        back = (ImageView) findViewById(R.id.iv_back);
-        mUsernameEdit = (EditText) findViewById(R.id.ec_edit_username);
-        ec_edit_pin = (EditText) findViewById(R.id.ec_edit_pin);
-        mPasswordEdit = (EditText) findViewById(R.id.ec_edit_password);
-        mEnterPwd = (EditText) findViewById(R.id.et_enter_pwd);
-        code = (EditText) findViewById(R.id.ec_edit_code);
-        cbSystem = (CheckBox) findViewById(R.id.cb_system);
-        mRegister = (Button) findViewById(R.id.ec_btn_register);
-        cbAgree = (CheckBox) findViewById(R.id.cb_agree);
-        messsage = (TextView) findViewById(R.id.tv_message);
+    public View initView() {
+
+        view = View.inflate(this, R.layout.activity_register,null);
+        return view;
     }
 
     /**
@@ -162,7 +157,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         }
     private void registerNet() {
 
-    String httpUrl = "http://192.168.1.100:8080/web-test/register.jsp";
+    String httpUrl = "";
 }
 
 

@@ -1,13 +1,10 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -26,7 +23,7 @@ import okhttp3.Call;
 /**
  * Created by admin on 2016/11/26.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
     private static final String TAG ="tag" ;
     // 弹出框
     private ProgressDialog mDialog;
@@ -46,28 +43,20 @@ public class LoginActivity extends Activity {
     private String password;
     private CheckBox cb_agree;
     private SharedPreferences sp;
+    private View view;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
+    protected void initoView() {
+        mUsernameEdit = (EditText)view. findViewById(R.id.ec_edit_username);
+        mPasswordEdit = (EditText) view.findViewById(R.id.ec_edit_password);
+        mForgetPassword = (TextView)view. findViewById(R.id.ec_edit_forget_password);
+        mRegister = (TextView) view.findViewById(R.id.ec_btn_register);
+        cb_agree = (CheckBox) view.findViewById(R.id.cb_agree);
     }
 
-    /**
-     * 初始化界面控件
-     */
-    private void initView() {
-
-        mUsernameEdit = (EditText) findViewById(R.id.ec_edit_username);
-        mPasswordEdit = (EditText) findViewById(R.id.ec_edit_password);
-        mForgetPassword = (TextView) findViewById(R.id.ec_edit_forget_password);
-        mRegister = (TextView) findViewById(R.id.ec_btn_register);
-        cb_agree = (CheckBox) findViewById(R.id.cb_agree);
+    @Override
+    protected void initData() {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,6 +92,17 @@ public class LoginActivity extends Activity {
 
             }
         });
+    }
+
+    /**
+     * 初始化界面控件
+     */
+    public View initView() {
+
+
+
+        view = View.inflate(this, R.layout.activity_login,null);
+        return view;
     }
 
 

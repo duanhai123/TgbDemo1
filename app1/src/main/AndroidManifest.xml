@@ -51,6 +51,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--自己业务类的activity-->
+
         <activity android:name=".activity.LoginActivity">
         </activity>
         <activity android:name=".activity.RegisterActivity"/>
@@ -61,6 +63,7 @@
         <activity android:name=".activity.EmailSafetyActivity"/>
         <activity android:name=".activity.LiaoTianActivity"/>
         <activity android:name=".activity.AskSafetyActivity"/>
+        <activity android:name=".activity.ChangeIntoActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

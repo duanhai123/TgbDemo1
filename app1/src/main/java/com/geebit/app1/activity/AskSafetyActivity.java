@@ -1,10 +1,8 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,7 +17,7 @@ import com.geebit.app1.R;
  * Created by DEll on 2016-12-05.
  * 通过问题找回密码
  */
-public class AskSafetyActivity extends Activity implements View.OnClickListener {
+public class AskSafetyActivity extends BaseActivity implements View.OnClickListener {
 
 
     private CheckBox cb_safe;
@@ -31,20 +29,27 @@ public class AskSafetyActivity extends Activity implements View.OnClickListener 
     private EditText etAsk1;
     private EditText etAsk2;
     private Button next;
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ask_safety);
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
+
+
+
     }
 
-    private void initData() {
+    @Override
+    protected void initoView() {
+        back = (ImageView)view. findViewById(R.id.iv_back);
+        tvAsk1 = (TextView) view.findViewById(R.id.tv_ask1);
+        tvAsk2 = (TextView)view. findViewById(R.id.tv_ask2);
+        etAsk1 = (EditText)view. findViewById(R.id.et_ask1);
+        etAsk2 = (EditText) view.findViewById(R.id.et_ask2);
+        next = (Button) view.findViewById(R.id.btn_next);
+    }
+
+    protected void initData() {
         back.setOnClickListener(this);
         next.setOnClickListener(this);
         //调用服务器接口来显示用户设置的问题
@@ -54,13 +59,10 @@ public class AskSafetyActivity extends Activity implements View.OnClickListener 
     /*
     初始化控件
      */
-    private void initView() {
-        back = (ImageView) findViewById(R.id.iv_back);
-        tvAsk1 = (TextView) findViewById(R.id.tv_ask1);
-        tvAsk2 = (TextView) findViewById(R.id.tv_ask2);
-        etAsk1 = (EditText) findViewById(R.id.et_ask1);
-        etAsk2 = (EditText) findViewById(R.id.et_ask2);
-        next = (Button) findViewById(R.id.btn_next);
+    public View initView() {
+        view = View.inflate(this, R.layout.activity_ask_safety,null);
+
+        return view;
     }
 
     @Override

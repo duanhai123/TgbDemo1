@@ -1,10 +1,7 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -16,7 +13,7 @@ import com.geebit.app1.R;
  * Created by DEll on 2016-12-05.
  * 找回密码界面
  */
-public class SafetyActivity extends Activity  {
+public class SafetyActivity extends BaseActivity  {
 
 
     private CheckBox cb_safe;
@@ -26,20 +23,18 @@ public class SafetyActivity extends Activity  {
     private ImageView maskSafe;
     private ImageView emailSafe;
     private ImageView back;
+    private View view;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_safety);
-        //透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
+    protected void initoView() {
+        MsgSafe = (ImageView) view.findViewById(R.id.iv_message_safety);
+        maskSafe = (ImageView)view. findViewById(R.id.iv_ask_safety);
+        emailSafe = (ImageView)view. findViewById(R.id.iv_email_safety);
+        back = (ImageView) view.findViewById(R.id.iv_back);
     }
 
-    private void initData() {
+    protected void initData() {
         maskSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,12 +67,10 @@ public class SafetyActivity extends Activity  {
     /*
     初始化控件
      */
-    private void initView() {
-        MsgSafe = (ImageView) findViewById(R.id.iv_message_safety);
-        maskSafe = (ImageView) findViewById(R.id.iv_ask_safety);
-        emailSafe = (ImageView) findViewById(R.id.iv_email_safety);
-        back = (ImageView) findViewById(R.id.iv_back);
+    public View initView() {
 
+        view = View.inflate(this, R.layout.activity_safety,null);
+        return view;
     }
 
 
