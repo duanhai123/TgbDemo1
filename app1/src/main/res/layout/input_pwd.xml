@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="220dp">
 <LinearLayout
+
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="50dp">
@@ -54,6 +55,7 @@
         <!-- 6位密码框布局，需要一个圆角边框的shape作为layout的背景 -->
 
         <LinearLayout
+            android:id="@+id/layout_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -67,7 +69,8 @@
                  textSize设置大一点，否则“点”太小了，不美观
             -->
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -81,7 +84,8 @@
                 android:layout_height="match_parent"
                 android:background="#999999" />
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -95,7 +99,8 @@
                 android:layout_height="match_parent"
                 android:background="#999999" />
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -109,7 +114,8 @@
                 android:layout_height="match_parent"
                 android:background="#999999" />
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -123,7 +129,8 @@
                 android:layout_height="match_parent"
                 android:background="#999999" />
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -137,7 +144,8 @@
                 android:layout_height="match_parent"
                 android:background="#999999" />
 
-            <TextView
+            <EditText
+                android:background="@null"
                 android:id="@+id/tv_pass6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -147,6 +155,7 @@
                 android:textSize="32sp" />
         </LinearLayout>
         <TextView
+
            android:layout_marginRight="36dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -154,26 +163,24 @@
             android:gravity="center|right"
             android:text="忘记密码?"
             android:textSize="15sp" />
+
     </LinearLayout>
-   <!-- <TextView
-        android:layout_marginTop="15dp"
+    <TextView
+        android:layout_marginTop="20dp"
         android:layout_marginRight="36dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#656565"
         android:gravity="center"
         android:text="预计收益到账时间 11-16 (星期一)"
-        android:textSize="15sp" />-->
-    <!-- 输入键盘 -->
+        android:textSize="15sp" />
 
-    <GridView
-        android:id="@+id/gv_keybord"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
-        android:background="@android:color/black"
-        android:horizontalSpacing="0.5dp"
-        android:listSelector="@null"
-        android:numColumns="3"
-        android:verticalSpacing="0.5dp" />
+<com.geebit.app1.utils.CustomKeyboardView
+    android:layout_marginTop="40dp"
+
+    android:id="@+id/custom_keyboard_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</com.geebit.app1.utils.CustomKeyboardView>
 </LinearLayout>

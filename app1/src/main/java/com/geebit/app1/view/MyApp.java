@@ -24,6 +24,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         mContext = this;
 
         // 初始化环信SDK
