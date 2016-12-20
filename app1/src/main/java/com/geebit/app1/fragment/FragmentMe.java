@@ -5,11 +5,11 @@ import android.view.View;
 import com.geebit.app1.R;
 
 
-public class FragmentSetting extends BaseFragment {
+public class FragmentMe extends BaseFragment {
 
 	@Override
 	public View initView() {
-		return View.inflate(mActivity, R.layout.fragment_setting,null);
+		return View.inflate(mActivity, R.layout.fragment_me,null);
 	}
 
 	@Override

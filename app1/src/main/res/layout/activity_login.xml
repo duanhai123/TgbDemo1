@@ -6,7 +6,8 @@
     android:layout_height="match_parent">
     <TextView
         android:textColor="@color/ivory"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="37dp"
+
         android:gravity="center"
         android:text="登录"
         android:textSize="20sp"
@@ -25,7 +26,7 @@
 
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:src="@drawable/icon_1"
+            android:src="@drawable/icon_main"
             android:layout_width="70dp"
             android:layout_height="70dp" />
         <TextView
@@ -57,6 +58,7 @@
                android:layout_height="match_parent" />
 
         <EditText
+            android:inputType="number"
             android:background="@null"
             android:textColorHint="@color/dimgray"
             android:textColor="@color/ivory"
@@ -167,7 +169,7 @@
             <TextView
                 android:textSize="15dp"
                 android:textColor="@color/ivory"
-                android:id="@+id/ec_btn_sign_up"
+                android:id="@+id/ec_btn_register"
                 android:gravity="right"
                 android:text="新用户注册"
                 android:layout_weight="2"

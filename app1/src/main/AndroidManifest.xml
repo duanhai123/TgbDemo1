@@ -42,25 +42,28 @@
 
 
     <application android:name=".view.MyApp"
-        android:allowBackup="true" android:icon="@drawable/icon_1"
+        android:allowBackup="true" android:icon="@drawable/icon_main"
         android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme">
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity">
+        <!--自己业务类的activity-->
+
+        <activity android:name=".activity.LoginActivity">
         </activity>
         <activity android:name=".activity.RegisterActivity"/>
-<activity android:name=".activity.MessageSafetyActivity"/>
+        <activity android:name=".activity.MessageSafetyActivity"/>
         <activity android:name=".activity.SafetyActivity"/>
         <activity android:name=".activity.ReSetingPwdActivity"/>
         <activity android:name=".activity.ForgetPasswordActivity"/>
         <activity android:name=".activity.EmailSafetyActivity"/>
         <activity android:name=".activity.LiaoTianActivity"/>
         <activity android:name=".activity.AskSafetyActivity"/>
+        <activity android:name=".activity.ChangeIntoActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:background="@drawable/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        style="@style/content"
         >
         <ImageView
                 android:id="@+id/iv_back"
@@ -46,9 +48,9 @@
                 android:layout_height="match_parent" />
 
             <EditText
-
+                android:inputType="number"
                 android:background="@null"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="34dp"
                 android:textSize="15sp"
                 android:textColorHint="#656565"
                 android:textColor="@color/ivory"
@@ -80,7 +82,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
-
+                android:inputType="number"
                 android:background="@null"
 
                 android:layout_marginLeft="18dp"
@@ -93,7 +95,7 @@
                 android:layout_height="match_parent"
                 android:hint="请输入短信验证码"/>
             <Button
-
+                android:layout_marginLeft="3dp"
                 android:textSize="14sp"
                 android:background="@drawable/btn_shape"
                 android:textColor="@color/ivory"
@@ -197,6 +199,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
+                android:inputType="number"
                 android:background="@null"
                 android:textSize="15sp"
                 android:textColorHint="#656565"

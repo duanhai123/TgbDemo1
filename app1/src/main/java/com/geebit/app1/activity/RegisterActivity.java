@@ -1,11 +1,8 @@
 package com.geebit.app1.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.CountDownTimerUtils;
 
 import java.util.regex.Pattern;
 
@@ -21,7 +19,7 @@ import java.util.regex.Pattern;
 /**
  * Created by DEll on 2016-12-05.
  */
-public class RegisterActivity extends Activity implements View.OnClickListener {
+public class RegisterActivity extends BaseActivity implements View.OnClickListener {
 
 
     TextView tvMessage;
@@ -35,7 +33,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private EditText mPasswordEdit;
     //确认密码
     private EditText mEnterPwd;
-
+    private int recLen = 10;
 
     private TextView mSignUpBtn;
     // 注册按钮
@@ -49,37 +47,40 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private String mCode;
     private ImageView back;
     private CheckBox cbAgree;
+    private TextView messsage;
+    private Runnable runnable;
+    private String serverPin;
+    private View view;
+
+
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-       ///透明状态栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
-        initData();
+    protected void initoView() {
+        back = (ImageView) view.findViewById(R.id.iv_back);
+        mUsernameEdit = (EditText) view.findViewById(R.id.ec_edit_username);
+        ec_edit_pin = (EditText)view. findViewById(R.id.ec_edit_pin);
+        mPasswordEdit = (EditText)view. findViewById(R.id.ec_edit_password);
+        mEnterPwd = (EditText)view. findViewById(R.id.et_enter_pwd);
+        code = (EditText) view.findViewById(R.id.ec_edit_code);
+        cbSystem = (CheckBox) view.findViewById(R.id.cb_system);
+        mRegister = (Button) view.findViewById(R.id.ec_btn_register);
+        cbAgree = (CheckBox) view.findViewById(R.id.cb_agree);
+        messsage = (TextView) view.findViewById(R.id.tv_message);
     }
 
-    private void initData() {
+    protected void initData() {
         mRegister.setOnClickListener(this) ;
         back.setOnClickListener(this);
+        messsage.setOnClickListener(this);
 
 
     }
 
-    private void initView() {
-        back = (ImageView) findViewById(R.id.iv_back);
-        mUsernameEdit = (EditText) findViewById(R.id.ec_edit_username);
-        ec_edit_pin = (EditText) findViewById(R.id.ec_edit_pin);
-        mPasswordEdit = (EditText) findViewById(R.id.ec_edit_password);
-        mEnterPwd = (EditText) findViewById(R.id.et_enter_pwd);
-        code = (EditText) findViewById(R.id.ec_edit_code);
-        cbSystem = (CheckBox) findViewById(R.id.cb_system);
-        mRegister = (Button) findViewById(R.id.ec_btn_register);
-        cbAgree = (CheckBox) findViewById(R.id.cb_agree);
+    public View initView() {
+
+        view = View.inflate(this, R.layout.activity_register,null);
+        return view;
     }
 
     /**
@@ -116,6 +117,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             return;
         }else if (!cbAgree.isChecked()){
             Toast.makeText(RegisterActivity.this, "请勾选我已阅读并且同意服务条款", Toast.LENGTH_SHORT).show();
+        }else if(!mCode.equals(serverPin)){
+            Toast.makeText(RegisterActivity.this, "验证码输入错误", Toast.LENGTH_SHORT).show();
         }
         else {
             mDialog = new ProgressDialog(this);
@@ -154,7 +157,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         }
     private void registerNet() {
 
-    String httpUrl = "http://192.168.1.100:8080/web-test/register.jsp";
+    String httpUrl = "";
 }
 
 
@@ -166,6 +169,24 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.iv_back:
                 finish();
+                break;
+            case R.id.tv_message:
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(messsage,30000,1000);
+                countDownTimerUtils.onFinish();
+                countDownTimerUtils.start();
+                //同时调用接口获取验证码
+                serverPin = "1234";
+                break;
         }
     }
+    /**
+     * post请求后台
+     * @param name
+     * @param pwd
+     */
+    private void postRequest(String name,String pwd)  {
+        //建立请求表单，添加上传服务器的参数
+        //OkHttpUtils.post().addParams().addParams();
+    }
+
 }

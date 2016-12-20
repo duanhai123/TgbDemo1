@@ -17,13 +17,11 @@
             >
             <ImageView
                 android:id="@+id/iv_back"
-                android:layout_gravity="center"
                 android:src="@drawable/back"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp" />
+                style="@style/content_iv" />
             <TextView
                 android:textColor="@color/ivory"
-                android:padding="10dp"
+
                 android:text="重置登录密码"
                 style="@style/content_right" />
         </LinearLayout>

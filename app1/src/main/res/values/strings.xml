@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TGB</string>
+    <string name="app_name">弦基币</string>
     <string name="text_ack_msg">Read</string>
     <string name="text_delivered_msg">Delivered</string>
     <string name="back">Back</string>

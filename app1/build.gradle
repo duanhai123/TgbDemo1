@@ -4,7 +4,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
-
+//    aaptOptions.cruncherEnabled = false aaptOptions.useNewCruncher = false
+    aaptOptions {
+        cruncherEnabled = false
+    }
+    aaptOptions {
+        useNewCruncher = false
+    }
     defaultConfig {
         applicationId "com.geebit.app1"
         minSdkVersion 15
@@ -27,4 +33,5 @@ dependencies {
     compile files('libs/hyphenatechat_3.2.2.jar')
     compile files('libs/pushservice-5.2.0.12.jar')
     compile project(':okhttputils')
+    compile 'com.android.support:recyclerview-v7:25.0.1'
 }
