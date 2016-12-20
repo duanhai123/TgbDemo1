@@ -7,31 +7,31 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.geebit.app1.R;
 
 /**
  * Created by admin on 2016/12/19.
  */
-public class FinishProjectPopupWindows extends PopupWindow {
+public class FinishProjectPopupWindows1 extends PopupWindow {
     private static final String TAG = "FinishProjectPopupWindows";
 
     private View mView;
 
-    private final ImageView closed;
+    private final TextView again;
 
-    public FinishProjectPopupWindows(Activity context, View.OnClickListener itemsOnClick) {
+    public FinishProjectPopupWindows1(Activity context, View.OnClickListener itemsOnClick) {
         super(context);
 
 
 
        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mView = inflater.inflate(R.layout.input_pwd, null);
-        closed = (ImageView) mView.findViewById(R.id.closed);
+        mView = inflater.inflate(R.layout.input_forget, null);
+        again = (TextView) mView.findViewById(R.id.tv_again);
         // 设置按钮监听
-        closed.setOnClickListener(new View.OnClickListener(){
+        again.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
@@ -51,7 +51,7 @@ public class FinishProjectPopupWindows extends PopupWindow {
         //设置PopupWindow弹出窗体的宽
         this.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
         //设置PopupWindow弹出窗体的高
-        this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        this.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
 
         //设置PopupWindow弹出窗体可点击
         this.setFocusable(true);

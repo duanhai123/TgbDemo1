@@ -11,6 +11,7 @@ import com.geebit.app1.R;
 import com.geebit.app1.utils.CustomKeyBoardUtil;
 import com.geebit.app1.utils.CustomKeyboardView;
 import com.geebit.app1.utils.FinishProjectPopupWindows;
+import com.geebit.app1.utils.FinishProjectPopupWindows1;
 
 /**
  * Created by DEll on 2016-12-19.
@@ -24,7 +25,8 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private Button enterInto;
 
     private FinishProjectPopupWindows finishProjectPopupWindows;
-
+    private FinishProjectPopupWindows1 finishProjectPopupWindows1;
+    private CustomKeyboardView customKeyboardView;
 
 
     @Override
@@ -60,21 +62,36 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
             case R.id.btn_enter_change_into:
 
                 finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
+
+
                 finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
-                      Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+                        Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                 init();
+                break;
         }
 
     }
 
     private void init() {
-        View contentView = finishProjectPopupWindows.getContentView();
+
+        final View contentView = finishProjectPopupWindows.getContentView();
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
-        CustomKeyboardView customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
+        customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
+
         CustomKeyBoardUtil customKeyBoardUtil = new CustomKeyBoardUtil(this, linearLayout, customKeyboardView, new CustomKeyBoardUtil.InputFinishListener() {
             @Override
             public void inputHasOver(String text) {
-                Toast.makeText(ChangeIntoActivity.this, "输入完成:" + text, Toast.LENGTH_LONG).show();
+                if ("123456".equals(text)){
+                    Toast.makeText(ChangeIntoActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    finishProjectPopupWindows.dismiss();
+                    finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeIntoActivity.this, itemsOnClick);
+
+
+                    finishProjectPopupWindows1.showAtLocation(ChangeIntoActivity.this.findViewById(R.id.btn_enter_change_into),
+                            Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+
+                }
             }
         });
     }
@@ -86,6 +103,10 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
             switch (view.getId()) {
                 case R.id.closed:
                     finishProjectPopupWindows.dismiss();
+                    break;
+                case R.id.tv_again:
+                    finishProjectPopupWindows1.dismiss();
+
                     break;
             }
         }

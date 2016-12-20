@@ -60,7 +60,7 @@ public class CustomKeyBoardUtil {
                 View view = new View(mContext);
                 LinearLayout.LayoutParams viewParams = new LinearLayout.LayoutParams(1, LinearLayout.LayoutParams.MATCH_PARENT);
                 view.setLayoutParams(viewParams);
-                view.setBackgroundColor(ContextCompat.getColor(mContext, android.R.color.holo_red_dark));
+                view.setBackgroundColor(ContextCompat.getColor(mContext, android.R.color.secondary_text_dark));
                 mLayoutParent.addView(view);
             }
         }
