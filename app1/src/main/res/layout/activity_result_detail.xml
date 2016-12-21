@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+        <TextView
+            android:text="结果详情"
+            style="@style/tv_change_content" />
+        <TextView
+            android:id="@+id/tv_finish"
+            android:text="完成"
+            style="@style/tv_history_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:background="@color/ivory"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_8"
+                android:layout_width="120dp"
+                android:layout_height="120dp" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="成功转出到可用"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="@color/orange"
+                android:layout_marginTop="25dp"
+                android:textSize="18sp"
+                android:text="查看可用"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

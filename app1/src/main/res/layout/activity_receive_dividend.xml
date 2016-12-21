@@ -10,7 +10,7 @@
             android:src="@drawable/back"
             style="@style/iv_change_content" />
         <TextView
-            android:text="转入"
+            android:text="领取分红"
             style="@style/tv_change_content" />
         <TextView
             android:id="@+id/tv_destory"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginRight="13dp"
                 android:layout_marginLeft="13dp"
                 android:background="@drawable/text_shape"
@@ -46,77 +46,31 @@
                     android:textColor="#656565"
                     android:textSize="15sp"
                     android:padding="15dp"
-                    android:text="金额:"
+                    android:text="领取金额:"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp" />
                 <EditText
+                    android:layout_marginRight="5dp"
                     android:inputType="number"
                     android:textColorHint="@color/darkgray"
                     android:gravity="center|right"
-                    android:hint="建议转入100元以上金额"
+                    android:hint="可领取到可用1040.89"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginLeft="13dp"
 
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="#656565"
-                    android:textSize="15sp"
-                    android:padding="15dp"
-                    android:text="可用金额不够? 点此"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:textSize="15sp"
-                    android:textColor="@color/orange"
-                    android:gravity="center|right"
-                    android:text="充值"
-                    android:background="@null"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
         <Button
-            android:id="@+id/btn_enter_change_into"
-            android:layout_marginTop="90dp"
+            android:id="@+id/btn_enter_change_inout"
+            android:layout_marginTop="120dp"
             android:textColor="@color/ivory"
-            android:text="确认转入"
+            android:text="确认领取"
             android:layout_marginLeft="13dp"
             android:layout_marginRight="13dp"
             android:background="@drawable/btn_shape"
             android:layout_width="match_parent"
             android:layout_height="50dp" />
-            <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginLeft="13dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="#656565"
-                    android:textSize="15sp"
-                    android:padding="15dp"
-                    android:text="预计收益到账时间"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp" />
-                <TextView
-                    android:textSize="15sp"
-                    android:textColor="@color/orange"
-                    android:gravity="center|right"
-                    android:text="11-16 (星期日)"
-                    android:background="@null"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
 
-            </LinearLayout>
 
         </LinearLayout>
 

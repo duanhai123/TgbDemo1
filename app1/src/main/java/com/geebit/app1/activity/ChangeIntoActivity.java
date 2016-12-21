@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
@@ -27,6 +28,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private FinishProjectPopupWindows finishProjectPopupWindows;
     private FinishProjectPopupWindows1 finishProjectPopupWindows1;
     private CustomKeyboardView customKeyboardView;
+    private TextView mDestory;
 
 
     @Override
@@ -35,7 +37,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
 
         enterInto = (Button) view.findViewById(R.id.btn_enter_change_into);
 
-
+        mDestory = (TextView) view.findViewById(R.id.tv_destory);
     }
 
     @Override
@@ -43,6 +45,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
 
         mBack.setOnClickListener(this);
         enterInto.setOnClickListener(this);
+        mDestory.setOnClickListener(this);
     }
 
     @Override
@@ -84,6 +87,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 if ("123456".equals(text)){
                     Toast.makeText(ChangeIntoActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
                 }else {
+
                     finishProjectPopupWindows.dismiss();
                     finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeIntoActivity.this, itemsOnClick);
 

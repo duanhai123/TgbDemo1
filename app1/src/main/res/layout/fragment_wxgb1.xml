@@ -84,6 +84,7 @@
 
                 android:layout_height="150dp">
             <TextView
+                android:id="@+id/tv_holding"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
@@ -179,6 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/btn_change_inout"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn_shape"
                 android:textSize="16sp"
@@ -308,6 +310,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/tv_receive_dividend"
             android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="领取分红?"

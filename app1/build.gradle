@@ -34,4 +34,5 @@ dependencies {
     compile files('libs/pushservice-5.2.0.12.jar')
     compile project(':okhttputils')
     compile 'com.android.support:recyclerview-v7:25.0.1'
+
 }
