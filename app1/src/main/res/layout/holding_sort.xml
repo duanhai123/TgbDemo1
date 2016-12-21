@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/darkgrey"
-    android:layout_height="150dp">
+
+    android:layout_height="match_parent">
+    <LinearLayout
+
+        android:background="@color/darkgrey"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="140dp">
     <LinearLayout
 
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="18dp"
         android:layout_height="wrap_content">
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/btn_All"
+            android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="5dp"
             android:text="全部"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="40dp" />
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/change_into"
+            android:textColor="@drawable/text_color_selector"
+            android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/selector_holding_sort"
+
             android:text="转入"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp" />
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/btn_proceed"
+            android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="收益"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp" />
     </LinearLayout>
     <LinearLayout
 
@@ -44,31 +54,36 @@
         android:layout_marginTop="15dp"
         android:layout_height="wrap_content">
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/btn_change_inout"
+            android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="7dp"
             android:layout_marginRight="5dp"
             android:text="转出"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp" />
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/btn_receive_dividend"
+            android:textColor="@drawable/text_color_selector"
+            android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:background="@drawable/selector_holding_sort"
+
             android:text="分红发放"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp" />
         <Button
-            android:textColor="@drawable/selector_holding_sort_tv"
+            android:id="@+id/btn_send_dividend"
+            android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="领取分红"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="match_parent" />
+            android:layout_height="40dp" />
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>
