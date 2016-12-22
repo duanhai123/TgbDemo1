@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp" />
         <Button
-            android:id="@+id/change_into"
+            android:id="@+id/btn_change_into"
             android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"

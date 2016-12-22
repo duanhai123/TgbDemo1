@@ -3,6 +3,7 @@ package com.geebit.app1.fragment;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.geebit.app1.R;
@@ -19,7 +20,7 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
     private Button changeInto;
     private Button changeInout;
     private TextView mDividend;
-    private TextView mHolding;
+    private RelativeLayout mContent;
 
 
     @Override
@@ -28,7 +29,7 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
         changeInto = (Button) view.findViewById(R.id.btn_change_into);
         changeInout = (Button) view.findViewById(R.id.btn_change_inout);
         mDividend = (TextView) view.findViewById(R.id.tv_receive_dividend);
-        mHolding = (TextView) view.findViewById(R.id.tv_holding);
+        mContent = (RelativeLayout) view.findViewById(R.id.rl_content);
         return view;
     }
 
@@ -37,7 +38,7 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
         changeInto.setOnClickListener(this);
         changeInout.setOnClickListener(this);
         mDividend.setOnClickListener(this);
-        mHolding.setOnClickListener(this);
+        mContent.setOnClickListener(this);
     }
 
 
@@ -56,7 +57,7 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
                 Intent intent = new Intent(mActivity, ReceiveDividendActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.tv_holding:
+            case R.id.rl_content:
                 Intent intent1 = new Intent(mActivity, HoldingDetailActivity.class);
                 startActivity(intent1);
                 break;

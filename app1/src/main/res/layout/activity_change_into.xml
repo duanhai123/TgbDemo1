@@ -50,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp" />
                 <EditText
+                    android:id="@+id/et_money"
                     android:inputType="number"
                     android:textColorHint="@color/darkgray"
                     android:gravity="center|right"

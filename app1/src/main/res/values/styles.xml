@@ -42,6 +42,13 @@
     <style name="Animation">
         <item name="android:windowEnterAnimation">@anim/enter_anim</item>
         <item name="android:windowExitAnimation">@anim/out_anim</item>
+
+    </style>
+    <!-- popupwindow 动画 -->
+    <style name="AnimationOut">
+        <item name="android:windowEnterAnimation">@anim/out_anim</item>
+        <item name="android:windowExitAnimation">@anim/enter_anim</item>
+
     </style>
 
     <style name="ll_change_into_content">

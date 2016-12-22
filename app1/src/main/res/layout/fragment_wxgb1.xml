@@ -78,13 +78,15 @@
         </LinearLayout>
 
             <RelativeLayout
+                android:clickable="true"
+                android:id="@+id/rl_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/ring_xgb1"
                 android:layout_width="150dp"
 
                 android:layout_height="150dp">
             <TextView
-                android:id="@+id/tv_holding"
+
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"

@@ -42,7 +42,7 @@ public class ReceiveDividendActivity extends BaseActivity implements View.OnClic
                 finish();
                 break;
             case R.id.tv_destory:
-                Intent intent = new Intent(this,DividendDetailActivity.class);
+                Intent intent = new Intent(this,HoldingDetailActivity.class);
                 startActivity(intent);
 
                 break;
