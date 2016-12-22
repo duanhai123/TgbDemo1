@@ -40,8 +40,8 @@
     </style>
     <!-- popupwindow 动画 -->
     <style name="Animation">
-        <item name="android:windowEnterAnimation">@anim/enter_anim</item>
-        <item name="android:windowExitAnimation">@anim/out_anim</item>
+        <item name="android:windowEnterAnimation">@anim/enter_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/out_anim_in</item>
 
     </style>
     <!-- popupwindow 动画 -->
