@@ -21,6 +21,7 @@ import com.geebit.app1.utils.FinishProjectPopupWindows1;
 
 /**
  * Created by DEll on 2016-12-21.
+ * 转出的页面
  */
 public class ChangeInoutActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
     private CustomKeyboardView customKeyboardView;

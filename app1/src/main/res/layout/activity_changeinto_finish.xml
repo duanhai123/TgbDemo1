@@ -12,75 +12,82 @@
             android:text="转入"
             style="@style/tv_change_content" />
         <TextView
-            android:id="@+id/tv_destory"
-            android:text="历史记录"
+            android:id="@+id/tv_finish"
+            android:text="完成"
             style="@style/tv_history_content" />
     </LinearLayout>
     <LinearLayout
-
         android:orientation="vertical"
         android:background="#f2f3f8"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_marginTop="15dp"
             android:orientation="vertical"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="300dp">
         <LinearLayout
-            android:layout_marginLeft="8dp"
             android:orientation="horizontal"
+            android:layout_marginLeft="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="59dp">
             <ImageView
+                android:id="@+id/iv_money"
                 android:src="@drawable/icon_9"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
-            <LinearLayout
-                android:layout_marginLeft="5dp"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="60dp">
+        <LinearLayout
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
                 <TextView
+                    android:gravity="center_vertical|bottom"
+                    android:id="@+id/tv_money_top"
                     android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@color/orange"
                 android:text="成功转入1000.00元"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="0dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="0dp" />
                 <TextView
                     android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"
                     android:textSize="15sp"
                     android:textColor="#dadada"
                     android:text="今天"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
-            </LinearLayout>
+
+                     />
+        </LinearLayout>
 
         </LinearLayout>
             <LinearLayout
+
                 android:gravity="center_horizontal"
-                android:layout_width="80dp"
+                android:layout_width="75dp"
                 android:layout_height="40dp">
             <View
-                android:layout_width="6dip"
-                android:layout_height="match_parent"
+                android:layout_width="4dip"
+                android:layout_height="52dp"
                 android:background="@drawable/finish_shape"
                 android:layout_gravity="center_horizontal"
                 />
             </LinearLayout>
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <ImageView
+
                 android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="59dp">
+            <ImageView
+
                 android:src="@drawable/icon_10b"
                 android:layout_width="60dp"
                 android:layout_height="60dp" />
                 <LinearLayout
+                    android:layout_marginLeft="8dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="60dp">
@@ -104,32 +111,35 @@
             </LinearLayout>
             <LinearLayout
                 android:gravity="center_horizontal"
-                android:layout_width="80dp"
+                android:layout_width="75dp"
                 android:layout_height="40dp">
                 <View
-                    android:layout_width="6dip"
-                    android:layout_height="match_parent"
+                    android:layout_width="4dip"
+                    android:layout_height="50dp"
                     android:background="@drawable/finish_shape_bottom"
                     android:layout_gravity="center_horizontal"
                     />
             </LinearLayout>
             <LinearLayout
+
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp">
                 <ImageView
+
                     android:layout_marginLeft="8dp"
-                    android:src="@drawable/icon_10b"
+                    android:src="@drawable/icon_11b"
                     android:layout_width="60dp"
                     android:layout_height="60dp" />
                 <LinearLayout
+                    android:layout_marginLeft="8dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="60dp">
                     <TextView
                         android:gravity="center_vertical|bottom"
                         android:textSize="18sp"
-                        android:text="11-15 星期二"
+                        android:text="11-16 星期三"
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="0dp" />
@@ -139,14 +149,13 @@
                         android:textColor="#dadada"
                         android:gravity="center_horizontal"
                         android:textSize="15sp"
-                        android:text="开始计算收益"
+                        android:text="收益到账"
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="0dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
+    </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>

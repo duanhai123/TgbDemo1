@@ -14,6 +14,7 @@ import com.geebit.app1.R;
 
 /**
  * Created by DEll on 2016-12-05.
+ * 忘记密码的页面
  */
 public class ForgetPasswordActivity extends BaseActivity {
 

@@ -9,7 +9,7 @@
             android:src="@drawable/back"
             style="@style/iv_change_content" />
         <TextView
-            android:text="分红明细"
+            android:text="收益明细"
             style="@style/tv_change_content" />
         <TextView
             android:id="@+id/tv_screen"
@@ -30,7 +30,7 @@
             android:layout_marginTop="25dp"
             android:textSize="18sp"
             android:gravity="center"
-            android:text="我的累计分红恰"
+            android:text="我的累计收益"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout

@@ -22,6 +22,7 @@ import com.geebit.app1.utils.FinishProjectPopupWindows1;
 
 /**
  * Created by DEll on 2016-12-19.
+ * 转入的页面
  */
 public class ChangeIntoActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
 
@@ -111,6 +112,9 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 int count =3;
                 if ("123456".equals(text)){
                     Toast.makeText(ChangeIntoActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ChangeIntoActivity.this,ChangeIntoFinish.class);
+                    startActivity(intent);
+                    finish();
                 }else {
                     if (count > 0) {
                         finishProjectPopupWindows.dismiss();

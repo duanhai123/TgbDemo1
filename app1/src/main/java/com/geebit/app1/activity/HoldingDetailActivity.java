@@ -16,6 +16,7 @@ import com.geebit.app1.R;
 
 /**
  * Created by DEll on 2016-12-21
+ * 持有明细
  */
 public class HoldingDetailActivity extends BaseActivity implements View.OnClickListener {
 

@@ -10,6 +10,7 @@ import com.geebit.app1.R;
 
 /**
  * Created by DEll on 2016-12-21.
+ * 转出结果完成的页面
  */
 public class ResultDetailActivity extends BaseActivity implements View.OnClickListener {
 

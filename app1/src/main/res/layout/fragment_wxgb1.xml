@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_income"
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -175,6 +176,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:id="@+id/tv_dividend_detail"
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -317,7 +319,7 @@
             android:gravity="center|right"
             android:text="领取分红?"
             android:textSize="15sp"
-            android:textColor="@color/ivory"
+            android:textColor="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

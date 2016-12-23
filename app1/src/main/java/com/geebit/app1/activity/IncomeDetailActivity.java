@@ -23,9 +23,9 @@ import java.util.List;
 
 /**
  * Created by DEll on 2016-12-21.
- * 分红明细的页面
+ * 收益明细的页面
  */
-public class DividendDetailActivity extends BaseActivity implements View.OnClickListener {
+public class IncomeDetailActivity extends BaseActivity implements View.OnClickListener {
     private List<String> mDatas;
     private View view;
     private ImageView mBack;
@@ -69,7 +69,7 @@ public class DividendDetailActivity extends BaseActivity implements View.OnClick
 
     @Override
     public View initView() {
-        view = View.inflate(this, R.layout.activity_divident_detail,null);
+        view = View.inflate(this, R.layout.activity_income_detail,null);
         return view;
     }
 
@@ -85,9 +85,9 @@ public class DividendDetailActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.btn_income_detail:
                 window.dismiss();
-                startActivity(new Intent(this,IncomeDetailActivity.class));
                 break;
             case R.id.btn_dividend_detail:
+                startActivity(new Intent(this,DividendDetailActivity.class));
                 window.dismiss();
                 break;
         }
@@ -106,7 +106,7 @@ public class DividendDetailActivity extends BaseActivity implements View.OnClick
         // 设置popWindow的显示和消失动画
         window.setAnimationStyle(R.style.AnimationOut);
         // 在底部显示
-        window.showAtLocation(DividendDetailActivity.this.findViewById(R.id.tv_screen),
+        window.showAtLocation(IncomeDetailActivity.this.findViewById(R.id.tv_screen),
                 Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 120);
         Button mDividend = (Button) view.findViewById(R.id.btn_dividend_detail);
         Button mIncome = (Button) view.findViewById(R.id.btn_income_detail);

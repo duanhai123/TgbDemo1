@@ -9,7 +9,9 @@ import android.widget.TextView;
 import com.geebit.app1.R;
 import com.geebit.app1.activity.ChangeInoutActivity;
 import com.geebit.app1.activity.ChangeIntoActivity;
+import com.geebit.app1.activity.DividendDetailActivity;
 import com.geebit.app1.activity.HoldingDetailActivity;
+import com.geebit.app1.activity.IncomeDetailActivity;
 import com.geebit.app1.activity.ReceiveDividendActivity;
 
 
@@ -20,7 +22,9 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
     private Button changeInto;
     private Button changeInout;
     private TextView mDividend;
+    private TextView mDivDetail;
     private RelativeLayout mContent;
+    private TextView mIncome;
 
 
     @Override
@@ -29,7 +33,9 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
         changeInto = (Button) view.findViewById(R.id.btn_change_into);
         changeInout = (Button) view.findViewById(R.id.btn_change_inout);
         mDividend = (TextView) view.findViewById(R.id.tv_receive_dividend);
+        mDivDetail = (TextView) view.findViewById(R.id.tv_dividend_detail);
         mContent = (RelativeLayout) view.findViewById(R.id.rl_content);
+        mIncome = (TextView) view.findViewById(R.id.tv_income);
         return view;
     }
 
@@ -38,7 +44,9 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
         changeInto.setOnClickListener(this);
         changeInout.setOnClickListener(this);
         mDividend.setOnClickListener(this);
+        mDivDetail.setOnClickListener(this);
         mContent.setOnClickListener(this);
+        mIncome.setOnClickListener(this);
     }
 
 
@@ -60,6 +68,14 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
             case R.id.rl_content:
                 Intent intent1 = new Intent(mActivity, HoldingDetailActivity.class);
                 startActivity(intent1);
+                break;
+            case R.id.tv_dividend_detail:
+                Intent intent2 = new Intent(mActivity, DividendDetailActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.tv_income:
+                Intent intent3 = new Intent(mActivity, IncomeDetailActivity.class);
+                startActivity(intent3);
                 break;
         }
     }

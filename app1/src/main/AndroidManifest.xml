@@ -66,9 +66,11 @@
         <activity android:name=".activity.ChangeIntoActivity"/>
         <activity android:name=".activity.ChangeInoutActivity"/>
         <activity android:name=".activity.ResultDetailActivity"/>
-        <activity android:name=".activity.DividendDetailActivity"/>
+        <activity android:name=".activity.DividendDetailActivity" android:launchMode="singleTask"/>
         <activity android:name=".activity.ReceiveDividendActivity"/>
         <activity android:name=".activity.HoldingDetailActivity" />
+        <activity android:name=".activity.ChangeIntoFinish"/>
+        <activity android:name=".activity.IncomeDetailActivity" android:launchMode="singleTask"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 /**
  * Created by DEll on 2016-12-19.
+ * 所有的父类
  */
 public abstract class BaseActivity extends Activity {
     @Override
