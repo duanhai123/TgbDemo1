@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity {
      * 初始化界面控件
      */
     public View initView() {
-
+            
 
 
         view = View.inflate(this, R.layout.activity_login,null);
@@ -116,7 +116,7 @@ public class LoginActivity extends BaseActivity {
         Post JSON OkHttpUtils.postString().url(url).content(new Gson().toJson(new User("zhy", "123")))
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build().execute(new MyStringCallback());*/
-        String httpUrl="http://192.168.11.182:8080/TestProject1/ParamServlet";
+        String httpUrl="http://192.168.1.161:8080/TestProject1/ParamServlet";
        OkHttpUtils.post().url(httpUrl).addParams("username", username).
                addParams("password", password)
                 .build().execute(new StringCallback() {
@@ -140,8 +140,11 @@ public class LoginActivity extends BaseActivity {
                 //请求成功
                 Log.i(TAG, "onResponse: "+response);
                 if (response.equals("13043680997 aa123456")){
+                    boolean commit = SP.edit().putBoolean("user",true).commit();
 
+                    System.out.println(commit);
                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                 }else {
                     Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();

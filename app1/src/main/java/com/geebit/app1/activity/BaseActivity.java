@@ -1,15 +1,20 @@
 package com.geebit.app1.activity;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+
+import com.geebit.app1.view.MyApp;
 
 /**
  * Created by DEll on 2016-12-19.
  * 所有的父类
  */
 public abstract class BaseActivity extends Activity {
+    protected SharedPreferences SP;
+    protected SharedPreferences.Editor EDIT;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +26,9 @@ public abstract class BaseActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        //初始化通用的SP&EDIT
+        SP = MyApp.SP;
+        EDIT = MyApp.EDIT;
         initoView();
         initData();
     }

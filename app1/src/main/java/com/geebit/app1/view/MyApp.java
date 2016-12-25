@@ -3,6 +3,7 @@ package com.geebit.app1.view;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
@@ -15,6 +16,16 @@ import java.util.List;
  */
 
 public class MyApp extends Application {
+    /**
+     * 全局Context，方便引用
+     */
+    public static MyApp application;
+
+    /**
+     * 初始化SP&EDIT
+     */
+    public static SharedPreferences SP;
+    public static SharedPreferences.Editor EDIT;
     // 上下文菜单
     private Context mContext;
 
@@ -24,9 +35,11 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        application = this;
         mContext = this;
-
+        //初始化通用的SP&EDIT
+        SP = getSharedPreferences("config", MODE_PRIVATE);
+        EDIT = SP.edit();
         // 初始化环信SDK
         initEasemob();
     }
@@ -116,4 +129,6 @@ public class MyApp extends Application {
         // 没有匹配的项，返回为null
         return null;
     }
+
+
 }

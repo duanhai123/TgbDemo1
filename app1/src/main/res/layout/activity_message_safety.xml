@@ -57,6 +57,7 @@
             />
         </LinearLayout>
         <Button
+
             android:textSize="15sp"
             android:id="@+id/btn_pin"
             android:layout_marginLeft="5dp"

@@ -29,10 +29,8 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private static final String TAG = "tag";
     private ImageView mBack;
     private View view;
-
-
+    int count =3;
     private Button enterInto;
-
     private FinishProjectPopupWindows finishProjectPopupWindows;
     private FinishProjectPopupWindows1 finishProjectPopupWindows1;
     private CustomKeyboardView customKeyboardView;
@@ -40,6 +38,8 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private EditText money;
     private String mMoney;
     private String mMoney1;
+    private TextView pwd;
+    private TextView forgetPwd;
 
 
     @Override
@@ -61,6 +61,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
          mMoney =  enterInto.getText().toString().trim();
         enterInto.setBackgroundColor(Color.parseColor("#dadada"));
         enterInto.setEnabled(false);
+
     }
 
     @Override
@@ -96,6 +97,9 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 Intent intent = new Intent(this,HoldingDetailActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.tv_forget_pwd:
+                startActivity(new Intent(this,ForgetPasswordActivity.class));
+                break;
         }
 
     }
@@ -103,32 +107,52 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private void init() {
 
         final View contentView = finishProjectPopupWindows.getContentView();
+        forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
+        forgetPwd.setOnClickListener(this);
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
         customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
 
         CustomKeyBoardUtil customKeyBoardUtil = new CustomKeyBoardUtil(this, linearLayout, customKeyboardView, new CustomKeyBoardUtil.InputFinishListener() {
             @Override
             public void inputHasOver(String text) {
-                int count =3;
                 if ("123456".equals(text)){
                     Toast.makeText(ChangeIntoActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ChangeIntoActivity.this,ChangeIntoFinish.class);
                     startActivity(intent);
                     finish();
                 }else {
+                  //  System.out.println(111);
+                    count--;
+
                     if (count > 0) {
                         finishProjectPopupWindows.dismiss();
                         finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeIntoActivity.this, itemsOnClick);
                         finishProjectPopupWindows1.showAtLocation(ChangeIntoActivity.this.findViewById(R.id.btn_enter_change_into),
                                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                         View contentView1 = finishProjectPopupWindows1.getContentView();
-                        TextView pwd = (TextView) contentView1.findViewById(R.id.tv_pwd);
-                        count--;
-                        pwd.setText("资金密码不正确,你还可用输入" + count + "次");
+                        pwd = (TextView) contentView1.findViewById(R.id.tv_pwd);
+                        //num = count;
+                       pwd.setText("资金密码不正确,你还可用输入" + count + "次");
+
                     }
+                    else {
+                       runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               Toast.makeText(ChangeIntoActivity.this, "密码超过3次,账号被锁定,请联系客服", Toast.LENGTH_SHORT).show();
+                               startActivity(new Intent(ChangeIntoActivity.this,MainActivity.class));
+
+                           }
+                       });
+
+                    }
+
                 }
+
+
             }
         });
+
     }
 
 
@@ -161,7 +185,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         String text = charSequence.toString().trim();
 
-        if (text.isEmpty()||"0".equals(text)){
+        if (text.isEmpty()||text.startsWith("0")){
             enterInto.setBackgroundColor(Color.parseColor("#dadada"));
             enterInto.setEnabled(false);
         }else {

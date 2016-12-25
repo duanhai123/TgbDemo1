@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.CountDownTimerUtils;
 
 
 /**
@@ -60,7 +61,9 @@ public class MessageSafetyActivity extends BaseActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_pin:
-
+                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(btn_pin,30000,1000);
+                countDownTimerUtils.onFinish();
+                countDownTimerUtils.start();
                 break;
             case R.id.iv_back:
 

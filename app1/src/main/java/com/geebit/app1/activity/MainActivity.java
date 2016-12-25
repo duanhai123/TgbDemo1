@@ -1,14 +1,17 @@
 package com.geebit.app1.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.Toast;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
@@ -17,6 +20,7 @@ import com.geebit.app1.fragment.FragmentMe;
 import com.geebit.app1.fragment.FragmentWtgb;
 import com.geebit.app1.fragment.FragmentWxgbOne;
 import com.geebit.app1.fragment.FragmentWxgbTwo;
+import com.geebit.app1.view.MyApp;
 
 /**
  * Created by admin on 2016/12/17.
@@ -26,6 +30,7 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
     private String APP_Key = "VS3maAGhd8Hi2Lg0SQMy65K66HbApmoZ";
     // 定义FragmentTabHost对象
     private FragmentTabHost mTabHost;
+    private long exitTime = 0;
     // 定义一个布局
     private LayoutInflater layoutInflater;
     // 定义数组来存放Fragment界面
@@ -40,6 +45,13 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        boolean user =  MyApp.SP.getBoolean("user", false);
+
+        if (user){
+            
+        }else {
+            startActivity(new Intent(this,LoginActivity.class));
+        }
         setContentView(R.layout.activity_main);
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -91,6 +103,24 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
 
     @Override
     public void onTabChanged(String s) {
+
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                Toast.makeText(getApplicationContext(), "再按一次退出程序",
+                        Toast.LENGTH_SHORT).show();
+                exitTime = System.currentTimeMillis();
+            } else {
+                finish();
+                System.exit(0);
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
 
     }
 }

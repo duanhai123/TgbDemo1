@@ -29,9 +29,11 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
     private ImageView mBack;
     private Button mChangeOut;
     private EditText outMoney;
+    int count =3;
     private FinishProjectPopupWindows finishProjectPopupWindows;
     private FinishProjectPopupWindows1 finishProjectPopupWindows1;
     private TextView mDestory;
+    private TextView forgetPwd;
 
     @Override
     protected void initoView() {
@@ -49,6 +51,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
         mChangeOut.setBackgroundColor(Color.parseColor("#dadada"));
         outMoney.addTextChangedListener(this);
         mDestory.setOnClickListener(this);
+
     }
 
     @Override
@@ -79,6 +82,9 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                 Intent intent = new Intent(this,HoldingDetailActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.tv_forget_pwd:
+                startActivity(new Intent(this,ForgetPasswordActivity.class));
+                break;
         }
     }
 
@@ -90,7 +96,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         String text = charSequence.toString().trim();
-        if (text.isEmpty()||"0".equals(text)){
+        if (text.isEmpty()||text.startsWith("0")){
             mChangeOut.setBackgroundColor(Color.parseColor("#dadada"));
             mChangeOut.setEnabled(false);
         }else {
@@ -106,6 +112,8 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
     private void init() {
 
         final View contentView = finishProjectPopupWindows.getContentView();
+        forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
+        forgetPwd.setOnClickListener(this);
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
         customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
 
@@ -118,14 +126,30 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                     startActivity(intent);
                     finish();
                 }else {
+                    count--;
 
-                    finishProjectPopupWindows.dismiss();
-                    finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeInoutActivity.this, itemsOnClick);
+                    if (count>0){
+                        finishProjectPopupWindows.dismiss();
+                        finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeInoutActivity.this, itemsOnClick);
 
 
-                    finishProjectPopupWindows1.showAtLocation(ChangeInoutActivity.this.findViewById(R.id.btn_enter_change_inout),
-                            Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+                        finishProjectPopupWindows1.showAtLocation(ChangeInoutActivity.this.findViewById(R.id.btn_enter_change_inout),
+                                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
+                        View contentView1 = finishProjectPopupWindows1.getContentView();
+                        TextView mPwd = (TextView) contentView1.findViewById(R.id.tv_pwd);
+                        mPwd.setText("资金密码不正确,你还可用输入" + count + "次");
+                    }else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(ChangeInoutActivity.this, "密码超过3次,账号被锁定,请联系客服", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(ChangeInoutActivity.this,MainActivity.class));
+
+                            }
+                        });
+
+                    }
                 }
             }
         });
