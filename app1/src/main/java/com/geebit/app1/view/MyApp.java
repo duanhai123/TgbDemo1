@@ -20,7 +20,6 @@ public class MyApp extends Application {
      * 全局Context，方便引用
      */
     public static MyApp application;
-
     /**
      * 初始化SP&EDIT
      */
