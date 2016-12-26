@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import java.util.Iterator;
 import java.util.List;
@@ -41,7 +42,11 @@ public class MyApp extends Application {
         EDIT = SP.edit();
         // 初始化环信SDK
         initEasemob();
+        ZXingLibrary.initDisplayOpinion(this);
     }
+
+
+
 
     /**
      *

@@ -3,7 +3,6 @@ package com.geebit.app1.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,12 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.regex.Pattern;
-
-import okhttp3.Call;
 
 
 /**
@@ -39,6 +34,7 @@ public class LoginActivity extends BaseActivity {
     private Button mSignInBtn;
     //忘记密码按键
     private TextView mForgetPassword;
+
     private String username;
     private String password;
     private CheckBox cb_agree;
@@ -117,7 +113,9 @@ public class LoginActivity extends BaseActivity {
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build().execute(new MyStringCallback());*/
         String httpUrl="http://192.168.1.161:8080/TestProject1/ParamServlet";
-       OkHttpUtils.post().url(httpUrl).addParams("username", username).
+        //String httpUrl="http://www.baidu.com";
+
+       /*OkHttpUtils.post().url(httpUrl).addParams("username", username).
                addParams("password", password)
                 .build().execute(new StringCallback() {
             @Override
@@ -152,8 +150,19 @@ public class LoginActivity extends BaseActivity {
                 mDialog.dismiss();
             }
         });
+*/
+        if ("13043680997".equals(username)&&"aa123456".equals(password))   {
+            boolean commit = SP.edit().putBoolean("user",true).commit();
 
+            System.out.println(commit);
+            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
 
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            finish();
+        }else {
+            Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
+        }
+        mDialog.dismiss();
     }
 
 

@@ -30,7 +30,7 @@
             android:layout_marginTop="25dp"
             android:textSize="18sp"
             android:gravity="center"
-            android:text="我的累计分红恰"
+            android:text="我的累计分红"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <LinearLayout

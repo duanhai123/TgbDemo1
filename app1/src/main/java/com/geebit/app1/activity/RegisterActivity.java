@@ -2,6 +2,7 @@ package com.geebit.app1.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 import com.geebit.app1.R;
 import com.geebit.app1.utils.CountDownTimerUtils;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import java.util.regex.Pattern;
 
@@ -20,7 +23,10 @@ import java.util.regex.Pattern;
  * Created by DEll on 2016-12-05.
  */
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
-
+    /**
+     * 扫描跳转Activity RequestCode
+     */
+    public static final int REQUEST_CODE = 111;
 
     TextView tvMessage;
     // 弹出框
@@ -48,6 +54,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private ImageView back;
     private CheckBox cbAgree;
     private TextView messsage;
+    private TextView mScan;
+
     private Runnable runnable;
     private String serverPin;
     private View view;
@@ -67,13 +75,14 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mRegister = (Button) view.findViewById(R.id.ec_btn_register);
         cbAgree = (CheckBox) view.findViewById(R.id.cb_agree);
         messsage = (TextView) view.findViewById(R.id.tv_message);
+        mScan = (TextView) view.findViewById(R.id.tv_scan);
     }
 
     protected void initData() {
         mRegister.setOnClickListener(this) ;
         back.setOnClickListener(this);
         messsage.setOnClickListener(this);
-
+        mScan.setOnClickListener(this);
 
     }
 
@@ -124,7 +133,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             mDialog = new ProgressDialog(this);
             mDialog.setMessage("注册中，请稍后...");
             mDialog.show();
-            registerNet();
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -155,10 +164,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     }
         }
-    private void registerNet() {
 
-    String httpUrl = "";
-}
+
 
 
     @Override
@@ -177,6 +184,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 //同时调用接口获取验证码
                 serverPin = "1234";
                 break;
+            case  R.id.tv_scan:
+                Intent intent = new Intent(this, CaptureActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
+                break;
         }
     }
     /**
@@ -189,4 +200,23 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //OkHttpUtils.post().addParams().addParams();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 }

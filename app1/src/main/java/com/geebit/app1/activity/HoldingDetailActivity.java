@@ -1,6 +1,7 @@
 package com.geebit.app1.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,15 +21,17 @@ import com.geebit.app1.R;
  */
 public class HoldingDetailActivity extends BaseActivity implements View.OnClickListener {
 
+    private static final String TAG = "tag";
     private View view;
 
     private ImageView mBack;
     private TextView mSort;
     private PopupWindow window;
-    private LinearLayout content2;
-    private LinearLayout content1;
-    private LinearLayout content3;
-    private LinearLayout content4;
+    private LinearLayout mIncome;
+    private LinearLayout mChangein;
+    private LinearLayout mChangeout;
+    private LinearLayout mRecdiv;
+    private LinearLayout mSenddiv;
 
 
     @Override
@@ -36,12 +39,39 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
 
         mBack = (ImageView) view.findViewById(R.id.iv_back);
         mSort = (TextView) findViewById(R.id.tv_sort);
-        content1 = (LinearLayout) view.findViewById(R.id.ll_content1);
-        content2 = (LinearLayout) view.findViewById(R.id.ll_content2);
-        content3 = (LinearLayout) view.findViewById(R.id.ll_content3);
-        content4 = (LinearLayout) view.findViewById(R.id.ll_content4);
+        mIncome = (LinearLayout) view.findViewById(R.id.ll_content_income);
+        mChangein = (LinearLayout) view.findViewById(R.id.ll_content_changeinto);
+        mChangeout = (LinearLayout) view.findViewById(R.id.ll_content_changeinout);
+        mRecdiv = (LinearLayout) view.findViewById(R.id.ll_content_receive_dividend);
+        mSenddiv = (LinearLayout) view.findViewById(R.id.ll_content_send_dividend);
+        defaults();
     }
+    //默认选择的排列
+    private void defaults() {
 
+        Intent intent = getIntent();
+        String changeinto = intent.getStringExtra("changeinto");
+        String changeinout = intent.getStringExtra("changeinout");
+        if ("changeinto".equals(changeinto)) {
+            mIncome.setVisibility(View.INVISIBLE);
+            mChangein.setVisibility(View.VISIBLE);
+            mChangeout.setVisibility(View.INVISIBLE);
+            mRecdiv.setVisibility(View.INVISIBLE);
+            mSenddiv.setVisibility(View.INVISIBLE);
+        } else if ("changeinout".equals(changeinout)) {
+            mIncome.setVisibility(View.INVISIBLE);
+            mChangein.setVisibility(View.INVISIBLE);
+            mChangeout.setVisibility(View.VISIBLE);
+            mRecdiv.setVisibility(View.INVISIBLE);
+            mSenddiv.setVisibility(View.INVISIBLE);
+        } else {
+            mIncome.setVisibility(View.INVISIBLE);
+            mChangein.setVisibility(View.INVISIBLE);
+            mChangeout.setVisibility(View.INVISIBLE);
+            mRecdiv.setVisibility(View.VISIBLE);
+            mSenddiv.setVisibility(View.INVISIBLE);
+        }
+    }
     @Override
     protected void initData() {
         mBack.setOnClickListener(this);
@@ -65,27 +95,51 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
             break;
             case R.id.btn_All:
                 window.dismiss();
-
+                mIncome.setVisibility(View.VISIBLE);
+                mChangein.setVisibility(View.INVISIBLE);
+                mChangeout.setVisibility(View.INVISIBLE);
+                mRecdiv.setVisibility(View.INVISIBLE);
+                mSenddiv.setVisibility(View.INVISIBLE);
                 break;
             case R.id.btn_change_inout:
                 window.dismiss();
-
+                mIncome.setVisibility(View.INVISIBLE);
+                mChangein.setVisibility(View.INVISIBLE);
+                mChangeout.setVisibility(View.VISIBLE);
+                mRecdiv.setVisibility(View.INVISIBLE);
+                mSenddiv.setVisibility(View.INVISIBLE);
                 break;
             case R.id.btn_change_into:
                 window.dismiss();
+                mIncome.setVisibility(View.INVISIBLE);
+                mChangein.setVisibility(View.VISIBLE);
+                mChangeout.setVisibility(View.INVISIBLE);
+                mRecdiv.setVisibility(View.INVISIBLE);
+                mSenddiv.setVisibility(View.INVISIBLE);
                 break;
             case R.id.btn_receive_dividend:
                 window.dismiss();
+                defaults();
                 break;
             case R.id.btn_send_dividend:
                 window.dismiss();
+                mIncome.setVisibility(View.INVISIBLE);
+                mChangein.setVisibility(View.INVISIBLE);
+                mChangeout.setVisibility(View.INVISIBLE);
+                mRecdiv.setVisibility(View.INVISIBLE);
+                mSenddiv.setVisibility(View.VISIBLE);
                 break;
             case R.id.btn_proceed:
                 window.dismiss();
+                mIncome.setVisibility(View.VISIBLE);
+                mChangein.setVisibility(View.INVISIBLE);
+                mChangeout.setVisibility(View.INVISIBLE);
+                mRecdiv.setVisibility(View.INVISIBLE);
+                mSenddiv.setVisibility(View.INVISIBLE);
                 break;
         }
     }
-
+    //popwindow的初始化
     private void init(){
         // 利用layoutInflater获得View
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);

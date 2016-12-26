@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
@@ -20,12 +20,16 @@ import com.geebit.app1.fragment.FragmentMe;
 import com.geebit.app1.fragment.FragmentWtgb;
 import com.geebit.app1.fragment.FragmentWxgbOne;
 import com.geebit.app1.fragment.FragmentWxgbTwo;
+import com.geebit.app1.listener.ScreenListener;
+import com.geebit.app1.utils.PrefUtils;
 import com.geebit.app1.view.MyApp;
 
 /**
  * Created by admin on 2016/12/17.
  */
 public class MainActivity extends FragmentActivity implements TabHost.OnTabChangeListener {
+
+    private static final String TAG ="tag" ;
     //百度推送key
     private String APP_Key = "VS3maAGhd8Hi2Lg0SQMy65K66HbApmoZ";
     // 定义FragmentTabHost对象
@@ -34,23 +38,24 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
     // 定义一个布局
     private LayoutInflater layoutInflater;
     // 定义数组来存放Fragment界面
-    private Class fragmentArray[] = { FragmentWtgb.class,
+    private Class fragmentArray[] = {FragmentWtgb.class,
             FragmentWxgbOne.class,
-            FragmentWxgbTwo.class ,FragmentMe.class};
+            FragmentWxgbTwo.class, FragmentMe.class};
 
     //Tab选项卡的图片
-    private int imageResources[] ={R.drawable.selector_icon_wtgb,R.drawable.selector_icon_wxgb1,
-            R.drawable.selector_icon_wxgb2,R.drawable.selector_icon_user};
+    private int imageResources[] = {R.drawable.selector_icon_wtgb, R.drawable.selector_icon_wxgb1,
+            R.drawable.selector_icon_wxgb2, R.drawable.selector_icon_user};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean user =  MyApp.SP.getBoolean("user", false);
+        boolean user = MyApp.SP.getBoolean("user", false);
 
-        if (user){
-            
-        }else {
-            startActivity(new Intent(this,LoginActivity.class));
+        if (user) {
+
+        } else {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
         }
         setContentView(R.layout.activity_main);
         //透明状态栏
@@ -58,7 +63,10 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
         //透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         initView();
+
+            ScreenListen();
     }
+
 
     private void initView() {
         // 实例化布局对象
@@ -109,18 +117,40 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK
                 && event.getAction() == KeyEvent.ACTION_DOWN) {
-
-            if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(getApplicationContext(), "再按一次退出程序",
-                        Toast.LENGTH_SHORT).show();
-                exitTime = System.currentTimeMillis();
-            } else {
+                PrefUtils.remove("user",MyApp.application);
                 finish();
-                System.exit(0);
-            }
+               System.exit(0);
+
             return true;
         }
         return super.onKeyDown(keyCode, event);
 
+    }
+
+
+
+    private void ScreenListen(){
+
+        ScreenListener i = new ScreenListener(this);
+        i.begin(new ScreenListener.ScreenStateListener() {
+            @Override
+            public void onScreenOn() {
+                Log.i(TAG, "onScreenOn:开屏 ");
+
+            }
+
+            @Override
+            public void onScreenOff() {
+                Log.i(TAG, "onScreenOff: 锁屏");
+                PrefUtils.remove("user",MyApp.application);
+            }
+
+            @Override
+            public void onUserPresent() {
+                Log.i(TAG, "onUserPresent: 解锁");
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                finish();
+            }
+        });
     }
 }

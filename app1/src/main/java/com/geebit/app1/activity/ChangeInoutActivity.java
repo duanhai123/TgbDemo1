@@ -64,28 +64,30 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_enter_change_inout:
-
-                    finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
-
-
-                    finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_inout),
-                            Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    init();
-
-
-
+                showPopWindow();
                 break;
             case R.id.iv_back:
                 finish();
                 break;
             case R.id.tv_destory:
                 Intent intent = new Intent(this,HoldingDetailActivity.class);
+                intent.putExtra("changeinout","changeinout");
                 startActivity(intent);
+                finish();
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;
         }
+    }
+
+    private void showPopWindow() {
+        finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
+
+
+        finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_inout),
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        init();
     }
 
     @Override
@@ -139,6 +141,24 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                         View contentView1 = finishProjectPopupWindows1.getContentView();
                         TextView mPwd = (TextView) contentView1.findViewById(R.id.tv_pwd);
                         mPwd.setText("资金密码不正确,你还可用输入" + count + "次");
+                        TextView mForgetPwd = (TextView) contentView1.findViewById(R.id.tv_forget_pwd);
+                        mForgetPwd.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finishProjectPopupWindows1.dismiss();
+                                startActivity(new Intent(ChangeInoutActivity.this,ForgetPasswordActivity.class));
+                                //finish();
+                            }
+                        });
+                        TextView mAgain = (TextView) contentView1.findViewById(R.id.tv_again);
+                        mAgain.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finishProjectPopupWindows1.dismiss();
+
+                                showPopWindow();
+                            }
+                        });
                     }else {
                         runOnUiThread(new Runnable() {
                             @Override
@@ -161,10 +181,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                 case R.id.closed:
                     finishProjectPopupWindows.dismiss();
                     break;
-                case R.id.tv_again:
-                    finishProjectPopupWindows1.dismiss();
 
-                    break;
             }
         }
     };

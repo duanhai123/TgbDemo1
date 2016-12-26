@@ -64,7 +64,7 @@
             android:layout_width="0dp"
             android:layout_height="40dp" />
         <Button
-            android:id="@+id/btn_receive_dividend"
+            android:id="@+id/btn_send_dividend"
             android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"
@@ -75,7 +75,8 @@
             android:layout_width="0dp"
             android:layout_height="40dp" />
         <Button
-            android:id="@+id/btn_send_dividend"
+            android:id="@+id/btn_receive_dividend"
+
             android:textColor="@drawable/text_color_selector"
             android:background="@drawable/selector_holding_sort"
             android:layout_marginLeft="5dp"

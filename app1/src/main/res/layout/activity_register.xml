@@ -204,13 +204,21 @@
                 android:textSize="15sp"
                 android:textColorHint="#656565"
                 android:textColor="@color/ivory"
-                android:layout_marginLeft="48dp"
+                android:layout_marginLeft="30dp"
                 android:id="@+id/ec_edit_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="请输入好友推荐码"/>
+                android:hint="输入好友推荐码"/>
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tv_scan"
+                android:layout_marginLeft="5dp"
+                android:text="扫一扫"
+                android:textColor="@color/blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <CheckBox
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="2dp"
                 android:layout_gravity="center"
                 android:button="@null"
                 android:background="@drawable/login_selector"

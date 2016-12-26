@@ -85,23 +85,29 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 Toast.makeText(ChangeIntoActivity.this, "金额不够请充值", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
-
-
-                    finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
-                            Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
-                    init();
+                    showPopWindow();
                 }
                 break;
             case R.id.tv_destory:
                 Intent intent = new Intent(this,HoldingDetailActivity.class);
+                intent.putExtra("changeinto","changeinto");
                 startActivity(intent);
+                finish();
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
                 break;
         }
 
+    }
+
+    private void showPopWindow() {
+        finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
+
+
+        finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        init();
     }
 
     private void init() {
@@ -121,7 +127,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                     startActivity(intent);
                     finish();
                 }else {
-                  //  System.out.println(111);
+
                     count--;
 
                     if (count > 0) {
@@ -131,10 +137,31 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                         View contentView1 = finishProjectPopupWindows1.getContentView();
                         pwd = (TextView) contentView1.findViewById(R.id.tv_pwd);
-                        //num = count;
+
                        pwd.setText("资金密码不正确,你还可用输入" + count + "次");
+                        TextView mForgetPwd = (TextView) contentView1.findViewById(R.id.tv_forget_pwd);
+                        mForgetPwd.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finishProjectPopupWindows1.dismiss();
+                                startActivity(new Intent(ChangeIntoActivity.this,ForgetPasswordActivity.class));
+                                //finish();
+                            }
+                        });
+                        TextView mAgain = (TextView) contentView1.findViewById(R.id.tv_again);
+                        mAgain.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                finishProjectPopupWindows1.dismiss();
+
+                                showPopWindow();
+                            }
+                        });
+
 
                     }
+
+
                     else {
                        runOnUiThread(new Runnable() {
                            @Override
@@ -163,10 +190,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 case R.id.closed:
                     finishProjectPopupWindows.dismiss();
                     break;
-                case R.id.tv_again:
-                    finishProjectPopupWindows1.dismiss();
 
-                    break;
             }
         }
     };
