@@ -3,6 +3,7 @@ package com.geebit.app1.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,8 +16,13 @@ import com.geebit.app1.R;
 import com.geebit.app1.utils.CountDownTimerUtils;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.regex.Pattern;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 
 /**
@@ -27,6 +33,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      * 扫描跳转Activity RequestCode
      */
     public static final int REQUEST_CODE = 111;
+    private static final String TAG = "tag";
 
     TextView tvMessage;
     // 弹出框
@@ -143,6 +150,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             if (!RegisterActivity.this.isFinishing()) {
                                 mDialog.dismiss();
                             }
+                            //postRequest(username,);
                             Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                             finish();
@@ -195,9 +203,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      * @param name
      * @param pwd
      */
-    private void postRequest(String name,String pwd)  {
+    private void postRequest(String name,String pwd,String tell,String code)  {
         //建立请求表单，添加上传服务器的参数
-        //OkHttpUtils.post().addParams().addParams();
+        String url = "http://192.168.1.117:8080/api/user/register";
+        OkHttpUtils.post().url(url).addParams("tel",tell).addParams("password",pwd)
+                .addParams("name",name).addParams("code",code).build().execute(new Callback() {
+            @Override
+            public Object parseNetworkResponse(Response response, int id) throws Exception {
+                return null;
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+
+            }
+
+            @Override
+            public void onResponse(Object response, int id) {
+                Log.i(TAG, "onResponse: "+response);
+            }
+        });
     }
 
     @Override

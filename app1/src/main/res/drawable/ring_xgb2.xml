@@ -3,18 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="ring"
     android:useLevel="false"
-    android:innerRadius="62dp"
+    android:innerRadius="60dp"
     android:thickness="3dp">
 
     <gradient android:type="radial"
-        android:gradientRadius="220"
+        android:gradientRadius="150"
         android:centerY="0.3"
         android:centerX="0.1"
         android:startColor="@android:color/white"
         android:centerColor="@android:color/white"
         android:endColor="@android:color/holo_orange_dark" />
 
-    <size android:width="150dp"
-        android:height="150dp" />
+    <size android:width="126dp"
+        android:height="130dp" />
 
 </shape>

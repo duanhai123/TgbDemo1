@@ -3,14 +3,380 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/chartreuse" >
-    <TextView
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text="我的界面"
+    android:background="@color/black"
+    >
+    <LinearLayout
+        android:background="@color/black"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-    
+        android:layout_height="44dp">
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:textColor="@color/ivory"
+            android:text="弦基币-II"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:paddingRight="13dp"
+            android:layout_gravity="center|right"
+            android:src="@drawable/icon_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="#1c252c"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <RelativeLayout
+
+                android:clickable="true"
+                android:id="@+id/rl_content"
+                android:background="@drawable/ring_xgb2"
+                android:layout_width="126dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="12dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/ivory"
+                    android:text="持有"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+
+                    android:id="@+id/tv_btb"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:textSize="15sp"
+                    android:textColor="#F39700"
+                    android:text="40฿/¥10010"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="60dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp">
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/ivory"
+                        android:text="¥4812.70"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <ImageView
+                        android:src="@drawable/icon_6"
+                        android:layout_width="12dp"
+                        android:layout_height="20dp" />
+                    <TextView
+                        android:textColor="@color/ivory"
+                        android:text="+1.34%"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <TextView
+                    android:textColor="@color/ivory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="90dp"
+                    android:textSize="13sp"
+                    android:text="查看明细" />
+            </RelativeLayout>
+            <LinearLayout
+               android:gravity="center"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+
+                    android:background="@drawable/btn_shape"
+                    android:text="转入"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp" />
+                <Button
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/btn_shape"
+                    android:text="转出"
+                    android:layout_width="80dp"
+                    android:layout_height="35dp" />
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:background="@drawable/btn_shape"
+                        android:text="未保障"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp" />
+                    <Button
+                        android:layout_marginLeft="13dp"
+                        android:background="@drawable/btn_shape"
+                        android:text="借币"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button
+            android:layout_marginLeft="15dp"
+            android:textSize="15sp"
+            android:textColor="@color/ivory"
+            android:background="@drawable/icon_ii_1"
+            android:paddingRight="15dp"
+            android:text="上期收益"
+            android:layout_width="100dp"
+            android:layout_height="40dp" />
+            <TextView
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:textColor="@color/ivory"
+                android:textSize="15sp"
+                android:text="+20฿"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginRight="33dp"
+                android:textColor="@color/ivory"
+                android:textSize="15sp"
+                android:text="+50.12%"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView
+            android:layout_marginLeft="120dp"
+            android:background="@color/ivory"
+            android:layout_width="match_parent"
+            android:layout_height="0.4dp" />
+        <LinearLayout
+            android:layout_marginTop="18dp"
+            android:background="@color/orange"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <TextView
+                android:gravity="center"
+                android:layout_marginLeft="23dp"
+                android:textColor="@color/ivory"
+                android:textSize="15sp"
+                android:text="本期资产透明度"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/next"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            <TextView
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/ivory"
+                android:textSize="15sp"
+                android:text="100%"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginRight="30dp"
+                android:gravity="center|right"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/ivory"
+                android:textSize="15sp"
+                android:text="操作明细查看"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <ImageView
+
+            android:background="@android:color/transparent"
+            android:src="@drawable/icon_ii_2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+        <LinearLayout
+
+            android:background="#26343e"
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_5"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="我的累计收益"
+                android:layout_marginLeft="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:gravity="center|right"
+                android:text="+20 ฿"
+                android:textSize="15sp"
+                android:textColor="#F39700"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+            <TextView
+
+                android:layout_marginRight="13dp"
+
+                android:gravity="center"
+                android:text="(+100%)"
+                android:textSize="15sp"
+                android:textColor="@color/orange"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="#26343e"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_2"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="基金总值累计收益"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+
+                android:gravity="center|right"
+                android:text="+400 ฿"
+                android:textSize="16sp"
+                android:textColor="#F39700"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+            <TextView
+
+                android:layout_marginRight="13dp"
+
+                android:gravity="center"
+                android:text="(+100%)"
+                android:textSize="15sp"
+                android:textColor="@color/orange"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="#26343e"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_3"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="本期交易结算倒计时"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+
+
+            <TextView
+                android:id="@+id/tv_receive_dividend"
+                android:layout_marginRight="13dp"
+                android:gravity="center|right"
+                android:text="30天"
+                android:textSize="15sp"
+                android:textColor="@color/orange"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="#26343e"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_4"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:text="本期预期盈亏分配比"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <TextView
+                android:layout_marginRight="13dp"
+                android:gravity="center|right"
+                android:text="40/100"
+                android:textSize="15sp"
+                android:textColor="#F39700"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:background="#1c252c"
+            android:layout_width="match_parent"
+            android:layout_height="20dp">
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

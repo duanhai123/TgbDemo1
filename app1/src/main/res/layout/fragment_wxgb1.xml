@@ -196,7 +196,7 @@
     </LinearLayout>
     <ImageView
         android:background="@android:color/transparent"
-        android:src="@drawable/icon_4"
+        android:src="@drawable/icon_ii_2"
         android:layout_width="match_parent"
         android:layout_height="160dp" />
     <LinearLayout

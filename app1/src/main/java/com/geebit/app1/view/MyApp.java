@@ -43,10 +43,8 @@ public class MyApp extends Application {
         // 初始化环信SDK
         initEasemob();
         ZXingLibrary.initDisplayOpinion(this);
+
     }
-
-
-
 
     /**
      *
