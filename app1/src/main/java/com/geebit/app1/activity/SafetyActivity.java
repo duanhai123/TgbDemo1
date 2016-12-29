@@ -24,6 +24,7 @@ public class SafetyActivity extends BaseActivity  {
     private ImageView emailSafe;
     private ImageView back;
     private View view;
+    private String username;
 
 
     @Override
@@ -32,27 +33,35 @@ public class SafetyActivity extends BaseActivity  {
         maskSafe = (ImageView)view. findViewById(R.id.iv_ask_safety);
         emailSafe = (ImageView)view. findViewById(R.id.iv_email_safety);
         back = (ImageView) view.findViewById(R.id.iv_back);
+       Intent intent = getIntent();
+        username = intent.getStringExtra("username");
     }
 
     protected void initData() {
         maskSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SafetyActivity.this,AskSafetyActivity.class));
+                Intent intent = new Intent(SafetyActivity.this,AskSafetyActivity.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
                // finish();
             }
         });
         MsgSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SafetyActivity.this,MessageSafetyActivity.class));
+                Intent intent = new Intent(SafetyActivity.this,MessageSafetyActivity.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
                 //finish();
             }
         });
         emailSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SafetyActivity.this,EmailSafetyActivity.class));
+                Intent intent = new Intent(SafetyActivity.this,EmailSafetyActivity.class);
+                intent.putExtra("username",username);
+                startActivity(intent);
                // finish();
             }
         });

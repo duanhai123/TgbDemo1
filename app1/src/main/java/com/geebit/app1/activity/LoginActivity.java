@@ -180,21 +180,7 @@ public class LoginActivity extends BaseActivity {
                     map.put("password",password);
                     JSONObject jsonObject = new JSONObject(map);
                     String json = jsonObject.toString();
-                    /*OkHttpClient client = new OkHttpClient();
-                    String stsJson = "";
-                    Request request = new Request.Builder().url("http://192.168.1.102:8080/api/user/login")
-                            .post(RequestBody.create(JSON, json))
-                            .build();
-                    ;
-                    try{
-                        Response response = client.newCall(request).execute();
-                        stsJson = response.body().string();
-                        Log.i(TAG, "run1: "+json);
-                        Log.i(TAG, "run: "+stsJson);
-                    }catch (IOException e) {
-                        e.printStackTrace();
-                        Log.e("postFail", e.toString());
-                    }*/
+
                     String s = CrmApiUtil.postOnlyJson("http://120.77.150.215:8080/xgb-api-server/user/login", json);
                     Log.i(TAG, "run: "+s);
                     //Gson gson = new Gson();

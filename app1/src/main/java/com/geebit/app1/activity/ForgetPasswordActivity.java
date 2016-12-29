@@ -53,7 +53,9 @@ public class ForgetPasswordActivity extends BaseActivity {
                     Toast.makeText(ForgetPasswordActivity.this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    startActivity(new Intent(ForgetPasswordActivity.this, SafetyActivity.class));
+                    Intent intent = new Intent(ForgetPasswordActivity.this, SafetyActivity.class);
+                    intent.putExtra("username",mPhone);
+                    startActivity(intent);
                     finish();
                 }
             }
