@@ -3,6 +3,7 @@ package com.geebit.app1.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,7 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.CrmApiUtil;
+import com.squareup.okhttp.MediaType;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 
@@ -19,7 +26,8 @@ import java.util.regex.Pattern;
  * Created by admin on 2016/11/26.
  */
 public class LoginActivity extends BaseActivity {
-    private static final String TAG ="tag" ;
+    public static final MediaType JSON=MediaType.parse("application/json; charset=utf-8");
+    private static final String TAG ="tags" ;
     // 弹出框
     private ProgressDialog mDialog;
 
@@ -106,63 +114,37 @@ public class LoginActivity extends BaseActivity {
     /**
      * 登录方法
      */
-    private void login(){
+    private void login(String tel,String pwd){
         /*POST请求 OkHttpUtils.post().url(url).addParams("username", "hyman").addParams("password", "123")
                 .build().execute(callback);
         Post JSON OkHttpUtils.postString().url(url).content(new Gson().toJson(new User("zhy", "123")))
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build().execute(new MyStringCallback());*/
-        String httpUrl="http://192.168.1.161:8080/TestProject1/ParamServlet";
-        //String httpUrl="http://www.baidu.com";
+        String httpUrl="http://192.168.1.111:8080/api/user/login";
 
-       /*OkHttpUtils.post().url(httpUrl).addParams("username", username).
-               addParams("password", password)
-                .build().execute(new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                //请求失败
-                Log.i(TAG, "onError: "+e);
-                runOnUiThread(new Runnable() {
+
+       /* OkHttpUtils
+                .postString()
+                .url(httpUrl)
+                .content(new Gson().toJson(new User(tel,pwd)))
+                .mediaType(MediaType.parse("application/json; charset=utf-8"))
+                .build()
+                .execute(new StringCallback() {
                     @Override
-                    public void run() {
-
-                        mDialog.dismiss();
-                        Toast.makeText(LoginActivity.this, "网络超时", Toast.LENGTH_SHORT).show();
+                    public void onError(Call call, Exception e, int id) {
+                        Log.i(TAG, "onError: "+e);
                     }
-                });
 
-            }
+                    @Override
+                    public void onResponse(String response, int id) {
+                        //Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
+                       // startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                       // finish();
+                        Log.i(TAG, "onResponse: "+response);
 
-            @Override
-            public void onResponse(String response, int id) {
-                //请求成功
-                Log.i(TAG, "onResponse: "+response);
-                if (response.equals("13043680997 aa123456")){
-                    boolean commit = SP.edit().putBoolean("user",true).commit();
+                    }
+                });*/
 
-                    System.out.println(commit);
-                    Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                }else {
-                    Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
-                }
-                mDialog.dismiss();
-            }
-        });
-*/
-        if ("13043680997".equals(username)&&"aa123456".equals(password))   {
-            boolean commit = SP.edit().putBoolean("user",true).commit();
-
-            System.out.println(commit);
-            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-            finish();
-        }else {
-            Toast.makeText(LoginActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
-        }
-        mDialog.dismiss();
     }
 
 
@@ -189,10 +171,51 @@ public class LoginActivity extends BaseActivity {
             return;
         }
         else {
-            mDialog = new ProgressDialog(this);
-            mDialog.setMessage("正在登陆，请稍后...");
-            mDialog.show();
-            login();
+            new Thread(){
+
+                @Override
+                public void run() {
+                    HashMap map = new HashMap();
+                    map.put("tel",username);
+                    map.put("password",password);
+                    JSONObject jsonObject = new JSONObject(map);
+                    String json = jsonObject.toString();
+                    /*OkHttpClient client = new OkHttpClient();
+                    String stsJson = "";
+                    Request request = new Request.Builder().url("http://192.168.1.102:8080/api/user/login")
+                            .post(RequestBody.create(JSON, json))
+                            .build();
+                    ;
+                    try{
+                        Response response = client.newCall(request).execute();
+                        stsJson = response.body().string();
+                        Log.i(TAG, "run1: "+json);
+                        Log.i(TAG, "run: "+stsJson);
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                        Log.e("postFail", e.toString());
+                    }*/
+                    String s = CrmApiUtil.postOnlyJson("http://120.77.150.215:8080/xgb-api-server/user/login", json);
+                    Log.i(TAG, "run: "+s);
+                    //Gson gson = new Gson();
+                  //  Type type = new TypeToken<String>(){}.getType();
+                  // String loginuser = gson.fromJson(s,type);
+                   // Log.i(TAG, "run: "+loginuser);
+                   // Log.i(TAG, "run: "+loginuser.toString().equals("fails"));
+                    try {
+                        JSONObject j = new JSONObject(s);
+                        String result = j.getString("result");
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+
+
+                }
+            }.start();
+
 
         }
     }

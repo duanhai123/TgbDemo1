@@ -14,21 +14,24 @@ import android.widget.Toast;
 
 import com.geebit.app1.R;
 import com.geebit.app1.utils.CountDownTimerUtils;
+import com.geebit.app1.utils.CrmApiUtil;
+import com.squareup.okhttp.MediaType;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
-import okhttp3.Call;
-import okhttp3.Response;
 
 
 /**
  * Created by DEll on 2016-12-05.
  */
 public class RegisterActivity extends BaseActivity implements View.OnClickListener {
+    public static final MediaType JSON=MediaType.parse("application/json; charset=utf-8");
     /**
      * 扫描跳转Activity RequestCode
      */
@@ -47,7 +50,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     //确认密码
     private EditText mEnterPwd;
     private int recLen = 10;
-
+    String s = "";
     private TextView mSignUpBtn;
     // 注册按钮
     private Button mRegister;
@@ -60,13 +63,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private String mCode;
     private ImageView back;
     private CheckBox cbAgree;
-    private TextView messsage;
+    private Button messsage;
     private TextView mScan;
 
     private Runnable runnable;
-    private String serverPin;
+    private String serverPin ;
     private View view;
-
 
 
 
@@ -81,8 +83,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         cbSystem = (CheckBox) view.findViewById(R.id.cb_system);
         mRegister = (Button) view.findViewById(R.id.ec_btn_register);
         cbAgree = (CheckBox) view.findViewById(R.id.cb_agree);
-        messsage = (TextView) view.findViewById(R.id.tv_message);
+        messsage = (Button) view.findViewById(R.id.btn_message);
         mScan = (TextView) view.findViewById(R.id.tv_scan);
+
+
     }
 
     protected void initData() {
@@ -104,13 +108,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      */
     private void register() {
         // 注册是耗时过程，所以要显示一个dialog来提示下用户
+        password = mPasswordEdit.getText().toString().trim();
         username = mUsernameEdit.getText().toString().trim();
         pwdPin = ec_edit_pin.getText().toString().trim();
-        password = mPasswordEdit.getText().toString().trim();
         mEnterPwder = mEnterPwd.getText().toString().trim();
         mCode = code.getText().toString().trim();
-
-        String num = "[1][358]\\d{9}";
+        String num = "[1][3587]\\d{9}";
         boolean matches = username.matches(num);
         Pattern pattern = Pattern.compile("[0-9]*");
 
@@ -133,7 +136,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             return;
         }else if (!cbAgree.isChecked()){
             Toast.makeText(RegisterActivity.this, "请勾选我已阅读并且同意服务条款", Toast.LENGTH_SHORT).show();
-        }else if(!mCode.equals(serverPin)){
+        }else if(!(pwdPin.equals("123456"))){
             Toast.makeText(RegisterActivity.this, "验证码输入错误", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -142,21 +145,21 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             mDialog.show();
 
             new Thread(new Runnable() {
+
                 @Override
                 public void run() {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             if (!RegisterActivity.this.isFinishing()) {
+
                                 mDialog.dismiss();
                             }
-                            //postRequest(username,);
-                            Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                            finish();
+
                         }
 
                     });
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -166,6 +169,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             }
                         }
                     });
+                    postRequest(password,username);
                 }
 
             }).start();
@@ -185,12 +189,34 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.tv_message:
-                CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(messsage,30000,1000);
-                countDownTimerUtils.onFinish();
-                countDownTimerUtils.start();
-                //同时调用接口获取验证码
-                serverPin = "1234";
+            case R.id.btn_message:
+
+                username = mUsernameEdit.getText().toString().trim();
+                String num = "[1][3587]\\d{9}";
+                boolean matches = username.matches(num);
+
+                if (username.isEmpty()||!matches){
+                    Toast.makeText(RegisterActivity.this, "手机号码输入用误", Toast.LENGTH_SHORT).show();
+                    //messsage.setEnabled(false);
+                        return;
+                }else {
+                    messsage.setEnabled(true);
+                    new Thread() {
+                        @Override
+                        public void run() {
+
+                            postRequest1(username);
+
+                        }
+                    }.start();
+                    CountDownTimerUtils countDownTimerUtils = new CountDownTimerUtils(messsage,30000,1000);
+                    countDownTimerUtils.onFinish();
+                    countDownTimerUtils.start();
+
+
+
+                }
+
                 break;
             case  R.id.tv_scan:
                 Intent intent = new Intent(this, CaptureActivity.class);
@@ -199,32 +225,41 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
     /**
-     * post请求后台
-     * @param name
+     * post请求后台注册接口
+     * @param tell
      * @param pwd
+     *
      */
-    private void postRequest(String name,String pwd,String tell,String code)  {
+    private void postRequest(String pwd,String tell)  {
+
         //建立请求表单，添加上传服务器的参数
-        String url = "http://192.168.1.117:8080/api/user/register";
-        OkHttpUtils.post().url(url).addParams("tel",tell).addParams("password",pwd)
-                .addParams("name",name).addParams("code",code).build().execute(new Callback() {
-            @Override
-            public Object parseNetworkResponse(Response response, int id) throws Exception {
-                return null;
-            }
+        String url = "http://120.77.150.215:8080/xgb-api-server/user/register";
+        HashMap map = new HashMap();
+        map.put("tel",tell);
+        map.put("password",pwd);
+        JSONObject jsonObject = new JSONObject(map);
+        String json = jsonObject.toString();
+        String onlyJson = CrmApiUtil.postOnlyJson(url, json);
 
-            @Override
-            public void onError(Call call, Exception e, int id) {
-
-            }
-
-            @Override
-            public void onResponse(Object response, int id) {
-                Log.i(TAG, "onResponse: "+response);
-            }
-        });
     }
+    private void postRequest1(String tell){
 
+        String url = "http://http://120.77.150.215:8080/xgb-api-server/user/sendRegisterSMS";
+        HashMap map = new HashMap();
+        map.put("tel",tell);
+        JSONObject jsonObject = new JSONObject(map);
+        String json = jsonObject.toString();
+        String server = CrmApiUtil.postOnlyJson(url, json);
+
+        try {
+            JSONObject j = new JSONObject(server);
+            serverPin = j.getString("result");
+            Log.i(TAG, "postRequest1: "+ serverPin);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
@@ -244,4 +279,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
 }

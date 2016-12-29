@@ -82,6 +82,7 @@
                 android:layout_height="match_parent" />
 
             <EditText
+
                 android:inputType="number"
                 android:background="@null"
 
@@ -100,8 +101,7 @@
                 android:background="@drawable/btn_shape"
                 android:textColor="@color/ivory"
                 android:clickable="true"
-                android:id="@+id/tv_message"
-
+                android:id="@+id/btn_message"
                 android:gravity="center"
                 android:text="获取短信验证码"
                 android:layout_width="0dp"
