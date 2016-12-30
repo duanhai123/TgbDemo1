@@ -12,7 +12,6 @@ import com.squareup.okhttp.Response;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -53,37 +52,30 @@ public class CrmApiUtil {
         JSONObject object = new JSONObject(map);
         return object.toString();
     }
-    public static String getMD5(String info)
-    {
-        try
-        {
-            MessageDigest md5 = MessageDigest.getInstance("MD5");
-            md5.update(info.getBytes("UTF-8"));
-            byte[] encryption = md5.digest();
-
-            StringBuffer strBuf = new StringBuffer();
-            for (int i = 0; i < encryption.length; i++)
-            {
-                if (Integer.toHexString(0xff & encryption[i]).length() == 1)
-                {
-                    strBuf.append("0").append(Integer.toHexString(0xff & encryption[i]));
+    //MD5加密
+    public static String getMd5(String password){
+        try {
+            // 得到一个信息摘要器
+            MessageDigest digest = MessageDigest.getInstance("md5");
+            byte[] result = digest.digest(password.getBytes());
+            StringBuffer buffer = new StringBuffer();
+            // 把没一个byte 做一个与运算 0xff;
+            for (byte b : result) {
+                // 与运算
+                int number = b & 0xff;// 加盐
+                String str = Integer.toHexString(number);
+                if (str.length() == 1) {
+                    buffer.append("0");
                 }
-                else
-                {
-                    strBuf.append(Integer.toHexString(0xff & encryption[i]));
-                }
+                buffer.append(str);
             }
 
-            return strBuf.toString();
-        }
-        catch (NoSuchAlgorithmException e)
-        {
+            // 标准的md5加密后的结果
+            return buffer.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
             return "";
         }
-        catch (UnsupportedEncodingException e)
-        {
-            return "";
-        }
-    }
 
+    }
 }

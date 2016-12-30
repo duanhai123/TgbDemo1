@@ -7,7 +7,7 @@ import com.geebit.app1.utils.CrmApiUtil;
  */
 public class test {
     public static void main (String[]args){
-        String md5 = CrmApiUtil.getMD5("aa123455");
+        String md5 = CrmApiUtil.getMd5("aa123455");
         System.out.println(md5);
 
     }
