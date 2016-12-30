@@ -12,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.utils.CrmApiUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.regex.Pattern;
 
@@ -35,6 +39,8 @@ public class ReSetingPwdActivity extends BaseActivity implements View.OnClickLis
 
     private String newPwd;
     private View view;
+    private String mNewpwd;
+    private String onlyJson;
 
 
     public View initView() {
@@ -71,7 +77,7 @@ public class ReSetingPwdActivity extends BaseActivity implements View.OnClickLis
                 String num = "[1][358]\\d{9}";
                 Pattern pattern = Pattern.compile("[0-9]*");
                 //提交到服务器修改密码,跳转到登录
-                String mNewpwd = etNewpwd.getText().toString().trim();
+                mNewpwd = etNewpwd.getText().toString().trim();
                 String mEnterNewpwd = etEnterNewpwd.getText().toString().trim();
 
                 if (mNewpwd.isEmpty()||mEnterNewpwd.isEmpty()){
@@ -86,8 +92,24 @@ public class ReSetingPwdActivity extends BaseActivity implements View.OnClickLis
                     return;
                 }else {
                     //调用后台接口修改账号密码
-                    startActivity(new Intent(this,LoginActivity.class));
-                    finish();
+                    new Thread(){
+                        @Override
+                        public void run() {
+                            postJson();
+                        }
+                    }.start();
+                    try {
+                        JSONObject object = new JSONObject(onlyJson);
+                        String isSuccess = object.getString("result");
+                        if ("success".equals(isSuccess)){
+                            startActivity(new Intent(this,LoginActivity.class));
+                            finish();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
 
 
@@ -98,6 +120,16 @@ public class ReSetingPwdActivity extends BaseActivity implements View.OnClickLis
 
 
         }
+    }
+
+    private void postJson() {
+        String url = "http://120.77.150.215:8080/xgb-api-server/user/updatePwd";
+        Intent intent = getIntent();
+        String phone = intent.getStringExtra("username");
+        String json = CrmApiUtil.postMap(phone, mNewpwd);
+        onlyJson = CrmApiUtil.postOnlyJson(url, json);
+
+
     }
 
 

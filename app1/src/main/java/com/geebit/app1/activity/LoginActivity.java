@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.geebit.app1.R;
 import com.geebit.app1.utils.CrmApiUtil;
+import com.geebit.app1.view.MyApp;
 import com.squareup.okhttp.MediaType;
 
 import org.json.JSONException;
@@ -48,6 +49,8 @@ public class LoginActivity extends BaseActivity {
     private CheckBox cb_agree;
     private SharedPreferences sp;
     private View view;
+    private String s;
+
 
 
     @Override
@@ -57,6 +60,7 @@ public class LoginActivity extends BaseActivity {
         mForgetPassword = (TextView)view. findViewById(R.id.ec_edit_forget_password);
         mRegister = (TextView) view.findViewById(R.id.ec_btn_register);
         cb_agree = (CheckBox) view.findViewById(R.id.cb_agree);
+
     }
 
     @Override
@@ -115,35 +119,6 @@ public class LoginActivity extends BaseActivity {
      * 登录方法
      */
     private void login(String tel,String pwd){
-        /*POST请求 OkHttpUtils.post().url(url).addParams("username", "hyman").addParams("password", "123")
-                .build().execute(callback);
-        Post JSON OkHttpUtils.postString().url(url).content(new Gson().toJson(new User("zhy", "123")))
-                .mediaType(MediaType.parse("application/json; charset=utf-8"))
-                .build().execute(new MyStringCallback());*/
-        String httpUrl="http://192.168.1.111:8080/api/user/login";
-
-
-       /* OkHttpUtils
-                .postString()
-                .url(httpUrl)
-                .content(new Gson().toJson(new User(tel,pwd)))
-                .mediaType(MediaType.parse("application/json; charset=utf-8"))
-                .build()
-                .execute(new StringCallback() {
-                    @Override
-                    public void onError(Call call, Exception e, int id) {
-                        Log.i(TAG, "onError: "+e);
-                    }
-
-                    @Override
-                    public void onResponse(String response, int id) {
-                        //Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
-                       // startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                       // finish();
-                        Log.i(TAG, "onResponse: "+response);
-
-                    }
-                });*/
 
     }
 
@@ -175,34 +150,47 @@ public class LoginActivity extends BaseActivity {
 
                 @Override
                 public void run() {
-                    HashMap map = new HashMap();
-                    map.put("tel",username);
-                    map.put("password",password);
-                    JSONObject jsonObject = new JSONObject(map);
-                    String json = jsonObject.toString();
-
-                    String s = CrmApiUtil.postOnlyJson("http://120.77.150.215:8080/xgb-api-server/user/login", json);
-                    Log.i(TAG, "run: "+s);
-                    //Gson gson = new Gson();
-                  //  Type type = new TypeToken<String>(){}.getType();
-                  // String loginuser = gson.fromJson(s,type);
-                   // Log.i(TAG, "run: "+loginuser);
-                   // Log.i(TAG, "run: "+loginuser.toString().equals("fails"));
-                    try {
-                        JSONObject j = new JSONObject(s);
-                        String result = j.getString("result");
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-
-                    }
-
-
+                    postJson();
+                    Log.i(TAG, "run: "+ s);
                 }
             }.start();
 
 
         }
+    }
+
+    private void postJson() {
+        HashMap map = new HashMap();
+        map.put("tel",username);
+        map.put("password",password);
+        JSONObject jsonObject = new JSONObject(map);
+        String json = jsonObject.toString();
+
+        s = CrmApiUtil.postOnlyJson("http://192.168.1.102:8080/api/user/login", json);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Log.i(TAG, "signIn: "+s);
+                    if (s!=null) {
+
+                        JSONObject j = new JSONObject(s);
+                        int result = j.getInt("rtcode");
+                        if (result==1) {
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            MyApp.SP.edit().putBoolean("user",true).commit();
+                        } else if (result==0) {
+                            Toast.makeText(LoginActivity.this, "登录失败,账号密码错误", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+
+                }
+            }
+        });
     }
 }

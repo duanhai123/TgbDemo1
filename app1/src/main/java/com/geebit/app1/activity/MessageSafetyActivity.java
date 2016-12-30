@@ -82,13 +82,10 @@ public class MessageSafetyActivity extends BaseActivity implements View.OnClickL
                 countDownTimerUtils.start();
                 break;
             case R.id.iv_back:
-
                 finish();
                 break;
 
             case R.id.btn_next:
-
-
                 String mPin = et_pin.getText().toString().trim();
                 if (mPin.isEmpty()){
                     Toast.makeText(MessageSafetyActivity.this, "验证码不能为空", Toast.LENGTH_SHORT).show();
@@ -97,7 +94,9 @@ public class MessageSafetyActivity extends BaseActivity implements View.OnClickL
                     Toast.makeText(MessageSafetyActivity.this, "验证码不正确", Toast.LENGTH_SHORT).show();
                     return;
                 }else {
-                    startActivity(new Intent(MessageSafetyActivity.this, ReSetingPwdActivity.class));
+                    Intent intent = new Intent(MessageSafetyActivity.this, ReSetingPwdActivity.class);
+                    intent.putExtra("username",phone);
+                    startActivity(intent);
                     break;
                 }
         }

@@ -3,6 +3,7 @@ package com.geebit.app1.activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,8 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.bean.RtcodeCommCode;
 import com.geebit.app1.utils.CountDownTimerUtils;
 import com.geebit.app1.utils.CrmApiUtil;
+import com.geebit.app1.view.MyApp;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.okhttp.MediaType;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -22,6 +27,7 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -69,7 +75,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private Runnable runnable;
     private String serverPin ;
     private View view;
-
+    private String onlyJson;
+    private String recommendCode;
 
 
     @Override
@@ -94,7 +101,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         back.setOnClickListener(this);
         messsage.setOnClickListener(this);
         mScan.setOnClickListener(this);
+        new Thread(){
+            @Override
+            public void run() {
 
+                getUserCode("9");
+            }
+        }.start();
     }
 
     public View initView() {
@@ -107,6 +120,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      * 注册方法
      */
     private void register() {
+
         // 注册是耗时过程，所以要显示一个dialog来提示下用户
         password = mPasswordEdit.getText().toString().trim();
         username = mUsernameEdit.getText().toString().trim();
@@ -118,28 +132,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         Pattern pattern = Pattern.compile("[0-9]*");
 
 
-        if (username.isEmpty() || password.isEmpty() || mEnterPwder.isEmpty()||pwdPin.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || mEnterPwder.isEmpty() || pwdPin.isEmpty()) {
             Toast.makeText(RegisterActivity.this, "账号和登录密码密码或者短信验证码不能为空", Toast.LENGTH_SHORT).show();
             return;
-        }else if (!cbSystem.isChecked()&&mCode.isEmpty()){
-            Toast.makeText(RegisterActivity.this, "请选择邀请码", Toast.LENGTH_SHORT).show();
+        }else if (!(TextUtils.isEmpty(mCode))&&(!recommendCode.equals(mCode))){
+            Toast.makeText(RegisterActivity.this, "推荐码不存在,如果没有就不要输入", Toast.LENGTH_SHORT).show();
             return;
-        }
-        else if (!(password.equals(mEnterPwder))) {
+        } else if (!(password.equals(mEnterPwder))) {
             Toast.makeText(RegisterActivity.this, "两次密码输入不一致请重新输入", Toast.LENGTH_SHORT).show();
             return;
         } else if (!matches) {
             Toast.makeText(RegisterActivity.this, "请输入正确的手机号", Toast.LENGTH_SHORT).show();
             return;
-        } else if (password.length()<6||pattern.matcher(password.substring(0,1)).matches()){
+        } else if (password.length() < 6 || pattern.matcher(password.substring(0, 1)).matches()) {
             Toast.makeText(RegisterActivity.this, "密码以字母开头，长度在6~18之间，只能包含字符、数字和下划线", Toast.LENGTH_SHORT).show();
             return;
-        }else if (!cbAgree.isChecked()){
+        } else if (!cbAgree.isChecked()) {
             Toast.makeText(RegisterActivity.this, "请勾选我已阅读并且同意服务条款", Toast.LENGTH_SHORT).show();
-        }else if(!(pwdPin.equals("123456"))){
+        } else if (!(pwdPin.equals("123456"))) {
             Toast.makeText(RegisterActivity.this, "验证码输入错误", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             mDialog = new ProgressDialog(this);
             mDialog.setMessage("注册中，请稍后...");
             mDialog.show();
@@ -169,22 +181,62 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                             }
                         }
                     });
-                    postRequest(password,username);
+
                 }
 
             }).start();
+            new Thread() {
+                @Override
+                public void run() {
+                    postRequest(username, password);
 
-    }
+                }
+            }.start();
+
+            }
         }
 
+    //调用后台获取推荐码
+    private void getUserCode(String user_id) {
+        String url = "http://192.168.1.102:8080/api/user/addCommenderCode";
+        String code = CrmApiUtil.postMap(user_id);
+        String UserCode = CrmApiUtil.postOnlyJson(url, code);
+        try {
+            JSONObject j = new JSONObject(UserCode);
+            int rtcode = j.getInt("rtcode");
+            if (rtcode==0){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(RegisterActivity.this, "推荐码不存在", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
+            }else {
+                //存在的,去解析数据拿到推荐码和用户做比较
+                Gson gson = new Gson();
+                Type type = new TypeToken<RtcodeCommCode>(){}.getType();
+               RtcodeCommCode commCode =  gson.fromJson(UserCode,type);
+                recommendCode = commCode.getData().getRecommend_code();
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ec_btn_register:
-                register();
+
+
+                        register();
+
+
                 break;
             case R.id.iv_back:
                 finish();
@@ -205,7 +257,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         @Override
                         public void run() {
 
-                            postRequest1(username);
+                            postRequest(username);
 
                         }
                     }.start();
@@ -230,19 +282,56 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
      * @param pwd
      *
      */
-    private void postRequest(String pwd,String tell)  {
+    private void postRequest( String tell, String pwd)  {
 
         //建立请求表单，添加上传服务器的参数
-        String url = "http://120.77.150.215:8080/xgb-api-server/user/register";
-        HashMap map = new HashMap();
-        map.put("tel",tell);
-        map.put("password",pwd);
-        JSONObject jsonObject = new JSONObject(map);
-        String json = jsonObject.toString();
-        String onlyJson = CrmApiUtil.postOnlyJson(url, json);
+        String url = "http://192.168.1.102:8080/api/user/register";
+        String s = CrmApiUtil.postMap(tell, pwd);
+       onlyJson = CrmApiUtil.postOnlyJson(url, s);
+        Log.i(TAG, "run: "+onlyJson);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    if (onlyJson!=null) {
+                      JSONObject  js = new JSONObject(onlyJson);
+
+                        int rtcode = js.getInt("rtcode");
+                        Log.i(TAG, "register: " + rtcode);
+                        if (rtcode == 1) {
+                            MyApp.SP.edit().putBoolean("user",true).commit();
+
+                            Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                            finish();
+
+
+                        } else if (rtcode==2){
+
+                            Toast.makeText(RegisterActivity.this, "注册失败,账号已经存在", Toast.LENGTH_SHORT).show();
+                            return;
+
+
+
+                        }
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+
+
 
     }
-    private void postRequest1(String tell){
+    //请求短信注册
+    private void postRequest(String tell){
 
         String url = "http://http://120.77.150.215:8080/xgb-api-server/user/sendRegisterSMS";
         HashMap map = new HashMap();
@@ -250,7 +339,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         JSONObject jsonObject = new JSONObject(map);
         String json = jsonObject.toString();
         String server = CrmApiUtil.postOnlyJson(url, json);
-
         try {
             JSONObject j = new JSONObject(server);
             serverPin = j.getString("result");
