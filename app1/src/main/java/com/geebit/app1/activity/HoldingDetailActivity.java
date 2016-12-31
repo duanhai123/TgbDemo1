@@ -17,7 +17,7 @@ import com.geebit.app1.R;
 
 /**
  * Created by DEll on 2016-12-21
- * 持有明细
+ * 持有明细1型
  */
 public class HoldingDetailActivity extends BaseActivity implements View.OnClickListener {
 
@@ -136,12 +136,13 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
                 mChangeout.setVisibility(View.INVISIBLE);
                 mRecdiv.setVisibility(View.INVISIBLE);
                 mSenddiv.setVisibility(View.INVISIBLE);
+
                 break;
         }
     }
     //popwindow的初始化
     private void init(){
-        // 利用layoutInflater获得View
+       // 利用layoutInflater获得View
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.holding_sort, null);
         window = new PopupWindow(view,
@@ -156,6 +157,7 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
         // 在底部显示
         window.showAtLocation(HoldingDetailActivity.this.findViewById(R.id.tv_sort),
                 Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 120);
+        //PopWindowUtils.popWindow(this,R.layout.holding_sort,HoldingDetailActivity.this,0,120,R.id.tv_sort);
         Button proceed = (Button) view.findViewById(R.id.btn_proceed);
         Button receive_dividend = (Button) view.findViewById(R.id.btn_receive_dividend);
         Button change_inout = (Button) view.findViewById(R.id.btn_change_inout);
@@ -164,18 +166,10 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
         Button change_into = (Button) view.findViewById(R.id.btn_change_into);
         proceed.setOnClickListener(this);
         receive_dividend.setOnClickListener(this);
-      change_inout.setOnClickListener(this);
-       send_dividend.setOnClickListener(this);
-       All.setOnClickListener(this);
+        change_inout.setOnClickListener(this);
+        send_dividend.setOnClickListener(this);
+        All.setOnClickListener(this);
         change_into.setOnClickListener(this);
-        //popWindow消失监听方法
-        window.setOnDismissListener(new PopupWindow.OnDismissListener() {
-
-            @Override
-            public void onDismiss() {
-                System.out.println("popWindow消失");
-            }
-        });
 
     }
 }

@@ -30,12 +30,7 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
     @Override
     public View initView() {
         view = View.inflate(mActivity, R.layout.fragment_wxgb1,null);
-        changeInto = (Button) view.findViewById(R.id.btn_change_into);
-        changeInout = (Button) view.findViewById(R.id.btn_change_inout);
-        mDividend = (TextView) view.findViewById(R.id.tv_receive_dividend);
-        mDivDetail = (TextView) view.findViewById(R.id.tv_dividend_detail);
-        mContent = (RelativeLayout) view.findViewById(R.id.rl_content);
-        mIncome = (TextView) view.findViewById(R.id.tv_income);
+
         return view;
     }
 
@@ -47,6 +42,16 @@ public class FragmentWxgbOne extends BaseFragment implements View.OnClickListene
         mDivDetail.setOnClickListener(this);
         mContent.setOnClickListener(this);
         mIncome.setOnClickListener(this);
+    }
+
+    @Override
+    public void initViewData() {
+        changeInto = (Button) view.findViewById(R.id.btn_change_into);
+        changeInout = (Button) view.findViewById(R.id.btn_change_inout);
+        mDividend = (TextView) view.findViewById(R.id.tv_receive_dividend);
+        mDivDetail = (TextView) view.findViewById(R.id.tv_dividend_detail);
+        mContent = (RelativeLayout) view.findViewById(R.id.rl_content);
+        mIncome = (TextView) view.findViewById(R.id.tv_income);
     }
 
 

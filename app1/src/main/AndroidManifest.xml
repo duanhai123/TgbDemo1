@@ -74,6 +74,8 @@
         <activity android:name=".activity.HoldingDetailActivity" />
         <activity android:name=".activity.ChangeIntoFinish"/>
         <activity android:name=".activity.IncomeDetailActivity" android:launchMode="singleTask"/>
+        <activity android:name=".activity.TwoHoldingDetailActivity"/>
+        <activity android:name=".activity.TwoChangeIntoActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.geebit.app1.R;
 import com.geebit.app1.utils.CrmApiUtil;
+import com.geebit.app1.utils.NetworkUtils;
 import com.geebit.app1.view.MyApp;
 import com.squareup.okhttp.MediaType;
 
@@ -68,7 +69,8 @@ public class LoginActivity extends BaseActivity {
         mRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //signUp();
+
+                isNetwork();
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
 
             }
@@ -78,24 +80,14 @@ public class LoginActivity extends BaseActivity {
         mSignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                new Thread(){
-                    @Override
-                    public void run() {
-                        try {
-                            sleep(2000);
-
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }.start();
+                isNetwork();
                 signIn();
             }
         });
         mForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isNetwork();
                 startActivity(new Intent(LoginActivity.this,ForgetPasswordActivity.class));
 
             }
@@ -106,9 +98,6 @@ public class LoginActivity extends BaseActivity {
      * 初始化界面控件
      */
     public View initView() {
-            
-
-
         view = View.inflate(this, R.layout.activity_login,null);
         return view;
     }
@@ -118,9 +107,6 @@ public class LoginActivity extends BaseActivity {
     /**
      * 登录方法
      */
-    private void login(String tel,String pwd){
-
-    }
 
 
     private void signIn() {
@@ -161,8 +147,9 @@ public class LoginActivity extends BaseActivity {
 
     private void postJson() {
         HashMap map = new HashMap();
+        String md5Pwd = CrmApiUtil.getMd5(password);
         map.put("tel",username);
-        map.put("password",password);
+        map.put("password",md5Pwd);
         JSONObject jsonObject = new JSONObject(map);
         String json = jsonObject.toString();
 
@@ -192,5 +179,18 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+    }
+    //判断是否用网络
+    private void isNetwork(){
+        boolean isNetwork = NetworkUtils.isNetworkAvalible(this);
+        boolean isNetstate = NetworkUtils.netState(this);
+        if (isNetwork&&isNetstate){
+
+        }else if (isNetwork==false){
+            NetworkUtils.checkNetwork(this);
+        }else if (isNetwork&&isNetstate==false){
+            Toast.makeText(LoginActivity.this, "网路连接不可用,请查看", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

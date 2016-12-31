@@ -35,6 +35,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         application = this;
         mContext = this;
         //初始化通用的SP&EDIT

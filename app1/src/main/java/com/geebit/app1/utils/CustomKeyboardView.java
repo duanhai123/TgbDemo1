@@ -28,6 +28,7 @@ public class CustomKeyboardView extends RelativeLayout {
     private ImageView ivDelete;
 
     public CustomKeyboardView(Context context) {
+
         this(context, null);
     }
 

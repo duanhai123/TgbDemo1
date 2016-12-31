@@ -30,6 +30,7 @@ public abstract class BaseFragment extends Fragment {
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		initViewData();
 		// 初始化数据
 		initData();
 	}
@@ -39,4 +40,6 @@ public abstract class BaseFragment extends Fragment {
 
 	// 初始化数据, 必须由子类实现
 	public abstract void initData();
+	// 初始化控件, 必须由子类实现
+	public abstract void initViewData();
 }

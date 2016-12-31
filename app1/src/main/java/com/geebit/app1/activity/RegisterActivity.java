@@ -286,7 +286,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         //建立请求表单，添加上传服务器的参数
         String url = "http://192.168.1.102:8080/api/user/register";
-        String s = CrmApiUtil.postMap(tell, pwd);
+        String md5Pwd = CrmApiUtil.getMd5(pwd);
+        String s = CrmApiUtil.postMap(tell, md5Pwd);
        onlyJson = CrmApiUtil.postOnlyJson(url, s);
         Log.i(TAG, "run: "+onlyJson);
         runOnUiThread(new Runnable() {

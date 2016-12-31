@@ -64,7 +64,7 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         initView();
 
-            ScreenListen();
+           // ScreenListen();
     }
 
 
