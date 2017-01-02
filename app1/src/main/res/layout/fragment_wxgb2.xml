@@ -28,7 +28,10 @@
             android:layout_width="40dp"
             android:layout_height="40dp" />
     </LinearLayout>
-
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/srl_xgb2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:background="#1c252c"
         android:orientation="vertical"
@@ -229,7 +232,7 @@
             android:background="@android:color/transparent"
             android:src="@drawable/icon_ii_2"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="160dp" />
         <LinearLayout
 
             android:background="#26343e"
@@ -380,5 +383,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
+</android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
