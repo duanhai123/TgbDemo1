@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="230dp"
+            android:layout_height="35dp">
+        <TextView
+            android:textColor="@color/ivory"
+            android:textSize="20sp"
+            android:background="@drawable/selector_btn_left"
+            android:gravity="center"
+            android:text="借币"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+            <TextView
+                android:textColor="@color/ivory"
+                android:background="@drawable/selector_btn_right"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="还币"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <TextView
+            android:gravity="center|right"
+            android:id="@+id/tv_destory"
+            android:text="历史记录"
+            style="@style/tv_history_content"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+        android:visibility="invisible"
+        android:id="@+id/ll_is_money"
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="225dp">
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ring_xgb2_money"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="@color/orange"
+                android:textSize="38sp"
+
+                android:gravity="center"
+                android:text="20฿"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:textSize="15sp"
+                android:layout_marginTop="155dp"
+                android:gravity="center"
+                android:text="借币数量"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#656565"
+                android:gravity="right"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:text="已还30฿"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/text_shape"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:textColor="#656565"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="还币数量:"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <EditText
+                android:background="@null"
+                android:gravity="center|right"
+                android:textColorHint="#dadada"
+                android:hint="最低还款0.01฿"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <TextView
+            android:textSize="15sp"
+            android:textColor="#656565"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="13dp"
+            android:gravity="center|right"
+            android:text="全部还清"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/text_shape"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="80dp">
+            <TextView
+                android:textColor="#656565"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="25dp"
+                android:text="还币数量:"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="25dp"
+                android:textColor="#656565"
+                android:layout_marginLeft="80dp"
+
+                android:text="2016-11-17---本期交易结束"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            <TextView
+
+                android:layout_marginRight="18dp"
+                android:gravity="top|right"
+               android:textColor="@color/orange"
+               android:layout_marginBottom="10dp"
+                android:text="(预计2016-12-31)"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="0dp" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:textSize="15sp"
+            android:textColor="@color/orange"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:text="本次交易结算时,系统自动扣除利息"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/btn_shape"
+            android:textColor="@color/ivory"
+            android:text="确认"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+    </LinearLayout>
+            <LinearLayout
+
+                android:id="@+id/ll_borrow_money"
+                android:orientation="vertical"
+                android:background="#f2f3f8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginTop="40dp"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:text="由XXX公司担保的低风险"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_marginTop="35dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@drawable/text_shape"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:textColor="#656565"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="借多少:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <EditText
+                        android:background="@null"
+                        android:gravity="center|right"
+                        android:textColorHint="#dadada"
+                        android:hint="最多可借20.0000฿"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </LinearLayout>
+                <TextView
+                    android:background="@drawable/icon_ii_1"
+                    android:textSize="12sp"
+                    android:textColor="#fff"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:text="可借20.0000฿"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp" />
+                <LinearLayout
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="13dp"
+                    android:layout_marginRight="13dp"
+                    android:background="@drawable/text_shape"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp">
+                    <TextView
+                        android:textColor="#656565"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="25dp"
+                        android:text="还币数量:"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:layout_marginTop="25dp"
+                            android:textColor="#656565"
+                            android:layout_marginLeft="80dp"
+
+                            android:text="2016-11-17---本期交易结束"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="0dp" />
+                        <TextView
+
+                            android:layout_marginRight="18dp"
+                            android:gravity="top|right"
+                            android:textColor="@color/orange"
+                            android:layout_marginBottom="10dp"
+                            android:text="(预计2016-12-31)"
+                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_height="0dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:textSize="15sp"
+                    android:textColor="@color/orange"
+                    android:layout_marginTop="23dp"
+                    android:gravity="center"
+                    android:text="本次交易结算时,系统自动扣除利息"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginLeft="13dp"
+                    android:background="@drawable/btn_shape"
+                    android:textColor="@color/ivory"
+                    android:text="确认"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+
+
+</LinearLayout>

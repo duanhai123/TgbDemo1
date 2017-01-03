@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.geebit.app1.R;
 import com.geebit.app1.utils.CustomKeyBoardUtil;
 import com.geebit.app1.utils.CustomKeyboardView;
-import com.geebit.app1.utils.FinishProjectPopupWindows;
 import com.geebit.app1.utils.FinishProjectPopupWindows1;
+import com.geebit.app1.utils.PopWindowView;
 
 /**
  * Created by DEll on 2016-12-19.
@@ -31,7 +31,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private View view;
     int count =3;
     private Button enterInto;
-    private FinishProjectPopupWindows finishProjectPopupWindows;
+    private PopWindowView finishProjectPopupWindows;
     private FinishProjectPopupWindows1 finishProjectPopupWindows1;
     private CustomKeyboardView customKeyboardView;
     private TextView mDestory;
@@ -40,6 +40,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
     private String mMoney1;
     private TextView pwd;
     private TextView forgetPwd;
+    private ImageView closed;
 
 
     @Override
@@ -96,13 +97,20 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
+                finish();
+                break;
+            case R.id.closed:
+                finishProjectPopupWindows.dismiss();
+                break;
+            case R.id.custom_keyboard_view:
+                finishProjectPopupWindows.dismiss();
                 break;
         }
 
     }
 
     private void showPopWindow() {
-        finishProjectPopupWindows = new FinishProjectPopupWindows(this, itemsOnClick);
+        finishProjectPopupWindows = new PopWindowView(R.layout.input_pwd,this);
 
 
         finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
@@ -114,7 +122,9 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
 
         final View contentView = finishProjectPopupWindows.getContentView();
         forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
+        closed = (ImageView) contentView.findViewById(R.id.closed);
         forgetPwd.setOnClickListener(this);
+        closed.setOnClickListener(this);
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
         customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
 
@@ -132,7 +142,7 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
 
                     if (count > 0) {
                         finishProjectPopupWindows.dismiss();
-                        finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeIntoActivity.this, itemsOnClick);
+                        finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeIntoActivity.this);
                         finishProjectPopupWindows1.showAtLocation(ChangeIntoActivity.this.findViewById(R.id.btn_enter_change_into),
                                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
                         View contentView1 = finishProjectPopupWindows1.getContentView();
@@ -182,18 +192,6 @@ public class ChangeIntoActivity extends BaseActivity implements View.OnClickList
 
     }
 
-
-    private View.OnClickListener itemsOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.closed:
-                    finishProjectPopupWindows.dismiss();
-                    break;
-
-            }
-        }
-    };
 
 
     @Override

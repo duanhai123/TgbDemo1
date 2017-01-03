@@ -23,7 +23,7 @@ import com.geebit.app1.utils.PopWindowView;
  * Created by DEll on 2016-12-21.
  * 转出的页面
  */
-public class ChangeInoutActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
+public class TwoChangeInoutActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
     private CustomKeyboardView customKeyboardView;
     private View view;
     private ImageView mBack;
@@ -35,8 +35,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
     private TextView mDestory;
     private TextView forgetPwd;
     private ImageView closed;
-    private TextView title;
-    private TextView titleMoney;
+    private EditText moneyInout;
 
     @Override
     protected void initoView() {
@@ -44,6 +43,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
         mChangeOut = (Button) view.findViewById(R.id.btn_enter_change_inout);
         outMoney = (EditText) view.findViewById(R.id.et_money_inout);
         mDestory = (TextView) view.findViewById(R.id.tv_destory);
+        moneyInout = (EditText) view.findViewById(R.id.et_money_inout);
     }
 
     @Override
@@ -80,19 +80,15 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
-                finish();
                 break;
-            case R.id.closed:
-                finishProjectPopupWindows.dismiss();
-                break;
-            case R.id.custom_keyboard_view:
+            case R.id.iv_closed:
                 finishProjectPopupWindows.dismiss();
                 break;
         }
     }
 
     private void showPopWindow() {
-        finishProjectPopupWindows = new PopWindowView(R.layout.input_pwd,this);
+        finishProjectPopupWindows = new PopWindowView(R.layout.two_input_pwd,this);
 
 
         finishProjectPopupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_inout),
@@ -125,13 +121,13 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
 
         final View contentView = finishProjectPopupWindows.getContentView();
         forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
-        closed = (ImageView) contentView.findViewById(R.id.closed);
-        title = (TextView) contentView.findViewById(R.id.tv_title);
-        titleMoney = (TextView) contentView.findViewById(R.id.tv_title_money);
-        closed.setOnClickListener(this);
-        forgetPwd.setOnClickListener(this);
+        closed = (ImageView) contentView.findViewById(R.id.iv_closed);
+        TextView title = (TextView) contentView.findViewById(R.id.tv_title);
+        TextView titleMoney = (TextView) contentView.findViewById(R.id.tv_title_money);
         title.setText("转出");
-
+        titleMoney.setText("20฿");
+        forgetPwd.setOnClickListener(this);
+        closed.setOnClickListener(this);
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
         customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
 
@@ -139,8 +135,8 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void inputHasOver(String text) {
                 if ("123456".equals(text)){
-                    Toast.makeText(ChangeInoutActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ChangeInoutActivity.this,ResultDetailActivity.class);
+                    Toast.makeText(TwoChangeInoutActivity.this, "交易成功", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(TwoChangeInoutActivity.this,ResultDetailActivity.class);
                     startActivity(intent);
                     finish();
                 }else {
@@ -148,10 +144,10 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
 
                     if (count>0){
                         finishProjectPopupWindows.dismiss();
-                        finishProjectPopupWindows1 = new FinishProjectPopupWindows1(ChangeInoutActivity.this);
+                        finishProjectPopupWindows1 = new FinishProjectPopupWindows1(TwoChangeInoutActivity.this);
 
 
-                        finishProjectPopupWindows1.showAtLocation(ChangeInoutActivity.this.findViewById(R.id.btn_enter_change_inout),
+                        finishProjectPopupWindows1.showAtLocation(TwoChangeInoutActivity.this.findViewById(R.id.btn_enter_change_inout),
                                 Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
 
                         View contentView1 = finishProjectPopupWindows1.getContentView();
@@ -162,7 +158,7 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                             @Override
                             public void onClick(View view) {
                                 finishProjectPopupWindows1.dismiss();
-                                startActivity(new Intent(ChangeInoutActivity.this,ForgetPasswordActivity.class));
+                                startActivity(new Intent(TwoChangeInoutActivity.this,ForgetPasswordActivity.class));
                                 //finish();
                             }
                         });
@@ -179,8 +175,8 @@ public class ChangeInoutActivity extends BaseActivity implements View.OnClickLis
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(ChangeInoutActivity.this, "密码超过3次,账号被锁定,请联系客服", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ChangeInoutActivity.this,MainActivity.class));
+                                Toast.makeText(TwoChangeInoutActivity.this, "密码超过3次,账号被锁定,请联系客服", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(TwoChangeInoutActivity.this,MainActivity.class));
 
                             }
                         });

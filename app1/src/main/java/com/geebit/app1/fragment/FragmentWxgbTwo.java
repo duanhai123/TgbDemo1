@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.geebit.app1.R;
+import com.geebit.app1.activity.BorrowMoneyActivity;
+import com.geebit.app1.activity.TwoChangeInoutActivity;
 import com.geebit.app1.activity.TwoChangeIntoActivity;
 import com.geebit.app1.activity.TwoHoldingDetailActivity;
 
@@ -22,6 +24,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
 
     private Button mChangeinout;
     private SwipeRefreshLayout mSrl;
+    private Button borrowMoney;
 
     @Override
     public View initView() {
@@ -36,6 +39,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
         mChangeinto.setOnClickListener(this);
         mChangeinout.setOnClickListener(this);
         mSrl.setOnRefreshListener(this);
+        borrowMoney.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +48,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
         mChangeinto = (Button) view.findViewById(R.id.btn_change_into);
         mChangeinout = (Button) view.findViewById(R.id.btn_change_inout);
         mSrl = (SwipeRefreshLayout) view.findViewById(R.id.srl_xgb2);
+        borrowMoney = (Button) view.findViewById(R.id.btn_borrow_money);
     }
 
 
@@ -53,14 +58,20 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
             case R.id.rl_content:
                 Intent intent = new Intent(mActivity, TwoHoldingDetailActivity.class);
                 startActivity(intent);
-                mActivity.finish();
+
             case R.id.btn_change_into:
                 Intent intent1 = new Intent(mActivity, TwoChangeIntoActivity.class);
                 startActivity(intent1);
-                mActivity.finish();
+
                 break;
             case R.id.btn_change_inout:
+                Intent intent2 = new Intent(mActivity, TwoChangeInoutActivity.class);
+                startActivity(intent2);
 
+                break;
+            case R.id.btn_borrow_money:
+                Intent intent3 = new Intent(mActivity, BorrowMoneyActivity.class);
+                startActivity(intent3);
                 break;
         }
     }

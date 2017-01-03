@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:background="#f2f3f8"
+    android:background="@color/transparent"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"
         android:background="@drawable/text_shape"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="220dp">
+        android:layout_height="240dp">
         <LinearLayout
 
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <ImageView
-                android:id="@+id/closed"
+                android:id="@+id/iv_closed"
                 android:layout_gravity="center"
                 android:src="@drawable/icon_14"
                 android:layout_width="wrap_content"
@@ -37,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp" />
         <TextView
+            android:id="@+id/tv_title"
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:gravity="center"
@@ -45,6 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
+            android:id="@+id/tv_title_money"
             android:textSize="25sp"
             android:layout_marginTop="15dp"
             android:gravity="center"
@@ -168,28 +171,28 @@
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="15dp"
+
         android:layout_marginRight="13dp"
         android:layout_marginLeft="13dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
+        android:layout_height="50dp">
+        <!--<TextView
             android:textColor="#656565"
             android:textSize="15sp"
             android:padding="15dp"
-            android:text="预计收益到账时间"
+            android:text="本期预期交易结算倒计时"
             android:layout_width="wrap_content"
             android:layout_height="50dp" />
         <TextView
             android:textSize="15sp"
             android:textColor="@color/orange"
             android:gravity="center|right"
-            android:text="11-16 (星期日)"
+            android:text="30天"
             android:background="@null"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content" />-->
 
     </LinearLayout>
 

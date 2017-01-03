@@ -32,6 +32,11 @@
     android:id="@+id/srl_xgb2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView
+        android:orientation="vertical"
+        android:id="@+id/rc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:background="#1c252c"
         android:orientation="vertical"
@@ -147,6 +152,7 @@
                         android:layout_width="80dp"
                         android:layout_height="35dp" />
                     <Button
+                        android:id="@+id/btn_borrow_money"
                         android:layout_marginLeft="13dp"
                         android:background="@drawable/btn_shape"
                         android:text="借币"
@@ -383,5 +389,6 @@
 
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

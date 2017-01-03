@@ -70,9 +70,12 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                isNetwork();
-                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-
+                boolean network = isNetwork();
+                if (network) {
+                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                }else {
+                    return;
+                }
             }
         });
 
@@ -80,16 +83,25 @@ public class LoginActivity extends BaseActivity {
         mSignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNetwork();
-                signIn();
+                boolean network = isNetwork();
+                if (network){
+                    signIn();
+                }else {
+
+                }
+
             }
         });
         mForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isNetwork();
-                startActivity(new Intent(LoginActivity.this,ForgetPasswordActivity.class));
 
+                boolean network = isNetwork();
+                if (network) {
+                    startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
+                }else {
+                    return;
+                }
             }
         });
     }
@@ -181,16 +193,18 @@ public class LoginActivity extends BaseActivity {
         });
     }
     //判断是否用网络
-    private void isNetwork(){
+    private boolean isNetwork(){
         boolean isNetwork = NetworkUtils.isNetworkAvalible(this);
         boolean isNetstate = NetworkUtils.netState(this);
         if (isNetwork&&isNetstate){
-
+            return true;
         }else if (isNetwork==false){
             NetworkUtils.checkNetwork(this);
+            return false;
         }else if (isNetwork&&isNetstate==false){
             Toast.makeText(LoginActivity.this, "网路连接不可用,请查看", Toast.LENGTH_SHORT).show();
+            return false;
         }
-
+        return true;
     }
 }

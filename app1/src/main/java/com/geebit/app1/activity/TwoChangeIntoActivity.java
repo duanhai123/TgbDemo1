@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +19,9 @@ import com.geebit.app1.R;
 import com.geebit.app1.utils.CustomKeyBoardUtil;
 import com.geebit.app1.utils.CustomKeyboardView;
 import com.geebit.app1.utils.PopWindowUtils;
+import com.geebit.app1.utils.PopWindowView;
 
-/**
+/*
  * Created by DEll on 2016-12-19.
  * 转入的页面
  */
@@ -39,8 +41,8 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
     private String mMoney1;
     private TextView pwd;
     private TextView forgetPwd;
-    private PopupWindow popupWindows;
-
+    private PopWindowView popupWindows;
+    private ImageView closed;
 
 
     @Override
@@ -59,7 +61,7 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
         enterInto.setOnClickListener(this);
         mDestory.setOnClickListener(this);
         money.addTextChangedListener(this);
-         mMoney =  enterInto.getText().toString().trim();
+        mMoney =  enterInto.getText().toString().trim();
         enterInto.setBackgroundColor(Color.parseColor("#dadada"));
         enterInto.setEnabled(false);
 
@@ -97,6 +99,13 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
                 break;
             case R.id.tv_forget_pwd:
                 startActivity(new Intent(this,ForgetPasswordActivity.class));
+                finish();
+                break;
+            case R.id.iv_closed:
+                popupWindows.dismiss();
+                break;
+            case R.id.custom_keyboard_view:
+                popupWindows.dismiss();
                 break;
         }
 
@@ -104,8 +113,9 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
 
     private void showPopWindow() {
 
-        popupWindows = PopWindowUtils.popWindow(R.style.Animation,this,
-                 R.layout.two_input_pwd,TwoChangeIntoActivity.this,0,0,R.id.btn_enter_change_into);
+        popupWindows = new PopWindowView(R.layout.two_input_pwd,this);
+        popupWindows.showAtLocation(this.findViewById(R.id.btn_enter_change_into),
+                Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
         init();
     }
 
@@ -113,7 +123,9 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
 
         final View contentView = popupWindows.getContentView();
         forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);
+        closed = (ImageView) contentView.findViewById(R.id.iv_closed);
         forgetPwd.setOnClickListener(this);
+        closed.setOnClickListener(this);
         LinearLayout linearLayout = (LinearLayout)contentView. findViewById(R.id.layout_input);
         customKeyboardView = (CustomKeyboardView)contentView. findViewById(R.id.custom_keyboard_view);
 
@@ -210,5 +222,6 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
     public void afterTextChanged(Editable editable) {
 
         }
+
     }
 

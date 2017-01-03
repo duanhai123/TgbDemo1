@@ -27,9 +27,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp" />
     </LinearLayout>
+
 <android.support.v4.widget.SwipeRefreshLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <LinearLayout
     android:background="#1c252c"
     android:orientation="vertical"
@@ -369,5 +374,6 @@
 
 </LinearLayout>
 </LinearLayout>
+    </ScrollView>
 </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
