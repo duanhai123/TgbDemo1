@@ -51,12 +51,12 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
         super.onCreate(savedInstanceState);
         boolean user = MyApp.SP.getBoolean("user", false);
 
-        if (user) {
+       /* if (user) {
 
         } else {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
-        }
+        }*/
         setContentView(R.layout.activity_main);
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

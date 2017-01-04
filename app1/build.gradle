@@ -36,5 +36,5 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.6.0'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
-    //compile project(':MPChartLib1')
+    
 }
