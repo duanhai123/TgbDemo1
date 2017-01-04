@@ -1,1 +1,1 @@
-include ':app1', ':okhttputils', ':MPChartLib1', ':MPChartExample'
+include ':app1', ':okhttputils'
