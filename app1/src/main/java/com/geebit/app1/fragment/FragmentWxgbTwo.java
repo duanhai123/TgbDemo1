@@ -55,10 +55,6 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.rl_content:
-                Intent intent = new Intent(mActivity, TwoHoldingDetailActivity.class);
-                startActivity(intent);
-
             case R.id.btn_change_into:
                 Intent intent1 = new Intent(mActivity, TwoChangeIntoActivity.class);
                 startActivity(intent1);
@@ -73,6 +69,9 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
                 Intent intent3 = new Intent(mActivity, BorrowMoneyActivity.class);
                 startActivity(intent3);
                 break;
+            case R.id.rl_content:
+                Intent intent = new Intent(mActivity, TwoHoldingDetailActivity.class);
+                startActivity(intent);
         }
     }
 

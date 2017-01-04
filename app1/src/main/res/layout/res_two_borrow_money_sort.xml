@@ -4,7 +4,187 @@
     android:background="#f2f3f8"
 
     android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:id="@+id/ll_content6"
+            android:layout_marginLeft="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="#656565"
 
+                android:textSize="15sp"
+                android:text="借币"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#dadada"
+                android:id="@+id/tv_time6"
+                android:textSize="12sp"
+                android:text="2015-11-01 01: 48: 55"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_up6"
+                android:layout_marginTop="8dp"
+                android:textColor="#00f361"
+                android:textSize="16sp"
+                android:gravity="center|right"
+                android:text="-3.6฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_up_float6"
+                android:textSize="12sp"
+                android:gravity="center|right"
+                android:text="21฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:background="#dadada"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:id="@+id/ll_content5"
+            android:layout_marginLeft="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="#656565"
+
+                android:textSize="15sp"
+                android:text="转出"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#dadada"
+                android:id="@+id/tv_time4"
+                android:textSize="12sp"
+                android:text="2015-11-01 01: 48: 55"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_up4"
+                android:layout_marginTop="8dp"
+                android:textColor="#00f361"
+                android:textSize="16sp"
+                android:gravity="center|right"
+                android:text="-3.6฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_up_float4"
+                android:textSize="12sp"
+                android:gravity="center|right"
+                android:text="21฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <ImageView
+        android:background="#dadada"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <LinearLayout
+            android:id="@+id/ll_content3"
+            android:layout_marginLeft="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:textColor="#656565"
+
+                android:textSize="15sp"
+                android:text="转入"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textColor="#dadada"
+                android:id="@+id/tv_time"
+                android:textSize="12sp"
+                android:text="2015-11-01 01: 48: 55"
+                android:layout_marginTop="8dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginRight="13dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_up3"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/orange"
+                android:textSize="16sp"
+                android:gravity="center|right"
+                android:text="+3.5฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+            <TextView
+                android:id="@+id/tv_up_float3"
+                android:textSize="12sp"
+                android:gravity="center|right"
+                android:text="23฿"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:background="#dadada"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp" />
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -124,127 +304,8 @@
             android:background="#dadada"
             android:layout_width="match_parent"
             android:layout_height="0.5dp" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-            <LinearLayout
-                android:id="@+id/ll_content3"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="#656565"
 
-                    android:textSize="15sp"
-                    android:text="转入"
-                    android:layout_marginTop="8dp"
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textColor="#dadada"
-                    android:id="@+id/tv_time"
-                    android:textSize="12sp"
-                    android:text="2015-11-01 01: 48: 55"
-                    android:layout_marginTop="8dp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginRight="13dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/tv_up3"
-                    android:layout_marginTop="8dp"
-                    android:textColor="@color/orange"
-                    android:textSize="16sp"
-                    android:gravity="center|right"
-                    android:text="+3.5฿"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
-                <TextView
-                    android:id="@+id/tv_up_float3"
-                    android:textSize="12sp"
-                    android:gravity="center|right"
-                    android:text="23฿"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView
-            android:background="#dadada"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp" />
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-            <LinearLayout
-                android:id="@+id/ll_content5"
-                android:layout_marginLeft="13dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textColor="#656565"
-
-                    android:textSize="15sp"
-                    android:text="转出"
-                    android:layout_marginTop="8dp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:textColor="#dadada"
-                    android:id="@+id/tv_time4"
-                    android:textSize="12sp"
-                    android:text="2015-11-01 01: 48: 55"
-                    android:layout_marginTop="8dp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginRight="13dp"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/tv_up4"
-                    android:layout_marginTop="8dp"
-                    android:textColor="#00f361"
-                    android:textSize="16sp"
-                    android:gravity="center|right"
-                    android:text="-3.6฿"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
-                <TextView
-                    android:id="@+id/tv_up_float4"
-                    android:textSize="12sp"
-                    android:gravity="center|right"
-                    android:text="21฿"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    <ImageView
-        android:background="#dadada"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -305,66 +366,7 @@
         android:background="#dadada"
         android:layout_width="match_parent"
         android:layout_height="0.5dp" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-        <LinearLayout
-            android:id="@+id/ll_content6"
-            android:layout_marginLeft="13dp"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="#656565"
 
-                android:textSize="15sp"
-                android:text="借币"
-                android:layout_marginTop="8dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:textColor="#dadada"
-                android:id="@+id/tv_time6"
-                android:textSize="12sp"
-                android:text="2015-11-01 01: 48: 55"
-                android:layout_marginTop="8dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginRight="13dp"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/tv_up6"
-                android:layout_marginTop="8dp"
-                android:textColor="#00f361"
-                android:textSize="16sp"
-                android:gravity="center|right"
-                android:text="-3.6฿"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" />
-            <TextView
-                android:id="@+id/tv_up_float6"
-                android:textSize="12sp"
-                android:gravity="center|right"
-                android:text="21฿"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <ImageView
-        android:background="#dadada"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

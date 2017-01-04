@@ -13,7 +13,7 @@ android {
     }
     defaultConfig {
         applicationId "com.geebit.app1"
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -27,7 +27,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.0.1'
     compile files('libs/hyphenatechat_3.2.2.jar')
@@ -37,5 +36,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.6.0'
     compile 'com.squareup.okhttp:okhttp:2.6.0'
-
+    //compile project(':MPChartLib1')
+    compile project(':MPChartLib1')
 }
