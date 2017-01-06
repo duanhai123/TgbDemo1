@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+
+        <TextView
+
+
+            android:gravity="center"
+            android:text="不可抗力赔付险"
+            style="@style/tv_change_content"/>
+        <TextView
+            android:id="@+id/tv_destory_insurance"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="历史保单"
+            style="@style/tv_history_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:background="#f2f3f8"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_none_insurance" />
+            <include layout="@layout/layout_section_insurance" />
+        </FrameLayout>
+    </ScrollView>
+
+    </LinearLayout>
+</LinearLayout>

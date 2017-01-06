@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+        <TextView
+            android:text="结果详情"
+            style="@style/tv_change_content" />
+        <TextView
+            android:id="@+id/tv_finish"
+            android:text="完成"
+            style="@style/tv_history_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="59dp">
+            <ImageView
+                android:id="@+id/iv_money"
+                android:src="@drawable/icon_9"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+        <LinearLayout
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+                <TextView
+                    android:gravity="center_vertical|bottom"
+                    android:id="@+id/tv_money_top"
+                    android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/orange"
+                android:text="成功购买赔付险"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="0dp" />
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="0dp"
+                    android:textSize="15sp"
+                    android:textColor="#dadada"
+                    android:text="今天"
+
+                     />
+        </LinearLayout>
+
+        </LinearLayout>
+            <LinearLayout
+
+                android:gravity="center_horizontal"
+                android:layout_width="75dp"
+                android:layout_height="40dp">
+            <View
+                android:layout_width="4dip"
+                android:layout_height="52dp"
+                android:background="@drawable/finish_shape"
+                android:layout_gravity="center_horizontal"
+                />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_marginLeft="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="59dp">
+            <ImageView
+
+                android:src="@drawable/icon_10b"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+                <LinearLayout
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:gravity="center_vertical|bottom"
+                        android:textSize="18sp"
+                        android:text="系统审核成功"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:textColor="#dadada"
+                        android:gravity="center_horizontal"
+                        android:textSize="15sp"
+                        android:text="2016-12-15"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:layout_width="75dp"
+                android:layout_height="40dp">
+                <View
+                    android:layout_width="4dip"
+                    android:layout_height="50dp"
+                    android:background="@drawable/finish_shape_bottom"
+                    android:layout_gravity="center_horizontal"
+                    />
+            </LinearLayout>
+            <LinearLayout
+
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <ImageView
+
+                    android:layout_marginLeft="8dp"
+                    android:src="@drawable/icon_btn_6"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp" />
+                <LinearLayout
+                    android:layout_marginLeft="8dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp">
+                    <TextView
+                        android:gravity="center_vertical|bottom"
+                        android:textSize="18sp"
+                        android:text="已生效"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                    <TextView
+                        android:layout_marginTop="5dp"
+
+                        android:textColor="#dadada"
+                        android:gravity="center_horizontal"
+                        android:textSize="15sp"
+                        android:text="2016-12-15"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="0dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+

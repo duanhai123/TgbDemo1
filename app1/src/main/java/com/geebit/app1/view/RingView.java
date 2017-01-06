@@ -17,9 +17,9 @@ import com.geebit.app1.exception.OnDrawingException;
  * Created with Android Studio.
  * Package_Name：com.fly.project.view
  * Project_Name：ChatDemo1
- * User：郭鹏飞
- * Date：2015/8/12
- * Email：love518420@foxmail.com
+ * User：段海鹏
+ * Date：2017/1/4
+ * Email：
  * Description：绘制环形比例图
  * 当View制定一个精确的尺寸 以该尺寸为标准
  * 当view尺寸小于环形尺寸 通过环形尺寸去计算view尺寸
@@ -55,7 +55,7 @@ public class RingView extends View implements Runnable {
     // 环形的宽度
     private int strokeWidth;
     // 环形的对齐方式 默认左对齐
-    private int align = TYPE_ALIGN_CENTER;
+    private int align = TYPE_ALIGN_CENTER_HORIZONTAL;
 
     // 绘制标记
     private boolean flag = false;
@@ -72,9 +72,9 @@ public class RingView extends View implements Runnable {
         super(context, attrs, defStyleAttr);
 
         rSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                220, getResources().getDisplayMetrics());
+                230, getResources().getDisplayMetrics());
         strokeWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                20, getResources().getDisplayMetrics());
+                35, getResources().getDisplayMetrics());
 
         TypedArray mArray = context.obtainStyledAttributes(attrs,
                 R.styleable.RingView, defStyleAttr, 0);
@@ -209,7 +209,7 @@ public class RingView extends View implements Runnable {
             total += value;
         }
         for (int i = 0; i < values.length; i++) {
-            sweepAngle[i] = values[i] * 1.0f / total * 360;
+            sweepAngle[i] = values[i] * 1.0f / total * 600;
         }
     }
 
@@ -286,11 +286,11 @@ public class RingView extends View implements Runnable {
                 }
             }
             postInvalidate();
-            try {
+            /*try {
                 Thread.sleep(30);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
         // 绘制完成
         flag = true;

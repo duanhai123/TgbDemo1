@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/black"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+        <TextView
+            android:layout_marginRight="15dp"
+            android:text="利息明细"
+            style="@style/tv_change_content" />
 
+    </LinearLayout>
+    <LinearLayout
+        android:background="#f2f3f8"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <TextView
+            android:textColor="#656565"
+            android:layout_marginLeft="13dp"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:text="2015-11-10 01: 33: 34"
+           android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:textColor="#656565"
+            android:layout_marginLeft="13dp"
+            android:gravity="center_vertical|right"
+            android:layout_marginRight="13dp"
+            android:textSize="16sp"
+            android:text="-0.009฿"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+        <ImageView
+            android:background="#dadada"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <TextView
+                android:textColor="#656565"
+                android:layout_marginLeft="13dp"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:text="2015-11-10 01: 33: 34"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <TextView
+                android:textColor="#656565"
+                android:layout_marginLeft="13dp"
+                android:gravity="center_vertical|right"
+                android:layout_marginRight="13dp"
+                android:textSize="16sp"
+                android:text="-0.009฿"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <ImageView
+            android:background="#dadada"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+    </LinearLayout>
 </LinearLayout>

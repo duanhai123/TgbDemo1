@@ -119,7 +119,7 @@ public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickL
         init();
     }
 
-    private void init() {
+    protected void init() {
 
         final View contentView = popupWindows.getContentView();
         forgetPwd = (TextView) contentView.findViewById(R.id.tv_forget_pwd);

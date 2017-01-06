@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:visibility="invisible"
+    android:visibility="visible"
     android:id="@+id/ll_borrow_money"
     android:orientation="vertical"
     android:background="#f2f3f8"
@@ -36,6 +36,8 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:inputType="number"
+            android:id="@+id/et_borrow"
             android:background="@null"
             android:gravity="center|right"
             android:textColorHint="#dadada"
@@ -45,19 +47,24 @@
     </LinearLayout>
 
     <TextView
-        android:background="@drawable/icon_ii_1"
+        android:background="@drawable/borrow2"
         android:textSize="12sp"
         android:textColor="#fff"
         android:layout_marginTop="25dp"
         android:layout_marginRight="13dp"
         android:layout_gravity="right"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:gravity="center"
+        android:paddingBottom="5dp"
         android:text="可借20.0000฿"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="40dp" />
-
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="13dp"
         android:layout_marginRight="13dp"
 
@@ -73,18 +80,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <SeekBar
-            android:layout_gravity="center"
 
+        <SeekBar
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
+            android:thumb="@drawable/thumb_bar"
+            android:layout_gravity="center"
             android:id="@+id/seekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="100"
+            android:max="20"
             android:progress="10"
 
             />
-    </LinearLayout>
 
+    </LinearLayout>
+        <ImageView
+            android:layout_marginRight="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/thumb_nomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="3dp"
+        android:paddingTop="6dp"
+        android:gravity="center"
+        android:id="@+id/tv_popop"
+        android:text="已借10.0000฿"
+        android:background="@drawable/borrow1"
+        android:layout_width="140dp"
+        android:layout_height="40dp" />
     <LinearLayout
         android:layout_marginRight="13dp"
         android:layout_marginLeft="13dp"
@@ -131,6 +159,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_interest"
             android:layout_weight="2"
             android:layout_width="match_parent"
             android:orientation="horizontal"
@@ -191,6 +220,7 @@
         android:layout_height="wrap_content">
 
         <CheckBox
+            android:id="@+id/cb_borrow"
             android:layout_marginLeft="13dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -205,10 +235,14 @@
     </LinearLayout>
 
     <Button
+        android:background="@drawable/btn_shape"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:id="@+id/btn_agree_borrow"
         android:textColor="@color/ivory"
         android:text="同意"
         android:layout_marginTop="28dp"
-        android:background="@drawable/btn_shape"
+
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 </LinearLayout>

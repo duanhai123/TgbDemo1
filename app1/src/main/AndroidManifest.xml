@@ -78,6 +78,11 @@
         <activity android:name=".activity.TwoChangeIntoActivity"/>
         <activity android:name=".activity.TwoChangeInoutActivity"/>
         <activity android:name=".activity.BorrowMoneyActivity"/>
+        <activity android:name=".activity.IntersterItemActivity"/>
+        <activity android:name=".activity.BorrowMoneyFinishActivity"/>
+        <activity android:name=".activity.InsuranceActivity"/>
+        <activity android:name=".activity.DestoryInsuranceActivity"/>
+        <activity android:name=".activity.InsuranceFinishActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f2f3f8"
+    android:orientation="vertical"
+    android:visibility="visible"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_insurance">
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="投资交易中未操作资产值的不可抗力风险保障"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="XGB-II型 1赔50"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/ll_shape"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:textSize="15sp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="投保:"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <EditText
+            android:id="@+id/et_insurance_number"
+            android:background="@null"
+            android:textSize="15sp"
+            android:layout_marginRight="10dp"
+            android:textColor="#dadada"
+            android:layout_marginLeft="5dp"
+            android:gravity="center|right"
+            android:text="≤100.0000฿"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="13dp"
+        android:gravity="right"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/ivory"
+            android:layout_marginRight="15dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:background="@drawable/borrow2"
+            android:layout_marginTop="13dp"
+            android:text="可保100.0000฿"
+            android:layout_width="140dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingBottom="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="13dp"
+            android:text="保额 :"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <SeekBar
+            android:id="@+id/sb_borrow_number"
+            android:layout_marginLeft="35dp"
+            android:max="100"
+            android:progress="10"
+            android:layout_marginRight="10dp"
+            android:thumb="@drawable/thumb_bar"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/thumb_nomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_borrow_number"
+       android:paddingTop="5dp"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/borrow1"
+        android:text="已借10.0000฿"
+        android:layout_width="140dp"
+        android:layout_height="40dp" />
+    <LinearLayout
+
+        android:gravity="right"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="12sp"
+            android:textColor="@color/ivory"
+            android:layout_marginRight="15dp"
+            android:paddingBottom="10dp"
+            android:gravity="center"
+            android:background="@drawable/borrow2"
+            android:layout_marginTop="13dp"
+            android:text="可投2.0000฿"
+            android:layout_width="140dp"
+            android:layout_height="40dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="13dp"
+                android:text="保金 :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <SeekBar
+                android:id="@+id/sb_insurance_number"
+                android:layout_marginLeft="35dp"
+                android:max="100"
+                android:progress="10"
+                android:layout_marginRight="10dp"
+                android:thumb="@drawable/thumb_bar"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/thumb_nomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:id="@+id/tv_insurance_number"
+        android:paddingTop="15dp"
+        android:gravity="center"
+        android:background="@drawable/borrow1"
+        android:text="已投0.2000B"
+        android:layout_width="140dp"
+        android:layout_height="40dp" />
+    <LinearLayout
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:background="@drawable/ll_shape"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+            <ImageView
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_ii_3"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+
+                <TextView
+                android:textSize="15sp"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="保障期限 :"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:textSize="15sp"
+                android:layout_marginRight="20dp"
+                android:textColor="#dadada"
+                android:layout_marginLeft="5dp"
+                android:gravity="center|right"
+                android:text="2016-11-17----本期交易结束"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:textSize="12sp"
+            android:textColor="@color/orange"
+            android:text="(预计2016-11-13)"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/cb_insurance"
+            android:layout_marginLeft="13dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="2dp"
+            android:textSize="15sp"
+            android:text="本人已阅读并同意签署"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_insurance_enter"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="13dp"
+        android:layout_marginLeft="13dp"
+        android:textSize="15sp"
+        android:textColor="@color/ivory"
+        android:text="确认"
+        android:background="@drawable/btn_shape"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+</LinearLayout>
+           
+        

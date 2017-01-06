@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_is_money"
     android:orientation="vertical"
-    android:visibility="visible"
+    android:visibility="invisible"
     android:background="#f2f3f8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,14 +28,13 @@
             <TextView
                 android:textColor="@color/orange"
                 android:textSize="38sp"
-
                 android:gravity="center"
                 android:text="20฿"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
             <TextView
                 android:textSize="15sp"
-                android:layout_marginTop="155dp"
+                android:layout_marginTop="145dp"
                 android:gravity="center"
                 android:text="借币数量"
                 android:layout_width="match_parent"
@@ -149,6 +148,9 @@
         android:background="@drawable/btn_shape"
         android:textColor="@color/ivory"
         android:text="确认"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 </LinearLayout>

@@ -147,6 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <Button
+                        android:id="@+id/btn_is_insurance"
                         android:background="@drawable/btn_shape"
                         android:text="未保障"
                         android:layout_width="80dp"

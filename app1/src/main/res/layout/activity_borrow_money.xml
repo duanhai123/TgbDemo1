@@ -42,8 +42,9 @@
 
         </LinearLayout>
         <TextView
+
             android:gravity="center|right"
-            android:id="@+id/tv_destory"
+            android:id="@+id/tv_destory_borrow"
             android:text="历史记录"
             style="@style/tv_history_content"/>
     </LinearLayout>

@@ -38,7 +38,7 @@ public class DividendDetailActivity extends BaseActivity implements View.OnClick
         mBack = (ImageView) view.findViewById(R.id.iv_back);
         mDestory = (RecyclerView)view. findViewById(R.id.rv_destory);
         mScreen = (TextView) view.findViewById(R.id.tv_screen);
-        //recylerAdapter = new RecylerAdapter(this,R.layout.item_divdent_detail,mDatas);
+
 
     }
 
@@ -53,6 +53,7 @@ public class DividendDetailActivity extends BaseActivity implements View.OnClick
        mDestory.setAdapter(new CommonAdapter(this,R.layout.item_divdent_detail,mDatas) {
            @Override
            protected void convert(ViewHolder holder, Object o, int position) {
+
            }
        });
         mDestory.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
