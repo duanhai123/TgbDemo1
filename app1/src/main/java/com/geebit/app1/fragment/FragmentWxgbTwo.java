@@ -5,11 +5,13 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.geebit.app1.R;
 import com.geebit.app1.activity.BorrowMoneyActivity;
 import com.geebit.app1.activity.InsuranceActivity;
+import com.geebit.app1.activity.ProandlossDetailActivity;
 import com.geebit.app1.activity.TwoChangeInoutActivity;
 import com.geebit.app1.activity.TwoChangeIntoActivity;
 import com.geebit.app1.activity.TwoHoldingDetailActivity;
@@ -27,7 +29,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
     private SwipeRefreshLayout mSrl;
     private Button borrowMoney;
     private Button mInsurance;
-
+    private LinearLayout llproDetail;
     @Override
     public View initView() {
 
@@ -43,6 +45,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
         mSrl.setOnRefreshListener(this);
         borrowMoney.setOnClickListener(this);
         mInsurance.setOnClickListener(this);
+        llproDetail.setOnClickListener(this);
     }
 
     @Override
@@ -53,6 +56,7 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
         mSrl = (SwipeRefreshLayout) view.findViewById(R.id.srl_xgb2);
         borrowMoney = (Button) view.findViewById(R.id.btn_borrow_money);
         mInsurance = (Button)view. findViewById(R.id.btn_is_insurance);
+        llproDetail = (LinearLayout)view.findViewById(R.id.ll_proandloss_detail);
     }
 
 
@@ -79,6 +83,10 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
             case R.id.btn_is_insurance:
                 Intent intent4 = new Intent(mActivity, InsuranceActivity.class);
                 startActivity(intent4);
+            case R.id.ll_proandloss_detail:
+                Intent intent5 = new Intent(mActivity, ProandlossDetailActivity.class);
+                startActivity(intent5);
+                break;
 
         }
     }

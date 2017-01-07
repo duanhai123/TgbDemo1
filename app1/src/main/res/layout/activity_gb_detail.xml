@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/black"
+    android:layout_height="match_parent">
+    <LinearLayout style="@style/ll_change_into_content">
+        <ImageView
+            android:id="@+id/iv_back"
+            android:src="@drawable/back"
+            style="@style/iv_change_content" />
+        <TextView
+            android:layout_marginRight="20dp"
+            android:text="基币总值持有明细"
+            style="@style/tv_change_content" />
+</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#f2f3f8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:textSize="12sp"
+                android:gravity="center"
+                android:text="姓名"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:background="#dadada"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:textSize="12sp"
+                android:gravity="center"
+                android:text="手机号"
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                android:layout_height="match_parent"
+                />
+            <ImageView
+                android:background="#dadada"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:textSize="12sp"
+                android:gravity="center"
+                android:text="盈亏分配比"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="40dp"
+                />
+        </LinearLayout>
+        <View
+            android:background="#dadada"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_gb_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
