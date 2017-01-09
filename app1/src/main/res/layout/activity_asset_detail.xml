@@ -6,16 +6,18 @@
     android:layout_height="match_parent">
     <LinearLayout style="@style/ll_change_into_content">
         <ImageView
-            android:id="@+id/iv_back"
+            android:id="@+id/iv_back_detail"
             android:src="@drawable/back"
             style="@style/iv_change_content" />
         <TextView
             android:layout_marginRight="20dp"
-            android:text="盈亏分配比明细"
+            android:text="资产操作明细"
             style="@style/tv_change_content" />
 
     </LinearLayout>
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
 
         android:background="#f2f3f8"
@@ -27,16 +29,18 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
             <TextView
-                android:id="@+id/tv_current_text"
+                android:textSize="15sp"
+                android:id="@+id/tv_asset_text"
                 android:textColor="@color/orange"
-                android:text="本期盈亏分配值明细"
+                android:text="操作明细截图"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />
             <TextView
-                android:id="@+id/tv_post_text"
-                android:text="往期盈亏分配值明细"
+                android:textSize="15sp"
+                android:id="@+id/tv_asset_none_text"
+                android:text="未操作明细截图"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -46,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/ll_current_line"
+            android:id="@+id/ll_asset_line"
             android:visibility="visible"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -64,7 +68,7 @@
                 android:background="@color/dimgray"/>
         </LinearLayout>
             <LinearLayout
-                android:id="@+id/ll_post_line"
+                android:id="@+id/ll_none_asset_line"
                 android:visibility="invisible"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
@@ -82,58 +86,61 @@
                     android:background="@color/orange"/>
             </LinearLayout>
         </FrameLayout>
-    <LinearLayout
-       android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="40dp">
-
-            <TextView
-                android:textSize="12sp"
-                android:gravity="center"
-                android:text="时间"
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-               />
-            <ImageView
-                android:background="#dadada"
-                android:layout_width="1dp"
-                android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="12sp"
-                android:gravity="center"
-                android:text="我的盈亏分配值"
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                />
+       <FrameLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <LinearLayout
+               android:visibility="invisible"
+               android:id="@+id/ll_asset_image"
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="2016-12-11"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
         <ImageView
-            android:background="#dadada"
-            android:layout_width="1dp"
-            android:layout_height="match_parent" />
-
-            <TextView
-                android:textSize="12sp"
-                android:gravity="center"
-                android:text="基币分配总值(总池子)"
-                android:layout_width="0dp"
-                android:layout_weight="4"
-                android:layout_height="40dp"
-                />
-
-       </LinearLayout>
-        <View
-            android:background="#dadada"
             android:layout_width="match_parent"
-            android:layout_height="1dp"/>
-        <FrameLayout
+            android:layout_height="240dp" />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:text="2016-12-11"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <include layout="@layout/ll_current_content" />
-
-            <include layout="@layout/ll_post_content" />
-        </FrameLayout>
+            android:layout_height="25dp" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
+           </LinearLayout>
+           <LinearLayout
+               android:visibility="visible"
+               android:id="@+id/ll_none_asset_image"
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent">
+               <TextView
+                   android:gravity="center_vertical"
+                   android:layout_marginLeft="10dp"
+                   android:text="2017-12-11"
+                   android:layout_width="match_parent"
+                   android:layout_height="25dp" />
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="240dp" />
+               <TextView
+                   android:layout_marginLeft="10dp"
+                   android:gravity="center_vertical"
+                   android:text="2017-12-11"
+                   android:layout_width="match_parent"
+                   android:layout_height="25dp" />
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="240dp" />
+           </LinearLayout>
+       </FrameLayout>
     </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

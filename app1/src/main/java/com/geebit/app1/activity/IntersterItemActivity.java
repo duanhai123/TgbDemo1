@@ -1,7 +1,7 @@
 package com.geebit.app1.activity;
 /* data: 2017-01-05
  * author: 段海鹏
- * ui: 
+ * ui: 利息明细的页面
  */
 
 import android.view.View;

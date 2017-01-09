@@ -200,7 +200,7 @@
             android:layout_height="0.4dp" />
         <LinearLayout
 
-            android:id="@+id/ll_proandloss_detail"
+            android:id="@+id/ll_operate_detail"
             android:layout_marginTop="18dp"
             android:background="@color/orange"
             android:layout_width="match_parent"
@@ -283,6 +283,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_gb_detail"
             android:background="#26343e"
             android:layout_marginTop="3dp"
             android:orientation="horizontal"
@@ -356,6 +357,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_proandloss_detail"
             android:background="#26343e"
             android:layout_marginTop="3dp"
             android:orientation="horizontal"

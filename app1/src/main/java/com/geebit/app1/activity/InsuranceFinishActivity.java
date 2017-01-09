@@ -1,7 +1,7 @@
 package com.geebit.app1.activity;
 /* data: 2017-01-06
  * author: 段海鹏
- * ui: 借币完成的页面
+ * ui: 购买保障完成的页面
  */
 
 import android.view.View;
@@ -29,7 +29,7 @@ public class InsuranceFinishActivity extends BaseActivity implements View.OnClic
 
     @Override
     public View initView() {
-        view = View.inflate(this, R.layout.activity_changeinto_finish,null);
+        view = View.inflate(this, R.layout.activity_insurance_finish,null);
         return view;
     }
 

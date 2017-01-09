@@ -23,7 +23,7 @@ import com.geebit.app1.utils.PopWindowView;
 
 /*
  * Created by DEll on 2016-12-19.
- * 转入的页面
+ * 2型转入的页面
  */
 public class TwoChangeIntoActivity extends BaseActivity implements View.OnClickListener, TextWatcher {
 

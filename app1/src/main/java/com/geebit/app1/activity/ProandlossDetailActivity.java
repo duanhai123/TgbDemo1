@@ -1,9 +1,8 @@
 package com.geebit.app1.activity;/* data: 2017-01-07
  * author: 段海鹏
- * ui: 
+ * ui: 盈亏分配比明细的页面
  */
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -143,8 +142,7 @@ public class ProandlossDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-        Intent intent = new Intent(this,GbDetailActivity.class);
-        startActivity(intent);
+
     }
 
     @Override

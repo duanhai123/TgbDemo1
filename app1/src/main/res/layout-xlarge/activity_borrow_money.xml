@@ -16,7 +16,7 @@
         <TextView
             android:textColor="@color/ivory"
             android:textSize="20sp"
-            android:background="@drawable/selector_btn_left"
+            android:background="@drawable/left_black_shape_nomer"
             android:gravity="center"
             android:text="借币"
             android:layout_width="0dp"
@@ -24,7 +24,7 @@
             android:layout_height="match_parent" />
             <TextView
                 android:textColor="@color/ivory"
-                android:background="@drawable/selector_btn_right"
+                android:background="@drawable/right_black_shape_nomer"
                 android:textSize="20sp"
                 android:gravity="center"
                 android:text="还币"

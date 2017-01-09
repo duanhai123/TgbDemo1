@@ -85,6 +85,7 @@
         <activity android:name=".activity.InsuranceFinishActivity"/>
         <activity android:name=".activity.ProandlossDetailActivity"/>
         <activity android:name=".activity.GbDetailActivity"/>
+        <activity android:name=".activity.AssetDetailActivity"/>
         <activity
             android:name=".activity.ChatActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">

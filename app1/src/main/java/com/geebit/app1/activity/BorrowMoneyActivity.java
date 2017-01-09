@@ -2,7 +2,9 @@ package com.geebit.app1.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
@@ -46,6 +48,8 @@ public class BorrowMoneyActivity extends BaseActivity implements View.OnClickLis
     private PopupWindow p;
     private SeekBar seekbar;
     private TextView mPopop;
+    private GradientDrawable drawable;
+    private GradientDrawable drawable1;
 
 
     @Override
@@ -81,9 +85,11 @@ public class BorrowMoneyActivity extends BaseActivity implements View.OnClickLis
         agreeBorrow.setOnClickListener(this);
         mBorrow.addTextChangedListener(this);
         mInterest.setOnClickListener(this);
+        destoryBorrow.setOnClickListener(this);
         seekbar.setOnSeekBarChangeListener(this);
         setStartDraw();
         setSelector();
+        setShapeColor();
     }
     //设置环型的颜色和百分比
     private void setStartDraw() {
@@ -111,10 +117,12 @@ public class BorrowMoneyActivity extends BaseActivity implements View.OnClickLis
             case R.id.tv_is_money:
                 llBorrowMoney.setVisibility(View.INVISIBLE);
                 llIsMoney.setVisibility(View.VISIBLE);
+                setShapeColor1();
                 break;
             case R.id.tv_borrow_money:
                 llBorrowMoney.setVisibility(View.VISIBLE);
                 llIsMoney.setVisibility(View.INVISIBLE);
+                setShapeColor();
                 break;
             case R.id.iv_back:
                 finish();
@@ -136,7 +144,22 @@ public class BorrowMoneyActivity extends BaseActivity implements View.OnClickLis
                 startActivity(intent1);
                 //finish();
                 break;
+
         }
+    }
+
+    private void setShapeColor1() {
+        drawable = (GradientDrawable) borrowMoney.getBackground();
+        drawable.setColor(Color.TRANSPARENT);
+        drawable1 = (GradientDrawable) isMoney.getBackground();
+        drawable1.setColor(Color.parseColor("#f39700"));
+    }
+
+    private void setShapeColor() {
+        drawable = (GradientDrawable) borrowMoney.getBackground();
+        drawable.setColor(Color.parseColor("#f39700"));
+        drawable1 = (GradientDrawable) isMoney.getBackground();
+        drawable1.setColor(Color.TRANSPARENT);
     }
 
     private void showPwdpp() {
@@ -153,19 +176,19 @@ public class BorrowMoneyActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        String text = charSequence.toString().trim();
 
-        if (text.isEmpty()||text.startsWith("0")){
-            setSelector();
-        }else {
-            agreeBorrow.setBackgroundColor(Color.parseColor("#f39700"));
-            agreeBorrow.setEnabled(true);
-        }
     }
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+        String text = charSequence.toString().trim();
+        if (TextUtils.isEmpty(text)||text.startsWith("0")){
+            setSelector();
+            return;
+        }else {
+            agreeBorrow.setBackgroundColor(Color.parseColor("#f39700"));
+            agreeBorrow.setEnabled(true);
+        }
     }
 
     @Override

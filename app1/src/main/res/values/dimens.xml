@@ -2,6 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
     <!--注册页面-->
    <!-- <dimen name="activity_register_content_ivheight">30dp</dimen>
     <dimen name="activity_register_content_tvsize">20sp</dimen>
