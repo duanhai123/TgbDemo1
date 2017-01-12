@@ -5,9 +5,10 @@ package com.geebit.app1.bean;
  */
 public class RegisterUser {
 
+
     /**
      * rtcode : 1
-     * data : {"uid":29}
+     * data : {"uid":5}
      */
 
     private int rtcode;
@@ -31,7 +32,7 @@ public class RegisterUser {
 
     public static class DataBean {
         /**
-         * uid : 29
+         * uid : 5
          */
 
         private int uid;

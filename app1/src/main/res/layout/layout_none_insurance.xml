@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#f2f3f8"
-    android:visibility="invisible"
+    android:visibility="visible"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -42,6 +42,7 @@
             android:layout_height="match_parent" />
 
         <EditText
+            android:id="@+id/et_insurance_number"
             android:background="@null"
             android:textSize="15sp"
             android:layout_marginRight="10dp"
@@ -236,6 +237,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_insurance_enter"
         android:layout_marginTop="15dp"
         android:layout_marginRight="13dp"
         android:layout_marginLeft="13dp"

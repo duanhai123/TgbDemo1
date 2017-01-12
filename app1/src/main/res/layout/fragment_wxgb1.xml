@@ -29,10 +29,11 @@
     </LinearLayout>
 
 <android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/srl_xgb1"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ScrollView
-
+            android:id="@+id/scrollView_xgb1"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 <LinearLayout
@@ -46,13 +47,14 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_marginTop="25dp"
-            android:layout_marginLeft="13dp"
+
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent">
             <TextView
-
+                android:id="@+id/interest_amount"
+                android:layout_marginLeft="15dp"
                 android:textSize="18sp"
                 android:textColor="#F39700"
                 android:text="+10元"
@@ -60,6 +62,8 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/interest_rate"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -67,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/tv_income"
+                android:layout_marginLeft="15dp"
+
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -75,14 +80,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Button
+                android:layout_marginLeft="13dp"
                 android:id="@+id/btn_change_into"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/btn_shape"
+                android:background="@drawable/btn_shape_bian"
                 android:textSize="16sp"
                 android:textColor="@color/ivory"
                 android:text="转入"
-                android:layout_width="75dp"
-                android:layout_height="35dp" />
+                android:layout_width="80dp"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
             <RelativeLayout
@@ -106,15 +112,16 @@
 
             <TextView
 
-                android:id="@+id/tv_btb"
+                android:id="@+id/hold_amount"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="45dp"
                 android:textSize="15sp"
                 android:textColor="#F39700"
-                android:text="฿2.0799/10010"
+                android:text="฿2.0799/100"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
                 <!--<TextView
                     android:textSize="12sp"
                     android:layout_width="wrap_content"
@@ -160,7 +167,7 @@
                     android:text="查看明细" />
         </RelativeLayout>
         <LinearLayout
-            android:layout_marginRight="13dp"
+
             android:layout_marginTop="25dp"
             android:gravity="right"
             android:orientation="vertical"
@@ -168,7 +175,8 @@
             android:layout_weight="1"
             android:layout_height="match_parent">
             <TextView
-
+                android:id="@+id/bonus_rate"
+                android:layout_marginRight="15dp"
                 android:textSize="18sp"
                 android:textColor="#F39700"
                 android:text="+15元"
@@ -176,6 +184,8 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/bonus_amount"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -183,7 +193,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/tv_dividend_detail"
+                android:layout_marginRight="15dp"
+
                 android:layout_marginTop="12dp"
                 android:textSize="12sp"
                 android:textColor="@color/ivory"
@@ -191,14 +202,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <Button
+                android:layout_marginRight="13dp"
                 android:id="@+id/btn_change_inout"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/btn_shape"
+                android:background="@drawable/btn_shape_bian"
                 android:textSize="16sp"
                 android:textColor="@color/ivory"
                 android:text="转出"
-                android:layout_width="75dp"
-                android:layout_height="35dp" />
+                android:layout_width="80dp"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
     <ImageView
@@ -228,22 +240,27 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginLeft="110dp"
-            android:gravity="center"
+            android:id="@+id/sum_amount_year"
+
+
             android:text="+1013元"
             android:textSize="16sp"
             android:textColor="#F39700"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:gravity="center|right"
+
             android:layout_height="match_parent" />
         <TextView
-
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_marginRight="13dp"
-
+                android:id="@+id/sum_rate_year"
             android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
             android:textColor="@color/ivory"
-            android:layout_width="match_parent"
+
             android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout
@@ -259,6 +276,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp" />
         <TextView
+
             android:textColor="@color/ivory"
             android:textSize="13dp"
             android:gravity="center"
@@ -267,20 +285,24 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginLeft="105dp"
-            android:gravity="center"
+            android:id="@+id/bonusForYearPlan"
+
+            android:gravity="center|right"
             android:text=">=+300元"
             android:textSize="16sp"
             android:textColor="#F39700"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/bonusRateForYearPlan"
             android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
             android:textColor="@color/ivory"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent" />
     </LinearLayout>
     <LinearLayout
@@ -304,6 +326,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/restRateDays"
             android:layout_marginLeft="90dp"
             android:gravity="center"
             android:text="100"
@@ -312,10 +335,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
+
             android:layout_marginLeft="1dp"
             android:gravity="center"
             android:text="天"
-
             android:textSize="16sp"
             android:textColor="@color/ivory"
             android:layout_width="wrap_content"
@@ -351,20 +374,24 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />
         <TextView
-            android:layout_marginLeft="145dp"
-            android:gravity="center"
+            android:id="@+id/total_amount"
+
+            android:gravity="center|right"
             android:text=">=+300元"
             android:textSize="16sp"
             android:textColor="#F39700"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="3"
             android:layout_height="match_parent" />
         <TextView
+            android:id="@+id/total_rate"
             android:layout_marginRight="13dp"
             android:gravity="center|right"
             android:text="(+2.3%)"
             android:textSize="12sp"
             android:textColor="@color/ivory"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent" />
     </LinearLayout>
 <LinearLayout

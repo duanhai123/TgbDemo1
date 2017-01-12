@@ -67,7 +67,7 @@ public class InsuranceActivity extends BaseActivity implements View.OnClickListe
         btnInsurance.setOnClickListener(this);
         etInsurance.addTextChangedListener(this);
         drawable = (GradientDrawable) btnInsurance.getBackground();
-        drawable.setColor(Color.parseColor("#656565"));
+        drawable.setColor(Color.parseColor("#dadada"));
         btnInsurance.setEnabled(false);
     }
 
@@ -132,7 +132,7 @@ public class InsuranceActivity extends BaseActivity implements View.OnClickListe
            String text =  charSequence.toString().trim();
         if (TextUtils.isEmpty(text)||text.startsWith("0")){
             drawable1 = (GradientDrawable) btnInsurance.getBackground();
-            drawable1.setColor(Color.parseColor("#656565"));
+            drawable1.setColor(Color.parseColor("#dadada"));
             btnInsurance.setEnabled(false);
         }else {
             drawable1 = (GradientDrawable) btnInsurance.getBackground();

@@ -50,17 +50,17 @@
             android:visibility="visible"
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="10dp">
+            android:layout_height="5dp">
             <View
                android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="10dp"
+                android:layout_height="match_parent"
                 android:background="@color/orange"
                 />
             <View
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="10dp"
+                android:layout_height="match_parent"
                 android:background="@color/dimgray"/>
         </LinearLayout>
             <LinearLayout
@@ -68,17 +68,17 @@
                 android:visibility="invisible"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="10dp">
+                android:layout_height="5dp">
                 <View
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="10dp"
+                    android:layout_height="match_parent"
                     android:background="@color/dimgray"
                     />
                 <View
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="10dp"
+                    android:layout_height="match_parent"
                     android:background="@color/orange"/>
             </LinearLayout>
         </FrameLayout>
@@ -92,7 +92,7 @@
                 android:gravity="center"
                 android:text="时间"
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:layout_height="match_parent"
                />
             <ImageView
@@ -105,7 +105,7 @@
                 android:gravity="center"
                 android:text="我的盈亏分配值"
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:layout_height="match_parent"
                 />
         <ImageView
@@ -118,7 +118,7 @@
                 android:gravity="center"
                 android:text="基币分配总值(总池子)"
                 android:layout_width="0dp"
-                android:layout_weight="4"
+                android:layout_weight="7"
                 android:layout_height="40dp"
                 />
 

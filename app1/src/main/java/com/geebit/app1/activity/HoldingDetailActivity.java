@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.geebit.app1.R;
+import com.geebit.app1.view.MyApp;
 
 /**
  * Created by DEll on 2016-12-21
@@ -32,6 +33,7 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
     private LinearLayout mChangeout;
     private LinearLayout mRecdiv;
     private LinearLayout mSenddiv;
+    private LinearLayout llContentInto;
 
 
     @Override
@@ -45,6 +47,8 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
         mRecdiv = (LinearLayout) view.findViewById(R.id.ll_content_receive_dividend);
         mSenddiv = (LinearLayout) view.findViewById(R.id.ll_content_send_dividend);
         defaults();
+        llContentInto = (LinearLayout)view. findViewById(R.id.ll_content_into);
+
     }
     //默认选择的排列
     private void defaults() {
@@ -76,6 +80,7 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
     protected void initData() {
         mBack.setOnClickListener(this);
         mSort.setOnClickListener(this);
+        llContentInto.setOnClickListener(this);
     }
 
     @Override
@@ -137,6 +142,12 @@ public class HoldingDetailActivity extends BaseActivity implements View.OnClickL
                 mRecdiv.setVisibility(View.INVISIBLE);
                 mSenddiv.setVisibility(View.INVISIBLE);
 
+                break;
+            case R.id.ll_content_into:
+                String money = MyApp.SP.getString("into", "");
+                Intent intent = new Intent(this,ChangeIntoFinish.class);
+                intent.putExtra("getmoney",money);
+                startActivity(intent);
                 break;
         }
     }

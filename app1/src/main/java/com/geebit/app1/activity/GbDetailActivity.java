@@ -9,9 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.geebit.app1.R;
-import com.geebit.app1.adapter.CommonAdapter;
 import com.geebit.app1.adapter.DividerItemDecoration;
-import com.geebit.app1.adapter.base.ViewHolder;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

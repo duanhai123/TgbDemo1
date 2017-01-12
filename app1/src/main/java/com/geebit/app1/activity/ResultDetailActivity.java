@@ -18,17 +18,20 @@ public class ResultDetailActivity extends BaseActivity implements View.OnClickLi
     private ImageView mBack;
     private Button mChangeOut;
     private TextView mFinish;
+    private TextView tvUsable;
 
     @Override
     protected void initoView() {
         mBack = (ImageView) view.findViewById(R.id.iv_back);
         mFinish = (TextView) view.findViewById(R.id.tv_finish);
+        tvUsable = (TextView) view.findViewById(R.id.tv_usable);
     }
 
     @Override
     protected void initData() {
         mBack.setOnClickListener(this);
         mFinish.setOnClickListener(this);
+        tvUsable.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +47,9 @@ public class ResultDetailActivity extends BaseActivity implements View.OnClickLi
                 finish();
                 break;
             case R.id.tv_finish:
+                startActivity(new Intent(this,MainActivity.class));
+                break;
+            case R.id.tv_usable:
                 startActivity(new Intent(this,MainActivity.class));
                 break;
         }

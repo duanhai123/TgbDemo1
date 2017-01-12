@@ -92,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp">
                     <TextView
+                        android:id="@+id/tv_mon_start"
                         android:gravity="center_vertical|bottom"
                         android:textSize="18sp"
                         android:text="11-15 星期二"
@@ -99,6 +100,7 @@
                         android:layout_weight="1"
                         android:layout_height="0dp" />
                     <TextView
+
                         android:layout_marginTop="5dp"
                         android:textColor="#dadada"
                         android:gravity="center_horizontal"
@@ -137,6 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp">
                     <TextView
+                        android:id="@+id/tv_mon_stop"
                         android:gravity="center_vertical|bottom"
                         android:textSize="18sp"
                         android:text="11-16 星期三"

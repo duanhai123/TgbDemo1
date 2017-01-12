@@ -10,7 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.geebit.app1.R;
-import com.geebit.app1.adapter.RecylerDesInsuranceAdapter;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,17 @@ public class DestoryInsuranceActivity extends BaseActivity{
 
         desInsure.setLayoutManager(lay);
         lay.setOrientation(LinearLayoutManager.VERTICAL);
-        desInsure.setAdapter(new RecylerDesInsuranceAdapter(this, R.layout.item_des_insur,list));
+        desInsure.setAdapter(new CommonAdapter(this, R.layout.item_des_insur, list) {
+            @Override
+            protected void convert(ViewHolder holder, Object o, int position) {
+
+            }
+
+            @Override
+            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+            }
+        });
     }
 
     @Override

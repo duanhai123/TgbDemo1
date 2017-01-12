@@ -1,5 +1,9 @@
 package com.geebit.app1.activity;
 
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,17 +16,33 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
 import com.geebit.app1.R;
+import com.geebit.app1.bean.Products;
 import com.geebit.app1.fragment.FragmentMe;
 import com.geebit.app1.fragment.FragmentWtgb;
 import com.geebit.app1.fragment.FragmentWxgbOne;
 import com.geebit.app1.fragment.FragmentWxgbTwo;
 import com.geebit.app1.listener.ScreenListener;
+import com.geebit.app1.utils.CrmApiUtil;
+import com.geebit.app1.utils.NetworkUtils;
 import com.geebit.app1.utils.PrefUtils;
 import com.geebit.app1.view.MyApp;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashMap;
 
 /**
  * Created by admin on 2016/12/17.
@@ -45,27 +65,68 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
     //Tab选项卡的图片
     private int imageResources[] = {R.drawable.selector_icon_wtgb, R.drawable.selector_icon_wxgb1,
             R.drawable.selector_icon_wxgb2, R.drawable.selector_icon_user};
+    private int batch_id;
+    private int prod_type_id;
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    private String uid;
+    boolean connByHttp;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boolean user = MyApp.SP.getBoolean("user", false);
 
-       /* if (user) {
+
+        if (user) {
 
         } else {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
-        }*/
+        }
         setContentView(R.layout.activity_main);
         //透明状态栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        initView();
+        boolean network = isNetwork();
+
+        new Thread(){
+            @Override
+            public void run() {
+                 connByHttp = isConnByHttp();
+                System.out.println(connByHttp);
+            }
+        }.start();
+        if (network ) {
+            initView();
+            new Thread() {
+                @Override
+                public void run() {
+                    postJson();
+                }
+            }.start();
+        }else if (!connByHttp){
+            checkNetwork(this);
+
+        }
+
+
 
            // ScreenListen();
+        Intent intent = getIntent();
+        uid = intent.getStringExtra("uid");
+        Log.i(TAG, "onCreate: "+uid);
+
     }
+
+
 
 
     private void initView() {
@@ -152,5 +213,76 @@ public class MainActivity extends FragmentActivity implements TabHost.OnTabChang
                 finish();
             }
         });
+    }
+    private void postJson() {
+        HashMap hashMap = new HashMap();
+        hashMap.put("user_id",uid);
+        JSONObject jsonObject = new JSONObject(hashMap);
+        String json = jsonObject.toString();
+        String onlyJson = CrmApiUtil.postOnlyJson("http://192.168.1.102:8080/api/orders/products", json);
+        //解析数据吧id保存
+        Gson gson = new Gson();
+        Type type = new TypeToken<Products>(){}.getType();
+        Products products =  gson.fromJson(onlyJson,type);
+        batch_id = products.getData().get(0).getBatch_id();
+        prod_type_id = products.getData().get(0).getProd_type_id();
+        MyApp.SP.edit().putString("batch_id",batch_id+"").commit();
+        MyApp.SP.edit().putString("prod_type_id",prod_type_id+"").commit();
+    }
+    //判断是否有网络
+    private boolean isNetwork(){
+        boolean isNetwork = NetworkUtils.isNetworkAvalible(this);
+        boolean isNetstate = NetworkUtils.netState(this);
+        if (isNetwork&&isNetstate){
+            return true;
+        }else if (isNetwork==false){
+            NetworkUtils.checkNetwork(this);
+            return false;
+        }else if (isNetwork&&isNetstate==false){
+            Toast.makeText(this, "网路连接不可用,请查看", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+    public boolean isConnByHttp() {
+        boolean isConn = false;
+        URL url;
+        HttpURLConnection conn = null;
+
+        try {
+            url = new URL("http://192.168.1.102:8080/api/orders/incomeStatement");
+            conn = (HttpURLConnection) url.openConnection();
+            // conn.setHeader("Range","bytes="+"");
+            conn.setConnectTimeout(1000 * 8);
+            if (conn.getResponseCode() == 200) {
+                isConn = true;
+            }
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+
+        } finally {
+            conn.disconnect();
+        }
+        return isConn;
+    }
+    // 如果没有连接到服务器，则弹出对话框
+    public  void checkNetwork(final Activity activity) {
+
+            TextView msg = new TextView(activity);
+            msg.setText("当前服务器连接不上,请联系客服");
+            new AlertDialog.Builder(activity).setIcon(R.drawable.icon_1).setTitle("网络状态提示")
+                    .setView(msg).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    // 跳转到设置界面
+                   // activity.startActivityForResult(new Intent(Settings.ACTION_WIRELESS_SETTINGS), 0);
+                    System.exit(0);
+                }
+            }).create().show();
+
+        return;
     }
 }

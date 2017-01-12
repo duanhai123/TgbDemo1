@@ -30,12 +30,13 @@ public abstract class BaseActivity extends Activity {
         SP = MyApp.SP;
         EDIT = MyApp.EDIT;
         initoView();
-        initData();
+       initData();
+
     }
     // 初始化控件, 必须由子类实现
     protected abstract void initoView();
     // 初始化数据, 必须由子类实现
-    protected abstract void initData();
+    protected abstract void initData() ;
 
     // 初始化布局, 必须由子类实现
     public abstract View initView();

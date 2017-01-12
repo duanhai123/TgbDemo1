@@ -109,6 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp" />
                 <TextView
+                    android:id="@+id/tv_into_data"
                     android:textSize="15sp"
                     android:textColor="@color/orange"
                     android:gravity="center|right"

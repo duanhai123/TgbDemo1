@@ -11,7 +11,6 @@ import android.widget.RelativeLayout;
 import com.geebit.app1.R;
 import com.geebit.app1.activity.AssetDetailActivity;
 import com.geebit.app1.activity.BorrowMoneyActivity;
-import com.geebit.app1.activity.GbDetailActivity;
 import com.geebit.app1.activity.InsuranceActivity;
 import com.geebit.app1.activity.ProandlossDetailActivity;
 import com.geebit.app1.activity.TwoChangeInoutActivity;
@@ -52,6 +51,8 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
         llproDetail.setOnClickListener(this);
         llopeDetail.setOnClickListener(this);
         llgbDetail.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -104,8 +105,8 @@ public class FragmentWxgbTwo extends BaseFragment implements View.OnClickListene
                 startActivity(intent4);
                     break;
             case R.id.ll_gb_detail:
-                Intent intent7 = new Intent(mActivity, GbDetailActivity.class);
-                startActivity(intent7);
+                //Intent intent7 = new Intent(mActivity, GbDetailActivity.class);
+              //  startActivity(intent7);
                 break;
 
         }

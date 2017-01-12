@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:background="#f2f3f8"
-    android:visibility="invisible"
+    android:visibility="visible"
     android:layout_height="match_parent">
 
         <LinearLayout
@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp">
             <LinearLayout
-                android:id="@+id/ll_content1"
+                android:id="@+id/ll_content_into"
                 android:layout_marginLeft="13dp"
                 android:orientation="vertical"
                 android:layout_weight="1"

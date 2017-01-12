@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.bean.RegisterUser;
 import com.geebit.app1.bean.RtcodeCommCode;
 import com.geebit.app1.utils.CountDownTimerUtils;
 import com.geebit.app1.utils.CrmApiUtil;
@@ -77,6 +78,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private View view;
     private String onlyJson;
     private String recommendCode;
+    private int uid;
 
 
     @Override
@@ -105,7 +107,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void run() {
 
-                getUserCode("9");
+                getUserCode(uid+"");
             }
         }.start();
     }
@@ -208,7 +210,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(RegisterActivity.this, "推荐码不存在", Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(RegisterActivity.this, "推荐码不存在", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -287,7 +289,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         //建立请求表单，添加上传服务器的参数
         String url = "http://192.168.1.102:8080/api/user/register";
         String md5Pwd = CrmApiUtil.getMd5(pwd);
-        String s = CrmApiUtil.postMap(tell, md5Pwd);
+         s =  CrmApiUtil.postMap(tell, md5Pwd);
        onlyJson = CrmApiUtil.postOnlyJson(url, s);
         Log.i(TAG, "run: "+onlyJson);
         runOnUiThread(new Runnable() {
@@ -302,7 +304,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         Log.i(TAG, "register: " + rtcode);
                         if (rtcode == 1) {
                             MyApp.SP.edit().putBoolean("user",true).commit();
-
+                            //解析数据吧id保存
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<RegisterUser>(){}.getType();
+                            RegisterUser registerUser =  gson.fromJson(onlyJson,type);
+                            uid = registerUser.getData().getUid();
+                            MyApp.SP.edit().putString("uid", uid +"").commit();
                             Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(RegisterActivity.this,MainActivity.class));
                             finish();

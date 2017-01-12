@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#f2f3f8"
     android:orientation="vertical"
-    android:visibility="visible"
+    android:visibility="invisible"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:showIn="@layout/activity_insurance">
@@ -121,7 +121,7 @@
     </RelativeLayout>
     <TextView
         android:id="@+id/tv_borrow_number"
-       android:paddingTop="5dp"
+        android:paddingTop="10dp"
         android:gravity="center"
         android:layout_marginLeft="13dp"
         android:background="@drawable/borrow1"
@@ -195,7 +195,7 @@
     <TextView
         android:layout_marginLeft="13dp"
         android:id="@+id/tv_insurance_number"
-        android:paddingTop="15dp"
+        android:paddingTop="10dp"
         android:gravity="center"
         android:background="@drawable/borrow1"
         android:text="已投0.2000B"
@@ -270,8 +270,6 @@
             android:layout_height="30dp" />
 
         <TextView
-
-
             android:layout_marginLeft="6dp"
             android:textSize="15sp"
             android:text="本人已阅读并同意签署"

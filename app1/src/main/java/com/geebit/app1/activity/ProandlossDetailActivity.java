@@ -3,6 +3,7 @@ package com.geebit.app1.activity;/* data: 2017-01-07
  * ui: 盈亏分配比明细的页面
  */
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,10 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geebit.app1.R;
-import com.geebit.app1.adapter.CommonAdapter;
 import com.geebit.app1.adapter.DividerItemDecoration;
-import com.geebit.app1.adapter.MultiItemTypeAdapter;
-import com.geebit.app1.adapter.base.ViewHolder;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,8 @@ public class ProandlossDetailActivity extends BaseActivity implements View.OnCli
     private RecyclerView rvProDetail;
     private RecyclerView rvProDetailPost;
     private CommonAdapter adapter;
-   private CommonAdapter adapter1;
+    private CommonAdapter adapter1;
+
     private LinearLayout mLLCurrent;
     private LinearLayout mLLPost;
 
@@ -70,37 +72,35 @@ public class ProandlossDetailActivity extends BaseActivity implements View.OnCli
             list1.add(""+i);
 
         }
-        adapter= new CommonAdapter(this,R.layout.item_pro_detail,list) {
-            @Override
-            protected void convert(ViewHolder holder, Object o, int position) {
-
-            }
-
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-            }
-        };
-        adapter1 = new CommonAdapter(this,R.layout.item_pro_detail,list1) {
-            @Override
-            protected void convert(ViewHolder holder, Object o, int position) {
-
-            }
-
-            @Override
-            public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-            }
-        };
+        newAdapter();
         //setCurrent(adapter1);
         setCurrent(adapter,rvProDetail);
 
     }
 
+    private void newAdapter() {
+
+        adapter= new CommonAdapter(this, R.layout.item_pro_detail,list) {
+            @Override
+            protected void convert(ViewHolder holder, Object o, int position) {
+
+            }
+        };
+
+        adapter1 = new CommonAdapter(this,R.layout.item_pro_detail,list1) {
+            @Override
+            protected void convert(ViewHolder holder, Object o, int position) {
+
+            }
+        };
+    }
+
     private void setCurrent(CommonAdapter adapter ,RecyclerView rvProDetail) {
         LinearLayoutManager lay = new LinearLayoutManager(this);
-        rvProDetail.setLayoutManager(lay);
+
         lay.setOrientation(LinearLayoutManager.VERTICAL);
+        rvProDetail.setLayoutManager(lay);
+        lay.setAutoMeasureEnabled(true);
         rvProDetail.setAdapter(adapter);
         rvProDetail.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL_LIST));
         adapter.setOnItemClickListener(this);
@@ -124,6 +124,7 @@ public class ProandlossDetailActivity extends BaseActivity implements View.OnCli
                 mLLCurrent.setVisibility(View.GONE);
                 mLLPost.setVisibility(View.VISIBLE);
                 setCurrent(adapter1,rvProDetailPost);
+
                 break;
             case R.id.iv_back:
                 finish();
@@ -142,7 +143,9 @@ public class ProandlossDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-
+        Intent intent = new Intent(this, GbDetailActivity.class);
+         startActivity(intent);
+        //finish();
     }
 
     @Override

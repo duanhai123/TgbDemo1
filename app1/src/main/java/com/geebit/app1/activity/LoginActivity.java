@@ -12,14 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.geebit.app1.R;
+import com.geebit.app1.bean.LoginUser;
 import com.geebit.app1.utils.CrmApiUtil;
 import com.geebit.app1.utils.NetworkUtils;
 import com.geebit.app1.view.MyApp;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.okhttp.MediaType;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
@@ -176,8 +180,16 @@ public class LoginActivity extends BaseActivity {
                         JSONObject j = new JSONObject(s);
                         int result = j.getInt("rtcode");
                         if (result==1) {
+                            //解析数据吧id保存
+                            Gson gson = new Gson();
+                            Type type = new TypeToken<LoginUser>(){}.getType();
+                            LoginUser loginUser =  gson.fromJson(s,type);
+                            int uid = loginUser.getData().getUid();
+
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            startActivity(intent);
+                            MyApp.SP.edit().putString("uid",uid+"").commit();
                             MyApp.SP.edit().putBoolean("user",true).commit();
                         } else if (result==0) {
                             Toast.makeText(LoginActivity.this, "登录失败,账号密码错误", Toast.LENGTH_SHORT).show();
